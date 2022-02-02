@@ -24,6 +24,8 @@ public class MovPlayer : MonoBehaviour
     {
         Move(speedForMove);
     }
+
+
     private void FixedUpdate()
     {
 
