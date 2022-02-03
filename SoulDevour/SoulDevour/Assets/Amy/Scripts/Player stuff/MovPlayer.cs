@@ -26,27 +26,6 @@ public class MovPlayer : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
-    {
-
-        //SetRotation();
-       
-        //if (moveVector.x.Equals(Vector3.zero.x) && moveVector.z.Equals(Vector3.zero.z))
-        //{
-        //    //idle
-        //    SetRotation();
-        //}
-        //else if ((Input.GetButton("Left Shift") || Input.GetButtonDown("Left Shift")) )
-        //{
-        //    //run       
-        //    SetRotation();
-        //}
-        //else
-        //{
-        //    //walk
-        //    SetRotation();
-        //}
-    }
 
     private void SetRotation()
     {
@@ -82,7 +61,6 @@ public class MovPlayer : MonoBehaviour
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(hor, 0, ver).normalized;
 
-
         if (direction.magnitude >= 0.1f)
         {
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -94,13 +72,6 @@ public class MovPlayer : MonoBehaviour
         StartCoroutine(LerpRotation(Quaternion.Euler(0f, targetAngle, 0f), 0.25f));
         SetRotation();
 
-        //if(PickUp.heldItem != null)
-        //{
-        //    Vector3 pos = PickUp.heldItem.transform.position;
-        //    pos = new Vector3(pos.x, pos.y + verticalVelosity, pos.z);
-        //    PickUp.heldItem.transform.position = pos;
-        //    transform.position += moveVector;
-        //}
     }
 
     private void Gravity()

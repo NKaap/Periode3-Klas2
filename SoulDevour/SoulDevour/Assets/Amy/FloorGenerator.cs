@@ -12,6 +12,7 @@ public class FloorGenerator : MonoBehaviour
     public Dictionary<Vector2, Room> FloorLayout;
     public Vector2 RoomDimension = new Vector2(50, 50);
     public GameObject Cube;
+   
 
     // Start is called before the first frame update
     void Start()
