@@ -7,10 +7,9 @@ public class MovPlayer : MonoBehaviour
 
     public Rigidbody playerController;
     public Transform cam;
-    float turnSmoothVelocity;
+
     public float turnSmoothTime = 0.1f;
-    bool isGrounded;
-    Vector3 moveVector;
+    public Vector3 moveVector;
     float verticalVelosity;
     float targetAngle;
 
@@ -19,13 +18,15 @@ public class MovPlayer : MonoBehaviour
 
     public float speedForMove = 5;
 
+    public List<ItemBase> items = new List<ItemBase>();
+
+    // health stuff
+    public float baseHealth = 4; // 4 hartjes, per keer damage gaat er een half hartje af. dus in totaal 8 halve hartjes
 
     private void Update()
     {
         Move(speedForMove);
     }
-
-
 
     private void SetRotation()
     {
@@ -74,11 +75,6 @@ public class MovPlayer : MonoBehaviour
 
     }
 
-    private void Gravity()
-    {
-        transform.position += new Vector3(0, -1f * Time.deltaTime, 0);
-    }
-
     IEnumerator LerpRotation(Quaternion endRotation, float duration)
     {
 
@@ -93,6 +89,34 @@ public class MovPlayer : MonoBehaviour
         }
         transform.rotation = endRotation;
         done = true;
+    }
+
+
+    public float GetHealth()
+    {
+        float output = baseHealth;
+        foreach (ItemBase item in items)
+        {
+            switch (item.itemtype)
+            {
+                case ItemBase.ItemType.Fruit:
+                    {
+                        output += 1;
+                        break;
+                    }
+            }
+        }
+        return output;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<ItemBase>(out ItemBase comp))
+        {       
+            items.Add(new ItemBase(comp));
+            collision.gameObject.SetActive(false);
+            Debug.Log(items[0].itemtype);
+        }
     }
 }
 

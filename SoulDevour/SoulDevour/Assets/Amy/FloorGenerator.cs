@@ -5,44 +5,51 @@ using UnityEngine;
 public class FloorGenerator : MonoBehaviour
 {
     [Range(0,100)]
-    public float RelativeDepthFactor = 20.0f;
+    public float relativeDepthFactor = 20.0f;
     [Range(100000, 999999)]
-    public int Seed = 100000;
+    public int seed = 100000;
 
     public Dictionary<Vector2, Room> FloorLayout;
     public Vector2 RoomDimension = new Vector2(50, 50);
     public GameObject Cube;
-   
+    public GameObject door;
 
+    public List<Vector3> wallsGenerated = new List<Vector3>();
+
+    public List<CustomArray> list = new List<CustomArray>();
+    
     // Start is called before the first frame update
     void Start()
     {
-        Random.InitState(Seed);
+        wallsGenerated = new List<Vector3>();
+        Random.InitState(seed);
         FloorLayout = new Dictionary<Vector2, Room>();
         FloorLayout.Add(Vector2.zero, new Room(Vector2.zero, false, false, false, false));
         AddRoom(1, Vector2.zero);
 
         foreach (KeyValuePair<Vector2, Room> pair in FloorLayout)
         {
-            pair.Value.GenerateMesh(RoomDimension, Cube, gameObject);
+            pair.Value.GenerateMesh(RoomDimension, Cube, door, gameObject, ref wallsGenerated, list);
         }
     }
 
     private void OnValidate()
     {
+
+        wallsGenerated = new List<Vector3>();
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             StartCoroutine(Destroy(gameObject.transform.GetChild(i).gameObject));
         }
 
-        Random.InitState(Seed);
+        Random.InitState(seed);
         FloorLayout = new Dictionary<Vector2, Room>();
         FloorLayout.Add(Vector2.zero, new Room(Vector2.zero, false, false, false,false));
         AddRoom(1, Vector2.zero);
 
         foreach (KeyValuePair<Vector2, Room> pair in FloorLayout)
         {
-            pair.Value.GenerateMesh(RoomDimension, Cube, gameObject);
+            pair.Value.GenerateMesh(RoomDimension, Cube, door, gameObject, ref wallsGenerated, list);
         }
     }
 
@@ -54,7 +61,7 @@ public class FloorGenerator : MonoBehaviour
 
     void AddRoom(int depth, Vector2 pos)
     {
-        float chance = 0.8f - depth / RelativeDepthFactor;
+        float chance = 0.8f - depth / relativeDepthFactor;
         if (Random.Range(0f, 1f) < chance && !FloorLayout.ContainsKey(pos + new Vector2(0, -1)))
         {
             FloorLayout[pos].North = true;
@@ -89,7 +96,8 @@ public class FloorGenerator : MonoBehaviour
     {
         public bool North, East, South, West;
         public Vector2 Position;
-
+       
+      
         public Room(Vector2 position, bool north, bool east, bool south, bool west)
         {
             Position = position;
@@ -99,7 +107,7 @@ public class FloorGenerator : MonoBehaviour
             West = west;
         }
 
-        public void GenerateMesh(Vector2 roomDimension, GameObject toInstantiate, GameObject parent)
+        public void GenerateMesh(Vector2 roomDimension, GameObject toInstantiate, GameObject Door, GameObject parent, ref List<Vector3> wallsGen, List<CustomArray> customList)
         {
             int index = 0;
             index += (North) ? 1 : 0;
@@ -108,7 +116,7 @@ public class FloorGenerator : MonoBehaviour
             index += (West) ? 8 : 0;
 
             // Generate the floor
-            toInstantiate.transform.localScale = new Vector3(roomDimension.x / 2, 1, roomDimension.y/2);
+            toInstantiate.transform.localScale = new Vector3(roomDimension.x , 1, roomDimension.y);
             Vector3 worldPos = new Vector3(Position.x * roomDimension.x, 0, Position.y * roomDimension.y);
             GameObject instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
             instance.transform.parent = parent.transform;
@@ -118,10 +126,10 @@ public class FloorGenerator : MonoBehaviour
 
             for (int i = 0; i < 4; i++) // Generating Walls
             {
-                toInstantiate.transform.localScale = wallScales[i%2];
-                worldPos = new Vector3(Position.x * roomDimension.x, 0, Position.y * roomDimension.y) + wallOffsets[i];
-                instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
-                instance.transform.parent = parent.transform;
+                //toInstantiate.transform.localScale = wallScales[i%2];
+                //worldPos = new Vector3(Position.x * roomDimension.x, 0, Position.y * roomDimension.y) + wallOffsets[i];
+                //instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
+                //instance.transform.parent = parent.transform;
             }
 
             bool[] directions = { North, East, South, West};
@@ -134,17 +142,44 @@ public class FloorGenerator : MonoBehaviour
             {
                 if (directions[i])
                 {
-                    toInstantiate.transform.localScale = roomScales[i%2];
-                    worldPos = new Vector3(Position.x * roomDimension.x, 0, Position.y * roomDimension.y) + roomOffsets[i];
-                    instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
-                    instance.transform.parent = parent.transform;
+                    int randomIndex = Random.Range(0, customList[2].objects.Length);
+                    worldPos = new Vector3(Position.x * roomDimension.x, customList[2].objects[randomIndex].transform.localScale.y, Position.y * roomDimension.y) + roomOffsets[i];
+                    Quaternion rot = new Quaternion(0, 0, 0, 0);
+                    rot.eulerAngles = new Vector3(0, (i % 2 == 1) ? 90.0f : 0, 0);
+                    if (!wallsGen.Contains(worldPos))
+                    {
+                        instance = Instantiate(customList[2].objects[randomIndex], worldPos, rot);
+                        instance.transform.parent = parent.transform;
+                        wallsGen.Add(worldPos);
+                    }
+                    
 
-                    toInstantiate.transform.localScale = new Vector3(4, 4, 4);
-                    worldPos = new Vector3(Position.x * roomDimension.x, 0, Position.y * roomDimension.y) + doorOffsets[i];
-                    instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
-                    instance.transform.parent = parent.transform;
+                    //Door.transform.localScale = new Vector3(4, 4, 4);
+                    //worldPos = new Vector3(Position.x * roomDimension.x, 0, Position.y * roomDimension.y) + doorOffsets[i];
+                    //instance = Instantiate(Door, worldPos, new Quaternion(0, 0, 0, 0));
+                    //instance.transform.parent = parent.transform;
+                }
+                else
+                {
+                    int randomWall = Random.Range(0,2);
+                    int randomIndex = Random.Range(0, customList[randomWall].objects.Length);
+                    worldPos = new Vector3(Position.x * roomDimension.x, customList[randomWall].objects[randomIndex].transform.localScale.y , Position.y * roomDimension.y) + roomOffsets[i];
+                    Quaternion rot = new Quaternion(0, 0, 0, 0);
+                    rot.eulerAngles = new Vector3(0, (i % 2 == 1) ? 90.0f : 0, 0);
+                    if (!wallsGen.Contains(worldPos))
+                    {
+                        instance = Instantiate(customList[randomWall].objects[randomIndex], worldPos, rot);
+                        instance.transform.parent = parent.transform;
+                        wallsGen.Add(worldPos);
+                    }
                 }
             }
         }
+    }
+
+    [System.Serializable]
+    public class CustomArray
+    {
+        public GameObject[] objects;
     }
 }
