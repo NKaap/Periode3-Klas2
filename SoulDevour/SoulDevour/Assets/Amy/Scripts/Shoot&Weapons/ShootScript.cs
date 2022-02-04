@@ -44,6 +44,11 @@ public class ShootScript : MonoBehaviour
                         bulletTypes[1].transform.rotation = Random.rotation;
                         break;
                     }
+                case ItemBase.ItemType.Fireballs:
+                    {
+                        output = bulletTypes[3];
+                        break;
+                    }
             }
         }
         return output;

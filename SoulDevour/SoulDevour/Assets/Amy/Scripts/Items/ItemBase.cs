@@ -26,6 +26,7 @@ public class ItemBase : MonoBehaviour
         {
             case ItemType.Fireballs:
                 {
+                    // Bullet script
                     break;
                 }
             case ItemType.Feather:
@@ -78,7 +79,7 @@ public class ItemBase : MonoBehaviour
                 }
             case ItemType.PeanutButter: // bomb 
                 {                  
-                    
+                    // in andere scripts zit functionaliteit. Bullet 
                     break;
                 }
             case ItemType.Socks:
