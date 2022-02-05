@@ -2,47 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletBase : MonoBehaviour 
+public class BombBase : MonoBehaviour
 {
-   
-
-    // BASE BULLET == PROPJE PAPIER - met een curve 
-    public Transform bullet;
+    // BASE BOMB == NIKS - met een curve 
+    public Transform bomb;
     public float baseDamage;
-   
+
     public MovPlayer source;
 
+    public GameObject peanutEffect;
+ 
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))
         {
-            huts.SubtractHealth(CalculateDamage());
-            DoEffect();
+            huts.SubtractHealth(CalculateBombDamage());
+            DoBombEffect();
             Destroy(gameObject);
         }
         if (collision.gameObject)
         {
-            DoEffect();
+            DoBombEffect();
             Destroy(gameObject);
         }
     }
 
 
-    public float CalculateDamage()
+    public float CalculateBombDamage()
     {
         float output = baseDamage;
         // edit output
         return output;
     }
 
-    public void DoEffect()
+    public void DoBombEffect()
     {
         foreach (ItemBase item in source.items)
         {
             switch (item.itemtype)
             {
-               
+                case ItemBase.ItemType.PeanutButter:
+                    {
+                        Instantiate(peanutEffect, transform.position, new Quaternion(0, 0, 0, 0));
+                        break;
+                    }
             }
         }
     }

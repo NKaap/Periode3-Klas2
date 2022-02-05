@@ -17,9 +17,6 @@ public class ItemBase : MonoBehaviour
     public float playerHealth;
     public float fireDamage;
 
-
-    public GameObject peanut;
-
     public void Items()
     {
         switch (itemtype)
@@ -79,7 +76,7 @@ public class ItemBase : MonoBehaviour
                 }
             case ItemType.PeanutButter: // bomb 
                 {                  
-                    // in andere scripts zit functionaliteit. Bullet 
+                    // in andere scripts zit functionaliteit. Bomb 
                     break;
                 }
             case ItemType.Socks:
