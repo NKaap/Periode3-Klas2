@@ -11,21 +11,21 @@ public class BombBase : MonoBehaviour
     public MovPlayer source;
 
     public GameObject peanutEffect;
- 
+
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))
-        {
-            huts.SubtractHealth(CalculateBombDamage());
-            DoBombEffect();
-            Destroy(gameObject);
-        }
-        if (collision.gameObject)
-        {
-            DoBombEffect();
-            Destroy(gameObject);
-        }
+        //if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))
+        //{
+        //    huts.SubtractHealth(CalculateBombDamage());
+        //    DoBombEffect();
+        //    Destroy(gameObject);
+        //}
+        //if (collision.transform.name == "Floor")
+        //{
+        //    DoBombEffect();
+        //    Destroy(gameObject);
+        //}
     }
 
 

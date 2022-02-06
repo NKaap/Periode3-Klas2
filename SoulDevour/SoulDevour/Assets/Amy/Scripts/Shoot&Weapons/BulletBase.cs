@@ -15,17 +15,17 @@ public class BulletBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))
-        {
-            huts.SubtractHealth(CalculateDamage());
-            DoEffect();
-            Destroy(gameObject);
-        }
-        if (collision.gameObject)
-        {
-            DoEffect();
-            Destroy(gameObject);
-        }
+        //if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))
+        //{
+        //    huts.SubtractHealth(CalculateDamage());
+        //    DoEffect();
+        //    Destroy(gameObject);
+        //}
+        //if (collision.gameObject)
+        //{
+        //    DoEffect();
+        //    Destroy(gameObject);
+        //}
     }
 
 
