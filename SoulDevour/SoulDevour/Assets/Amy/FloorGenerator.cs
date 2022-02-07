@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class FloorGenerator : MonoBehaviour
 {
+    // Kijken of er naast de plek van spawnen al rooms zitten in die dictionary, als dit meer dan 1 is moet je de kans op 0 zetten
+
+    // Een variabele in Room eerst maken met als type RoomType, wat een enum is
+
+
+    public enum RoomType
+    {
+        Normal,
+        Item,
+        Shop,
+        BossRoom
+    }
+
     [Range(0,100)]
     public float relativeDepthFactor = 20.0f;
     [Range(100000, 999999)]
@@ -17,7 +30,10 @@ public class FloorGenerator : MonoBehaviour
     public List<Vector3> wallsGenerated = new List<Vector3>();
 
     public List<CustomArray> list = new List<CustomArray>();
-    
+
+    public RoomType roomType;
+
+
     // Start is called before the first frame update
     void Start()
     {

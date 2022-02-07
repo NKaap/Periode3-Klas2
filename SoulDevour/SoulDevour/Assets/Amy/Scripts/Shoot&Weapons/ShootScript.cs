@@ -69,7 +69,7 @@ public class ShootScript : MonoBehaviour
             {           
                 case ItemBase.ItemType.Fireballs:
                     {
-                        output = bulletTypes[2];
+                        output = bulletTypes[1];
                         break;
                     }
             }

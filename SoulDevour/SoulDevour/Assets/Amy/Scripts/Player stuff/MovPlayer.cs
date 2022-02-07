@@ -16,16 +16,22 @@ public class MovPlayer : MonoBehaviour
     bool done = true;
     bool changed = false;
 
-    public float speedForMove = 5;
-
     public List<ItemBase> items = new List<ItemBase>();
 
-    // health stuff
-    public float baseHealth = 4; // 4 hartjes, per keer damage gaat er een half hartje af. dus in totaal 8 halve hartjes
+    public float strength = 5; // player strength
+    public float speedForMove = 5; // player speed
+    public float baseHealth = 4; // player health 
+
+  
 
     private void Update()
     {
         Move(speedForMove);
+
+        GetHealth();
+        GetSpeed();
+        GetStrength();
+        
     }
 
     private void SetRotation()
@@ -95,18 +101,57 @@ public class MovPlayer : MonoBehaviour
     public float GetHealth()
     {
         float output = baseHealth;
+
         foreach (ItemBase item in items)
         {
             switch (item.itemtype)
             {
+               
                 case ItemBase.ItemType.Fruit:
                     {
-                        output += 1;
+                        output += 1; // health
+                        break;
+                    }            
+            }
+        }
+        return output;
+    }
+
+    public float GetStrength()
+    {
+        float output = strength;
+        foreach (ItemBase item in items)
+        {
+            switch (item.itemtype)
+            {
+                case ItemBase.ItemType.BandAid:
+                    {
+                        output += 1; // health
+                        // Playermov
                         break;
                     }
             }
         }
         return output;
+
+    }
+
+    public float GetSpeed()
+    {
+        float output = speedForMove;
+        foreach (ItemBase item in items)
+        {
+            switch (item.itemtype)
+            {
+                case ItemBase.ItemType.Feather:
+                    {
+                        speedForMove += 10f;
+                        break;
+                    }
+            }
+        }
+        return output;
+
     }
 
     private void OnCollisionEnter(Collision collision)

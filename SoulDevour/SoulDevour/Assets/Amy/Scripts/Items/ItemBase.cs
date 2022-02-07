@@ -28,14 +28,17 @@ public class ItemBase : MonoBehaviour
                 }
             case ItemType.Feather:
                 {
+                    // Playermov
                     break;
                 }
             case ItemType.Fruit: // health
                 {
+                    // Playermov
                     break;
                 }
             case ItemType.BandAid:
                 {
+                    // Playermov
                     break;
                 }
             case ItemType.Diaper:

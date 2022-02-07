@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChildBase : MonoBehaviour
 {
+    // Child Enemy Script
 
     private float health;
 
