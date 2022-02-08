@@ -8,6 +8,7 @@ public class FloorGenerator : MonoBehaviour
 
     // Een variabele in Room eerst maken met als type RoomType, wat een enum is
 
+    // als maar 1 neighbour, kans op boss room, of shop, of throphy room, of iets. 
 
     public enum RoomType
     {
