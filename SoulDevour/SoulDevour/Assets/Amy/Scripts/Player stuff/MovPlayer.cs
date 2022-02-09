@@ -18,18 +18,18 @@ public class MovPlayer : MonoBehaviour
 
     public List<ItemBase> items = new List<ItemBase>();
 
-   // public float strength = 5; // player strength
-    public float speed = 10; // player speed
-    public float baseHealth = 4; // player health 
-    public float fruitHeal = 1;
-  
+    // public float strength = 5; // player strength
+    [SerializeField] private float speed = 10; // player speed
+    [SerializeField] private float baseHealth = 4; // player health 
+    [SerializeField] private float fruitHeal = 1;
+
+    public float calculatedSpeed => GetSpeed();
+    public float calculatedHealth => GetHealth();
+
 
     private void Update()
     {
-        Move(speed);
-        GetHealth();
-
-        GetSpeed();
+        Move(calculatedSpeed);
         //GetStrength();
         
     }
@@ -100,7 +100,7 @@ public class MovPlayer : MonoBehaviour
 
     public float GetHealth()
     {
-        //float output = baseHealth;
+        float output = baseHealth;
 
         foreach (ItemBase item in items)
         {
@@ -109,13 +109,13 @@ public class MovPlayer : MonoBehaviour
                
                 case ItemBase.ItemType.Fruit:
                     {
-                        baseHealth += fruitHeal;
+                        output += fruitHeal;
                         break;
                     }            
             }
         }
         
-        return baseHealth;
+        return output;
     }
 
 
