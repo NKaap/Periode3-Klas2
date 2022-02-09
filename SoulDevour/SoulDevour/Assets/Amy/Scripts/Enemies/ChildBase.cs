@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class ChildBase : MonoBehaviour
 {
+
+    // Statemachines 
+
     // Child Enemy Script
+    public GameObject target; // player // is altijd hetzelfde
+
+
 
     private float health;
 

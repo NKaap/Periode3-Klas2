@@ -18,19 +18,19 @@ public class MovPlayer : MonoBehaviour
 
     public List<ItemBase> items = new List<ItemBase>();
 
-    public float strength = 5; // player strength
-    public float speedForMove = 5; // player speed
+   // public float strength = 5; // player strength
+    public float speed = 10; // player speed
     public float baseHealth = 4; // player health 
-
+    public float fruitHeal = 1;
   
 
     private void Update()
     {
-        Move(speedForMove);
-
+        Move(speed);
         GetHealth();
+
         GetSpeed();
-        GetStrength();
+        //GetStrength();
         
     }
 
@@ -100,7 +100,7 @@ public class MovPlayer : MonoBehaviour
 
     public float GetHealth()
     {
-        float output = baseHealth;
+        //float output = baseHealth;
 
         foreach (ItemBase item in items)
         {
@@ -109,43 +109,26 @@ public class MovPlayer : MonoBehaviour
                
                 case ItemBase.ItemType.Fruit:
                     {
-                        output += 1; // health
+                        baseHealth += fruitHeal;
                         break;
                     }            
             }
         }
-        return output;
+        
+        return baseHealth;
     }
 
-    public float GetStrength()
-    {
-        float output = strength;
-        foreach (ItemBase item in items)
-        {
-            switch (item.itemtype)
-            {
-                case ItemBase.ItemType.BandAid:
-                    {
-                        output += 1; // health
-                        // Playermov
-                        break;
-                    }
-            }
-        }
-        return output;
-
-    }
 
     public float GetSpeed()
     {
-        float output = speedForMove;
+        float output = speed;
         foreach (ItemBase item in items)
         {
             switch (item.itemtype)
             {
                 case ItemBase.ItemType.Feather:
                     {
-                        speedForMove += 10f;
+                        output += 10f;
                         break;
                     }
             }
@@ -161,8 +144,27 @@ public class MovPlayer : MonoBehaviour
             items.Add(new ItemBase(comp));
             collision.gameObject.SetActive(false);
             Debug.Log(items[0].itemtype);
+            
         }
     }
 }
 
 
+//public float GetStrength()
+//{
+//    float output = strength;
+//    foreach (ItemBase item in items)
+//    {
+//        switch (item.itemtype)
+//        {
+//            case ItemBase.ItemType.BandAid:
+//                {
+//                    output += 1; // health
+//                    // Playermov
+//                    break;
+//                }
+//        }
+//    }
+//    return output;
+
+//}
