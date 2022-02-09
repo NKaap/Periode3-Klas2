@@ -11,6 +11,7 @@ public class BombBase : MonoBehaviour
     public MovPlayer source;
 
     public GameObject peanutEffect;
+    public GameObject legoBlock;
 
 
     private void OnCollisionEnter(Collision collision)
@@ -45,6 +46,11 @@ public class BombBase : MonoBehaviour
                 case ItemBase.ItemType.PeanutButter:
                     {
                         Instantiate(peanutEffect, transform.position, new Quaternion(0, 0, 0, 0));
+                        break;
+                    }
+                case ItemBase.ItemType.Lego:
+                    {
+                        Instantiate(legoBlock, transform.position, new Quaternion(0, 0, 0, 0));
                         break;
                     }
             }
