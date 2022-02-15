@@ -10,6 +10,8 @@ public class FloorGenerator : MonoBehaviour
 
     // als maar 1 neighbour, kans op boss room, of shop, of throphy room, of iets. 
 
+
+   
     public enum RoomType
     {
         Normal,
@@ -20,8 +22,9 @@ public class FloorGenerator : MonoBehaviour
 
     [Range(0, 100)]
     public float relativeDepthFactor = 20.0f;
+
     //[Range(100000, 999999)]
-    public string seed = "";
+    public string seed = ""; 
 
     public Dictionary<Vector2, Room> FloorLayout;
     public Vector2 RoomDimension = new Vector2(50, 50);

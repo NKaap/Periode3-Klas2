@@ -9,9 +9,9 @@ public class ChildBase : MonoBehaviour
 
     // Child Enemy Script
     public GameObject target; // player // is altijd hetzelfde
+    public bool ragDoll = false;
 
-
-
+    
     private float health;
 
     public void SubtractHealth(float amount)
@@ -19,7 +19,8 @@ public class ChildBase : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            ragDoll = true;
+            // set ragdoll = true;
         }
     }
 }
