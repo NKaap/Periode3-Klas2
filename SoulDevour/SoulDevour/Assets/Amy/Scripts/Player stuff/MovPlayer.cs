@@ -26,6 +26,7 @@ public class MovPlayer : MonoBehaviour
     public float calculatedSpeed => GetSpeed();
     public float calculatedHealth => GetHealth();
 
+    public float radius; // radius voor de kinderen om te schoppen
 
     private void Update()
     {
@@ -34,12 +35,13 @@ public class MovPlayer : MonoBehaviour
         
     }
 
+    #region Move % Rotation
     private void SetRotation()
     {
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(hor, 0, ver).normalized;
-
+       
 
         if (direction.magnitude >= 0.1f)
         {
@@ -61,6 +63,7 @@ public class MovPlayer : MonoBehaviour
         moveVector = new Vector3(direction.x, verticalVelosity, direction.z);
     }
 
+    
     private void Move(float speed)
     {
 
@@ -76,7 +79,7 @@ public class MovPlayer : MonoBehaviour
             transform.position += moveDir.normalized * speed * Time.deltaTime;
         }
         moveVector = new Vector3(direction.x, verticalVelosity, direction.z); 
-        StartCoroutine(LerpRotation(Quaternion.Euler(0f, targetAngle, 0f), 0.25f));
+       
         SetRotation();
 
     }
@@ -96,7 +99,9 @@ public class MovPlayer : MonoBehaviour
         transform.rotation = endRotation;
         done = true;
     }
+    #endregion
 
+    #region GetHealth and Speed
 
     public float GetHealth()
     {
@@ -137,6 +142,21 @@ public class MovPlayer : MonoBehaviour
 
     }
 
+    #endregion 
+
+    public void KickChildren()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.transform.CompareTag("Child"))
+            {
+                Debug.Log("Yass");
+            }
+        }
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<ItemBase>(out ItemBase comp))
@@ -148,23 +168,3 @@ public class MovPlayer : MonoBehaviour
         }
     }
 }
-
-
-//public float GetStrength()
-//{
-//    float output = strength;
-//    foreach (ItemBase item in items)
-//    {
-//        switch (item.itemtype)
-//        {
-//            case ItemBase.ItemType.BandAid:
-//                {
-//                    output += 1; // health
-//                    // Playermov
-//                    break;
-//                }
-//        }
-//    }
-//    return output;
-
-//}
