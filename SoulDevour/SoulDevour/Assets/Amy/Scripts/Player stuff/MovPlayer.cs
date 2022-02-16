@@ -26,13 +26,15 @@ public class MovPlayer : MonoBehaviour
     public float calculatedSpeed => GetSpeed();
     public float calculatedHealth => GetHealth();
 
-    public float radius; // radius voor de kinderen om te schoppen
+    public float kickForce;
+
+    public float radius = 10; // radius voor de kinderen om te schoppen
 
     private void Update()
     {
         Move(calculatedSpeed);
         //GetStrength();
-        
+        KickChildren();
     }
 
     #region Move % Rotation
@@ -146,11 +148,12 @@ public class MovPlayer : MonoBehaviour
 
     public void KickChildren()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        Collider[] colliders = Physics.OverlapSphere(new Vector3 (transform.position.x, transform.position.y + 4, transform.position.z) , radius);
         foreach (Collider collider in colliders)
         {
-            if (collider.transform.CompareTag("Child"))
+            if (collider.transform.CompareTag("Child") && Input.GetButtonDown("Fire2"))
             {
+                collider.GetComponent<Rigidbody>().AddForce(transform.position * kickForce, ForceMode.Force);
                 Debug.Log("Yass");
             }
         }
@@ -166,5 +169,11 @@ public class MovPlayer : MonoBehaviour
             Debug.Log(items[0].itemtype);
             
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + 4, transform.position.z), radius);
     }
 }

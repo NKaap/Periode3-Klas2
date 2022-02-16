@@ -53,6 +53,7 @@ public class BombBase : MonoBehaviour
                         Instantiate(legoBlock, transform.position, new Quaternion(0, 0, 0, 0));
                         break;
                     }
+                   
             }
         }
     }

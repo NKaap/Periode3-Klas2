@@ -35,6 +35,7 @@ public class FloorGenerator : MonoBehaviour
 
     public List<CustomArray> list = new List<CustomArray>();
 
+    
     public Material BossRoom;
     public Material ItemRoom;
     public Material ShopRoom;

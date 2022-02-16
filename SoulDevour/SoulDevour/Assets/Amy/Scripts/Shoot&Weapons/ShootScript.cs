@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ShootScript : MonoBehaviour
 {
-
-    public float speed = 20;
     
     public MovPlayer player;
 
+    [Header("Shoot Things")]
+
+    public float speed = 20;
+    private float delayShoot = 0.5f;
     public GameObject[] bulletTypes;
     public GameObject[] bombTypes;
 
-    private float delayShoot = 0.5f;
     //private float delayBomb = 2f;
 
 
@@ -28,6 +29,8 @@ public class ShootScript : MonoBehaviour
             Rigidbody instantiatedProjectile = Instantiate(GetBulletModel().GetComponent<Rigidbody>(), transform.position, transform.rotation) as Rigidbody;
             instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
             instantiatedProjectile.transform.rotation = Random.rotation;
+
+            ShootItems();
           
         }
         if (Input.GetButtonDown("E")) // inventory, niet op dezelfde manier als de bullet 
@@ -39,6 +42,27 @@ public class ShootScript : MonoBehaviour
         }
 
     }
+
+    #region Item Stuff
+
+    public void ShootItems()
+    {
+        foreach (ItemBase item in player.items)
+        {
+            switch (item.itemtype)
+            {
+                case ItemBase.ItemType.BadGrade:
+                    {
+
+                        delayShoot = 0.2f;
+                        break;
+                    }
+
+            }
+        }
+    }
+
+    #region GetModels
 
     public GameObject GetBombModel()
     {
@@ -85,4 +109,6 @@ public class ShootScript : MonoBehaviour
         return output;
     }
 
+    #endregion
+    #endregion
 }
