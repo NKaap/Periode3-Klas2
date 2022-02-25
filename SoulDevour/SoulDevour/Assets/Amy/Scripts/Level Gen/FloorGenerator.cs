@@ -44,41 +44,57 @@ public class FloorGenerator : MonoBehaviour
     public RoomType roomType;
 
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Generate the floor on start
+    /// </summary>
     void Start()
     {
         GenerateFloor();
     }
 
+    /// <summary>
+    /// <para>Destroys and generates the floor when a variable is changed</para>
+    /// </summary>
     private void OnValidate()
     {
         DestroyFloor();
         GenerateFloor();
     }
 
+    /// <summary>
+    /// Destroys all rooms
+    /// <para>Has to be a coroutine, as the OnValidate doesn't allow this</para>
+    /// </summary>
     public void DestroyFloor()
-    {
+    { 
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             StartCoroutine(Destroy(gameObject.transform.GetChild(i).gameObject));
         }
     }
 
+    /// <summary>
+    /// Generates the floor with all rooms
+    /// </summary>
     public void GenerateFloor()
     {
         if (seed.Length != 8)
             return;
 
         wallsGenerated = new List<Vector3>();
-        Random.InitState(seed.Substring(0,8).ToUpper().GetHashCode());
-        Debug.Log(Random.state);
         FloorLayout = new Dictionary<Vector2, Room>();
+
+        //Sets the seed with a string (convert to hashcode to make it an int)
+        Random.InitState(seed.Substring(0,8).ToUpper().GetHashCode());
+
+        //Make the first room, and recursively generate the other rooms using AddRoom
         FloorLayout.Add(Vector2.zero, new Room(Vector2.zero, false, false, false, false));
         AddRoom(1, Vector2.zero);
 
-        
-
+        //Make the list for potential special rooms
         List<Vector2> specialRooms = new List<Vector2>();
+
+        //Get all special rooms, where a special room is a room with only 1 door
         foreach (KeyValuePair<Vector2, Room> pair in FloorLayout)
         {
             int neighbours = FloorLayout.ContainsKey(pair.Key + new Vector2(1, 0)) ? 1 : 0;
@@ -91,6 +107,8 @@ public class FloorGenerator : MonoBehaviour
                 specialRooms.Add(pair.Key);
             }
         }
+
+        //Go through the list and set a random room in the list as 1 of the 3 special rooms
         int i = 0;
         for (; i < 3 && specialRooms.Count > 0; i++)
         {
@@ -99,11 +117,13 @@ public class FloorGenerator : MonoBehaviour
             specialRooms.RemoveAt(randomIndex);
         }
 
+        //If there aren't enough potential special rooms, generate extra
         Vector2[] offsets = {  new Vector2(0, -1), new Vector2(1, 0), new Vector2(0, 1), new Vector2(-1, 0) };
         if (i < 3)
         {
             List<Vector2> possibleSpecialRooms = new List<Vector2>();
 
+            //Get all spots where we can force a special room
             foreach (KeyValuePair<Vector2, Room> pair in FloorLayout)
             {
                 for (int neighbour = 0; neighbour < 4; neighbour++)
@@ -115,18 +135,16 @@ public class FloorGenerator : MonoBehaviour
                         {
                             amount += (FloorLayout.ContainsKey(pair.Key + offsets[neighbour] + offsets[second])) ? 1 : 0;
                         }
+
                         if (amount == 1)
                         {
                             possibleSpecialRooms.Add(pair.Key + offsets[neighbour]);
                         }
                     }
-
-                    
                 }
-
-                
             }
 
+            //Generate extra special rooms
             for (int room = i; room < 3; room++)
             {
                 int randomIndex = Random.Range(0,possibleSpecialRooms.Count);
@@ -137,7 +155,7 @@ public class FloorGenerator : MonoBehaviour
 
                 FloorLayout.Add(possibleSpecialRooms[randomIndex], new Room(possibleSpecialRooms[randomIndex], north, east ,south, west));
                 FloorLayout[possibleSpecialRooms[randomIndex]].type = (RoomType)(i + 1);
-                Debug.Log("room");
+                
                 if (north)
                 {
                     FloorLayout[possibleSpecialRooms[randomIndex] + offsets[0]].south = true;
@@ -155,30 +173,34 @@ public class FloorGenerator : MonoBehaviour
                     FloorLayout[possibleSpecialRooms[randomIndex] + offsets[3]].east = true;
                 }
 
-                Debug.Log(possibleSpecialRooms[randomIndex].x + " " + possibleSpecialRooms[randomIndex].y);
                 possibleSpecialRooms.RemoveAt(randomIndex);
             }
-            Debug.Log("Generated Extra Rooms");
         }
         
+        //Generate all meshes for all rooms
         foreach (KeyValuePair<Vector2, Room> pair in FloorLayout)
         {
             pair.Value.GenerateMesh(RoomDimension, Cube, door, gameObject, ref wallsGenerated, list, BossRoom, ItemRoom, ShopRoom);
-
-            if (pair.Key == new Vector2(-2, 0))
-                Debug.Log("is in ");
-            //Debug.Log(pair.Key.ToString());
         }
-
-        Debug.Log(Random.seed);
     }
 
+    /// <summary>
+    /// Destroy the gameobject
+    /// </summary>
+    /// <param name="go">The gameobject to destroy</param>
+    /// <returns>the IEnumerator</returns>
     IEnumerator Destroy(GameObject go)
     {
         yield return null;
         DestroyImmediate(go);
     }
 
+    /// <summary>
+    /// <para>Add another room on the position given</para>
+    /// <para>Also generate more rooms if the chance is high enough</para>
+    /// </summary>
+    /// <param name="depth">Amount of rooms between this room and the start</param>
+    /// <param name="pos">Position of the room</param>
     void AddRoom(int depth, Vector2 pos)
     {
         float chance = 0.8f - depth / relativeDepthFactor;
@@ -243,29 +265,44 @@ public class FloorGenerator : MonoBehaviour
         public RoomType type;
 
 
-        public Room(Vector2 position, bool north, bool east, bool south, bool west)
+        public Room(Vector2 position, bool north, bool east, bool south, bool west, RoomType type = RoomType.Normal)
         {
             this.position = position;
             this.north = north;
             this.east = east;
             this.south = south;
             this.west = west;
-            this.type = RoomType.Normal;
+            this.type = type;
         }
 
+        /// <summary>
+        /// Generate all parts of the room
+        /// </summary>
+        /// <param name="roomDimension">The size of the room</param>
+        /// <param name="toInstantiate">The object for making the floor</param>
+        /// <param name="Door">The object for making the door</param>
+        /// <param name="parent">The object this mesh should be a child of</param>
+        /// <param name="wallsGen">A reference of the list of walls already generated</param>
+        /// <param name="customList">A list of all possible walls</param>
+        /// <param name="boss">Material for the cube above the boss room</param>
+        /// <param name="item">Material for the cube above the item room</param>
+        /// <param name="shop">Material for the cube above the shop</param>
         public void GenerateMesh(Vector2 roomDimension, GameObject toInstantiate, GameObject Door, GameObject parent, ref List<Vector3> wallsGen, List<CustomArray> customList, Material boss, Material item, Material shop)
         {
+            //Can be used as index for prefabs
             int index = 0;
             index += (north) ? 1 : 0;
             index += (east) ? 2 : 0;
             index += (south) ? 4 : 0;
             index += (west) ? 8 : 0;
 
-            // Generate the floor
+            //Generate the floor
             toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
             Vector3 worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
             GameObject instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
             instance.transform.parent = parent.transform;
+
+            //Make a cube above special rooms to make it easily spottable
             if (type != RoomType.Normal)
             {
                 toInstantiate.transform.localScale = new Vector3(10, 10, 10);
@@ -292,9 +329,9 @@ public class FloorGenerator : MonoBehaviour
                         }
                 }
             }
+
             Vector3[] wallScales = { new Vector3(roomDimension.x / 2.0f, 5, 1), new Vector3(1, 5, roomDimension.y / 2.0f) };
             Vector3[] wallOffsets = { new Vector3(0, 2.5f, -roomDimension.y / 4.0f), new Vector3(roomDimension.y / 4.0f, 2.5f, 0), new Vector3(0, 2.5f, roomDimension.y / 4.0f), new Vector3(-roomDimension.y / 4.0f, 2.5f, 0) };
-
             for (int i = 0; i < 4; i++) // Generating Walls
             {
                 //toInstantiate.transform.localScale = wallScales[i%2];
@@ -306,10 +343,10 @@ public class FloorGenerator : MonoBehaviour
             bool[] directions = { north, east, south, west };
             Vector3[] roomScales = { new Vector3(1, 1, roomDimension.y), new Vector3(roomDimension.x, 1, 1) };
             Vector3[] roomOffsets = { new Vector3(0, 0, -roomDimension.y / 2.0f), new Vector3(roomDimension.x / 2.0f, 0, 0), new Vector3(0, 0, roomDimension.y / 2.0f), new Vector3(-roomDimension.x / 2.0f, 0, 0) };
-
             Vector3[] doorOffsets = { new Vector3(0, 2.5f, -roomDimension.y / 4.0f), new Vector3(roomDimension.x / 4.0f, 2.5f, 0), new Vector3(0, 2.5f, roomDimension.y / 4.0f), new Vector3(-roomDimension.x / 4.0f, 2.5f, 0) };
 
-            for (int i = 0; i < 4; i++) // Generating Rooms and Doors
+            // Generate Rooms and Doors
+            for (int i = 0; i < 4; i++) 
             {
                 if (directions[i])
                 {
@@ -348,6 +385,7 @@ public class FloorGenerator : MonoBehaviour
         }
     }
 
+    //A custom array for gameobjects that is visible in inspector
     [System.Serializable]
     public class CustomArray
     {
