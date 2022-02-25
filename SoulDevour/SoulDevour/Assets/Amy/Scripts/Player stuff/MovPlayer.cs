@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovPlayer : MonoBehaviour
 {
+  
 
     public Rigidbody playerController;
     public Transform cam;
@@ -20,7 +21,7 @@ public class MovPlayer : MonoBehaviour
 
     // public float strength = 5; // player strength
     [SerializeField] private float speed = 10; // player speed
-    [SerializeField] private float baseHealth = 4; // player health 
+    [SerializeField] private float baseHealth = 4; // player health            HEALTH
     [SerializeField] private float fruitHeal = 1;
 
     public float calculatedSpeed => GetSpeed();
