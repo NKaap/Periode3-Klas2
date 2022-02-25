@@ -19,40 +19,64 @@ public class ChildController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 10 * Time.deltaTime;
+        float speed = 4f * Time.deltaTime;
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-        foreach (Collider collider in colliders)
+        if (Vector3.Distance(transform.position, playerTarget.transform.position) > 10)
         {
-            if (collider.transform.CompareTag("Player"))
-            {
-                childMove = false;
-                Debug.Log("Yass");
-            }
-           
-
-            if (childMove)
-            {
-                playerTarget = GameObject.FindGameObjectWithTag("Player");
-                gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
-            }
+            childMove = true;
+        }
+        else if (Vector3.Distance(transform.position, playerTarget.transform.position) < 10)
+        {
+            childMove = false;
         }
 
-        //if (Vector3.Distance(transform.position, playerTarget.transform.position) < 3)
+        if (childMove)
+        {
+            
+            gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
+        }
+
+
+
+        //Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        //foreach (Collider collider in colliders)
         //{
-        //    speed = 0;
-        //    transform.position += Vector3.zero;
-        //    playerTarget.transform.position *= -1;
-        //}
-        //else
-        //{
-        //    gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
-        //}
+        //    if (collider.transform.CompareTag("Player"))
+        //    {
+        //        childMove = false;
+        //        Debug.Log("Yass");
+        //    }
+        //    else
+        //    {
+
+        //        if (Vector3.Distance(transform.position, playerTarget.transform.position) > 3)
+        //        {
+        //            childMove = true;
+        //        }
+        //        else if (Vector3.Distance(transform.position, playerTarget.transform.position) < 3)
+        //        {
+        //            childMove = false;
+        //        }
+
+        //    }
+
     }
 
-    private void OnDrawGizmos()
-    {
-        Color color = Color.magenta;
-        Gizmos.DrawWireSphere(gameObject.transform.position, radius);
-    }
+    //if (Vector3.Distance(transform.position, playerTarget.transform.position) < 3)
+    //{
+    //    speed = 0;
+    //    transform.position += Vector3.zero;
+    //    playerTarget.transform.position *= -1;
+    //}
+    //else
+    //{
+    //    gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
+    //}
+
+
+    //private void OnDrawGizmos()
+    //{
+    //    Color color = Color.magenta;
+    //    Gizmos.DrawWireSphere(gameObject.transform.position, radius);
+    //}
 }
