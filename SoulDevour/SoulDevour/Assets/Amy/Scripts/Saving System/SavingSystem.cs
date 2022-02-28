@@ -4,32 +4,20 @@ using UnityEngine;
 
 public class SavingSystem : MonoBehaviour
 {
-   
-    private void Start()
-    {
-      
-    }
+    public SavingObject saveObj;
 
-    private void Awake()
-    {
-        SaveFile saveObj = new SaveFile {
-
-            levelSeed = 20,
-
-
-
-        };
-        string json = JsonUtility.ToJson(saveObj);
-        Debug.Log(json);
-
-        SaveFile loadedSaveObj =  JsonUtility.FromJson<SaveFile>(json);
-        Debug.Log(loadedSaveObj.levelSeed);
-    }
-
-    public class SaveFile
+    private void Update()
     {
         
-        public int levelSeed;
-       // public string seedObj = levelSeedObj.GetComponent<FloorGenerator>().seed;
+    }
+
+    public void Save() // op een button UI 
+    {
+       
+    }
+
+    public void Load() // op een  button UI
+    {
+
     }
 }
