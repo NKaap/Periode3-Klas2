@@ -303,7 +303,7 @@ public class FloorGenerator : MonoBehaviour
             instance.transform.parent = parent.transform;
 
             //Make a cube above special rooms to make it easily spottable
-            if (type != RoomType.Normal)
+            if (type != RoomType.Normal)                                                                                        // verander floor per item room zodat models en rooms kloppen
             {
                 toInstantiate.transform.localScale = new Vector3(10, 10, 10);
                 worldPos = new Vector3(position.x * roomDimension.x, 20, position.y * roomDimension.y);
@@ -312,19 +312,19 @@ public class FloorGenerator : MonoBehaviour
 
                 switch (type)
                 {
-                    case RoomType.Item:
+                    case RoomType.Item:                                                                                         // item room, alle items in vitrine kasten etc. show welke je unlocked hebt
                         {
                             instance.GetComponent<MeshRenderer>().material = item;
                             break;
                         }
                     case RoomType.Shop:
                         {
-                            instance.GetComponent<MeshRenderer>().material = shop;
+                            instance.GetComponent<MeshRenderer>().material = shop;                                              // shop, kun je kiezen uit 4 items die je kunt kopen
                             break;
                         }
                     case RoomType.BossRoom:
                         {
-                            instance.GetComponent<MeshRenderer>().material = boss;
+                            instance.GetComponent<MeshRenderer>().material = boss;                                              // dark room, boss level.
                             break;
                         }
                 }

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class SavingSystem : MonoBehaviour
 {
-
+   
+    private void Start()
+    {
+      
+    }
 
     private void Awake()
     {
@@ -12,15 +16,20 @@ public class SavingSystem : MonoBehaviour
 
             levelSeed = 20,
 
+
+
         };
         string json = JsonUtility.ToJson(saveObj);
-        
-    
+        Debug.Log(json);
+
+        SaveFile loadedSaveObj =  JsonUtility.FromJson<SaveFile>(json);
+        Debug.Log(loadedSaveObj.levelSeed);
     }
 
     public class SaveFile
     {
+        
         public int levelSeed;
-
+       // public string seedObj = levelSeedObj.GetComponent<FloorGenerator>().seed;
     }
 }
