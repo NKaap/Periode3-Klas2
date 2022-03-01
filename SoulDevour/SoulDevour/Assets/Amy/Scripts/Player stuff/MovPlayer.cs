@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovPlayer : MonoBehaviour
 {
-  
+    // ToDo ANIMATIONS ADD EN ROTATION FIX
 
     public Rigidbody playerController;
     public Transform cam;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ChildController : MonoBehaviour
 {
+    // ENEMIES IN DE ROOM PREFAB
+
+
     public bool playerInRoom;
     public GameObject playerTarget;
     public bool childMove = true;
