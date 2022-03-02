@@ -10,7 +10,7 @@ public class ChildController : MonoBehaviour
     public bool playerInRoom;
     public GameObject playerTarget;
     public bool childMove = true;
-    public float radius;
+   
     public GameObject childHead;
 
     // throw pencil
@@ -24,7 +24,7 @@ public class ChildController : MonoBehaviour
     void Update()
     {
         speed = 4 * Time.deltaTime;
-        childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 10;
+        childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 6;
         childHead.transform.LookAt(playerTarget.transform);
         gameObject.transform.LookAt(playerTarget.transform);
 

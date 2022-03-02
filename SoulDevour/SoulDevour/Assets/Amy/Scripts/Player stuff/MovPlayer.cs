@@ -6,6 +6,9 @@ public class MovPlayer : MonoBehaviour
 {
     // ToDo ANIMATIONS ADD EN ROTATION FIX
 
+    public Animator playerAnimator;
+    public bool walking;
+
     public Rigidbody playerController;
     public Transform cam;
 
@@ -51,7 +54,8 @@ public class MovPlayer : MonoBehaviour
             if (targetAngle != (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y))
             {
                 changed = true;
-                StopAllCoroutines();
+               // StartCoroutine(LerpRotation(Quaternion.Euler(0f, targetAngle, 0f), 0.25f));
+                // StopAllCoroutines();
             }
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
@@ -73,9 +77,11 @@ public class MovPlayer : MonoBehaviour
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(hor, 0, ver).normalized;
-
+        walking = false;
         if (direction.magnitude >= 0.1f)
         {
+            walking = true;
+            playerAnimator.SetBool( "Walking", walking);
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
@@ -154,7 +160,7 @@ public class MovPlayer : MonoBehaviour
         {
             if (collider.transform.CompareTag("Child") && Input.GetButtonDown("Fire2"))
             {
-                collider.GetComponent<Rigidbody>().AddForce(transform.position * kickForce, ForceMode.Force);
+                collider.GetComponent<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
                 Debug.Log("Yass");
             }
         }
