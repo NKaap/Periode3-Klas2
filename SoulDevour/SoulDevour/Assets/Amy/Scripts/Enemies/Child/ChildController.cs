@@ -6,19 +6,27 @@ public class ChildController : MonoBehaviour
 {
     // ENEMIES IN DE ROOM PREFAB
 
-
+    [Header("Child Target Variables")]
     public bool playerInRoom;
     public GameObject playerTarget;
     public bool childMove = true;
-   
+
+    
+    [Header("Child Variables")]
+    [Space(8)]
     public GameObject childHead;
+    public float speed;
 
     // throw pencil
+    
+    [Header("Shooting Variables")]
+    [Space(8)]
     public GameObject pencilForThrow;
     public Transform shootPos;
     public float pencilSpeed;
-    public float speed ;
+
     // timer
+    
     public float timeLeft = 3f;
 
     void Update()

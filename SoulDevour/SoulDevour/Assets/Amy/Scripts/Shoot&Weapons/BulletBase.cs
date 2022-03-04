@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletBase : MonoBehaviour 
 {
    
-
     // BASE BULLET == PROPJE PAPIER - met een curve 
     public Transform bullet;
     public float baseDamage;

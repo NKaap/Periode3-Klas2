@@ -20,22 +20,36 @@ public class FloorGenerator : MonoBehaviour
         BossRoom
     }
 
+    [Header("Generator")]
+    [Space(8)]
     [Range(0, 100)]
     public float relativeDepthFactor = 20.0f;
 
     //[Range(100000, 999999)]
-    public string seed = ""; 
+    public string seed = "";
 
+
+   
     public Dictionary<Vector2, Room> FloorLayout;
+    [Header("Room Info")]
+    [Space(8)]
     public Vector2 RoomDimension = new Vector2(50, 50);
+
+
+    [Header("Temporary Models")]
+    [Space(8)]
     public GameObject Cube;
     public GameObject door;
 
+    [Header("Walls & Prefab List")]
+    [Space(8)]
     public List<Vector3> wallsGenerated = new List<Vector3>();
 
     public List<CustomArray> list = new List<CustomArray>();
 
-    
+
+    [Header("Room Types")]
+    [Space(8)]
     public Material BossRoom;
     public Material ItemRoom;
     public Material ShopRoom;
