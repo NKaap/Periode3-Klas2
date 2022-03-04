@@ -12,10 +12,7 @@ public class BulletBase : MonoBehaviour
     public MovPlayer source;
     public Transform fireParticle;
 
-    private void Update()
-    {
-        Debug.Log(baseDamage + "Bullet Damage");
-    }
+   
     private void OnCollisionEnter(Collision collision)
     {
         //if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))

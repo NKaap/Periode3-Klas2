@@ -13,10 +13,7 @@ public class BombBase : MonoBehaviour
     public GameObject peanutEffect;
     public GameObject legoBlock;
 
-    private void Update()
-    {
-        Debug.Log(baseDamage + "BombDamage");
-    }
+  
     private void OnCollisionEnter(Collision collision)
     {
         //if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))

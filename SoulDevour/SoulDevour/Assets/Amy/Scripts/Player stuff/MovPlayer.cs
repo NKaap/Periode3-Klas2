@@ -46,11 +46,7 @@ public class MovPlayer : MonoBehaviour
         Move(calculatedSpeed);
         TakeDamage(calculatedHealth);
 
-        Debug.Log(calculatedHealth + "Health");
-        Debug.Log(calculatedSpeed + "Speed");
-
-
-
+       
         //GetStrength();
         KickChildren();
     }
@@ -169,6 +165,15 @@ public class MovPlayer : MonoBehaviour
                 case ItemBase.ItemType.BandAid:
                     {
                         output += 2;
+                        break;
+                    }
+                case ItemBase.ItemType.Ressurect: // werkt dit?
+                    {
+                        if(output == 0)
+                        {
+                            Instantiate(gameObject, transform.position, transform.rotation);
+                            output = 1;
+                        }
                         break;
                     }
             }
