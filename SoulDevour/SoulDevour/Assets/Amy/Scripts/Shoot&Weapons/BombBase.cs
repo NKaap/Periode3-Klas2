@@ -6,14 +6,17 @@ public class BombBase : MonoBehaviour
 {
     // BASE BOMB == NIKS - met een curve 
     public Transform bomb;
-    public float baseDamage;
-
+    public float baseDamage => CalculateBombDamage();
+   
     public MovPlayer source;
 
     public GameObject peanutEffect;
     public GameObject legoBlock;
 
-
+    private void Update()
+    {
+        Debug.Log(baseDamage + "BombDamage");
+    }
     private void OnCollisionEnter(Collision collision)
     {
         //if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))

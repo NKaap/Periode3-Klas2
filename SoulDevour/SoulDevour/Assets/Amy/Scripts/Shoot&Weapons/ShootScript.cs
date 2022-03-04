@@ -9,8 +9,8 @@ public class ShootScript : MonoBehaviour
 
     [Header("Shoot Things")]
 
-    public float speed = 20;
-    private float delayShoot = 0.5f;
+    public float speed = 20; // shoot speed;
+    private float delayShoot => ShootItems();
     public GameObject[] bulletTypes;
     public GameObject[] bombTypes;
 
@@ -20,17 +20,17 @@ public class ShootScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        delayShoot -= Time.deltaTime;
+        
         //delayBomb -= Time.deltaTime;
         // het enige wat nodig is is dat je forward schiet, of met je pijltjes zoals Binding of Isaac
         if (Input.GetButtonDown("Fire1") && delayShoot < 0)
         {
-            delayShoot = 0.5f;
+            ShootItems();
             Rigidbody instantiatedProjectile = Instantiate(GetBulletModel().GetComponent<Rigidbody>(), transform.position, transform.rotation) as Rigidbody;
             instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
             instantiatedProjectile.transform.rotation = Random.rotation;
 
-            ShootItems();
+            
           
         }
         if (Input.GetButtonDown("E")) // inventory, niet op dezelfde manier als de bullet 
@@ -45,8 +45,11 @@ public class ShootScript : MonoBehaviour
 
     #region Item Stuff
 
-    public void ShootItems()
+    public float ShootItems()
     {
+        float output = delayShoot;
+        output -= Time.deltaTime;
+
         foreach (ItemBase item in player.items)
         {
             switch (item.itemtype)
@@ -54,12 +57,21 @@ public class ShootScript : MonoBehaviour
                 case ItemBase.ItemType.BadGrade:
                     {
 
-                        delayShoot = 0.2f;
+                        output -= 0.2f;
+                        break;
+                    }
+                case ItemBase.ItemType.Plant:
+                    {
+                        output -= 0.2f;
+
                         break;
                     }
 
             }
+          
         }
+        return output;
+
     }
 
     #region GetModels
@@ -100,7 +112,17 @@ public class ShootScript : MonoBehaviour
             {           
                 case ItemBase.ItemType.Fireballs:
                     {
-                        output = bulletTypes[1];
+                        output = bulletTypes[1]; // ball with fireee
+                        break;
+                    }
+                case ItemBase.ItemType.Glasses:
+                    {
+                        output = bulletTypes[2]; // deze prefab heeft 2 bullets.
+                        break;
+                    }
+                case ItemBase.ItemType.Poop:
+                    {
+                        output = bulletTypes[3]; // poop model.
                         break;
                     }
             }

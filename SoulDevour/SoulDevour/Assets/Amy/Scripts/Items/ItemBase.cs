@@ -7,8 +7,8 @@ public class ItemBase : MonoBehaviour
     public enum ItemType
     {
         // items 
-        Fireballs, Feather, Fruit, BandAid, Diaper, BestFriend, BadGrade, Ressurect, Glasses, Crown,
-        Tooth, Soup, Lego, PeanutButter, Socks, Slime, Poop, Fart, UniCornHorn,
+        PropjePapier, Fireballs, Feather, Fruit, BandAid, Diaper, BestFriend, BadGrade, Ressurect, Glasses, Crown,
+        Tooth, Soup, Lego, PeanutButter, Socks, Slime, Poop, Fart, UniCornHorn, Scissor, Plant, TextBook,
     }
 
     public ItemType itemtype;
@@ -21,6 +21,11 @@ public class ItemBase : MonoBehaviour
     {
         switch (itemtype)
         {
+            case ItemType.PropjePapier:
+                {
+                    // bullet script
+                    break;
+                }
             case ItemType.Fireballs:
                 {
                     // Bullet script
@@ -47,6 +52,7 @@ public class ItemBase : MonoBehaviour
                 }
             case ItemType.BestFriend:
                 {
+                    // een friend die de player volgd.  in playerMov???
                     break;
                 }
             case ItemType.BadGrade:
@@ -102,7 +108,23 @@ public class ItemBase : MonoBehaviour
                 {
                     break;
                 }
+            case ItemType.Scissor:
+                {
+                    // bullet script
+                    break;
+                }
+            case ItemType.Plant:
+                {
+                    // Shoot Script
+                    break;
+                }
+            case ItemType.TextBook:
+                {
+                    // playermov
+                    break;
 
+
+                }
         }
     }
 }

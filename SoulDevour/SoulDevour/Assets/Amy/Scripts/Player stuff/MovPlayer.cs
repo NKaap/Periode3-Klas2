@@ -6,6 +6,13 @@ public class MovPlayer : MonoBehaviour
 {
     // ToDo ANIMATIONS ADD EN ROTATION FIX
 
+    public enum PlayerTypes
+    {
+        TeddyBear, Panda, PinkBear, IceBear, RainbowBear, Shrek
+    }
+
+    public PlayerTypes playerTypes;
+
     public Animator playerAnimator;
     public bool walking;
 
@@ -25,11 +32,11 @@ public class MovPlayer : MonoBehaviour
     // public float strength = 5; // player strength
     [SerializeField] private float speed = 10; // player speed
     [SerializeField] private float baseHealth = 4; // player health            HEALTH
-    [SerializeField] private float fruitHeal = 1;
 
-    public float calculatedSpeed => GetSpeed();
-    public float calculatedHealth => GetHealth();
 
+    [SerializeField] public float calculatedSpeed => GetSpeed(); // gebruik deze om speed aan te roepen.
+    [SerializeField] public float calculatedHealth => GetHealth(); // gebruik deze om health mee aan te roepen.
+     
     public float kickForce;
 
     public float radius = 10; // radius voor de kinderen om te schoppen
@@ -37,6 +44,13 @@ public class MovPlayer : MonoBehaviour
     private void Update()
     {
         Move(calculatedSpeed);
+        TakeDamage(calculatedHealth);
+
+        Debug.Log(calculatedHealth + "Health");
+        Debug.Log(calculatedSpeed + "Speed");
+
+
+
         //GetStrength();
         KickChildren();
     }
@@ -110,6 +124,22 @@ public class MovPlayer : MonoBehaviour
     }
     #endregion
 
+    #region SkillPoints Player
+
+    public void SkillPoints() // voor skillpoints
+    {
+        switch (playerTypes)
+        {
+            case PlayerTypes.TeddyBear:
+                {
+
+                    return;
+                }
+        }
+    }
+
+    #endregion
+
     #region GetHealth and Speed
 
     public float GetHealth()
@@ -123,9 +153,24 @@ public class MovPlayer : MonoBehaviour
                
                 case ItemBase.ItemType.Fruit:
                     {
-                        output += fruitHeal;
+                        output += 1;
                         break;
-                    }            
+                    }
+                case ItemBase.ItemType.TextBook:
+                    {
+                        output += 1;
+                        break;
+                    }
+                case ItemBase.ItemType.Soup:
+                    {
+                        output += 1;
+                        break;
+                    }
+                case ItemBase.ItemType.BandAid:
+                    {
+                        output += 2;
+                        break;
+                    }
             }
         }
         
@@ -145,13 +190,25 @@ public class MovPlayer : MonoBehaviour
                         output += 10f;
                         break;
                     }
+                case ItemBase.ItemType.Socks:
+                    {
+                        output += 5f;
+                        break;
+                    }
             }
         }
         return output;
 
     }
 
-    #endregion 
+    #endregion
+
+    public void TakeDamage(float health)
+    {
+        
+    }
+
+    #region KickChild
 
     public void KickChildren()
     {
@@ -166,6 +223,10 @@ public class MovPlayer : MonoBehaviour
         }
 
     }
+
+    #endregion
+
+    #region Oncollision OnDawGizmos
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -183,4 +244,5 @@ public class MovPlayer : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + 4, transform.position.z), radius);
     }
+    #endregion
 }
