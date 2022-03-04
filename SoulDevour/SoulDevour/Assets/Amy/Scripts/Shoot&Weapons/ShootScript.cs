@@ -10,7 +10,8 @@ public class ShootScript : MonoBehaviour
     [Header("Shoot Things")]
 
     public float speed = 20; // shoot speed;
-    private float delayShoot => ShootItems();
+    public float delay;
+    private float calculatedDelay => ShootItems();
     public GameObject[] bulletTypes;
     public GameObject[] bombTypes;
 
@@ -23,7 +24,7 @@ public class ShootScript : MonoBehaviour
         
         //delayBomb -= Time.deltaTime;
         // het enige wat nodig is is dat je forward schiet, of met je pijltjes zoals Binding of Isaac
-        if (Input.GetButtonDown("Fire1") && delayShoot < 0)
+        if (Input.GetButtonDown("Fire1") && calculatedDelay < 0)
         {
             ShootItems();
             Rigidbody instantiatedProjectile = Instantiate(GetBulletModel().GetComponent<Rigidbody>(), transform.position, transform.rotation) as Rigidbody;
@@ -47,7 +48,7 @@ public class ShootScript : MonoBehaviour
 
     public float ShootItems()
     {
-        float output = delayShoot;
+        float output = delay;
         output -= Time.deltaTime;
 
         foreach (ItemBase item in player.items)

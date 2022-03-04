@@ -6,7 +6,9 @@ public class BombBase : MonoBehaviour
 {
     // BASE BOMB == NIKS - met een curve 
     public Transform bomb;
-    public float baseDamage => CalculateBombDamage();
+
+    public float baseDamage;
+    public float calculatedDamage => CalculateBombDamage();
    
     public MovPlayer source;
 

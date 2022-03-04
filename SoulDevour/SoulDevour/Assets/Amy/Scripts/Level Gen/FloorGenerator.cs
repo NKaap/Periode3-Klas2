@@ -11,7 +11,7 @@ public class FloorGenerator : MonoBehaviour
     // als maar 1 neighbour, kans op boss room, of shop, of throphy room, of iets. 
 
 
-   
+
     public enum RoomType
     {
         Normal,
@@ -29,7 +29,7 @@ public class FloorGenerator : MonoBehaviour
     public string seed = "";
 
 
-   
+
     public Dictionary<Vector2, Room> FloorLayout;
     [Header("Room Info")]
     [Space(8)]
@@ -80,7 +80,7 @@ public class FloorGenerator : MonoBehaviour
     /// <para>Has to be a coroutine, as the OnValidate doesn't allow this</para>
     /// </summary>
     public void DestroyFloor()
-    { 
+    {
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             StartCoroutine(Destroy(gameObject.transform.GetChild(i).gameObject));
@@ -99,7 +99,7 @@ public class FloorGenerator : MonoBehaviour
         FloorLayout = new Dictionary<Vector2, Room>();
 
         //Sets the seed with a string (convert to hashcode to make it an int)
-        Random.InitState(seed.Substring(0,8).ToUpper().GetHashCode());
+        Random.InitState(seed.Substring(0, 8).ToUpper().GetHashCode());
 
         //Make the first room, and recursively generate the other rooms using AddRoom
         FloorLayout.Add(Vector2.zero, new Room(Vector2.zero, false, false, false, false));
@@ -126,13 +126,13 @@ public class FloorGenerator : MonoBehaviour
         int i = 0;
         for (; i < 3 && specialRooms.Count > 0; i++)
         {
-            int randomIndex = Random.Range(0,specialRooms.Count);
+            int randomIndex = Random.Range(0, specialRooms.Count);
             FloorLayout[specialRooms[randomIndex]].type = (RoomType)(i + 1);
             specialRooms.RemoveAt(randomIndex);
         }
 
         //If there aren't enough potential special rooms, generate extra
-        Vector2[] offsets = {  new Vector2(0, -1), new Vector2(1, 0), new Vector2(0, 1), new Vector2(-1, 0) };
+        Vector2[] offsets = { new Vector2(0, -1), new Vector2(1, 0), new Vector2(0, 1), new Vector2(-1, 0) };
         if (i < 3)
         {
             List<Vector2> possibleSpecialRooms = new List<Vector2>();
@@ -161,15 +161,15 @@ public class FloorGenerator : MonoBehaviour
             //Generate extra special rooms
             for (int room = i; room < 3; room++)
             {
-                int randomIndex = Random.Range(0,possibleSpecialRooms.Count);
+                int randomIndex = Random.Range(0, possibleSpecialRooms.Count);
                 bool north = FloorLayout.ContainsKey(possibleSpecialRooms[randomIndex] + offsets[0]);
                 bool east = FloorLayout.ContainsKey(possibleSpecialRooms[randomIndex] + offsets[1]);
                 bool south = FloorLayout.ContainsKey(possibleSpecialRooms[randomIndex] + offsets[2]);
                 bool west = FloorLayout.ContainsKey(possibleSpecialRooms[randomIndex] + offsets[3]);
 
-                FloorLayout.Add(possibleSpecialRooms[randomIndex], new Room(possibleSpecialRooms[randomIndex], north, east ,south, west));
+                FloorLayout.Add(possibleSpecialRooms[randomIndex], new Room(possibleSpecialRooms[randomIndex], north, east, south, west));
                 FloorLayout[possibleSpecialRooms[randomIndex]].type = (RoomType)(i + 1);
-                
+
                 if (north)
                 {
                     FloorLayout[possibleSpecialRooms[randomIndex] + offsets[0]].south = true;
@@ -190,7 +190,7 @@ public class FloorGenerator : MonoBehaviour
                 possibleSpecialRooms.RemoveAt(randomIndex);
             }
         }
-        
+
         //Generate all meshes for all rooms
         foreach (KeyValuePair<Vector2, Room> pair in FloorLayout)
         {
@@ -311,10 +311,8 @@ public class FloorGenerator : MonoBehaviour
             index += (west) ? 8 : 0;
 
             //Generate the floor
-            toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
-            Vector3 worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
-            GameObject instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
-            instance.transform.parent = parent.transform;
+            Vector3 worldPos;
+            GameObject instance;
 
             //Make a cube above special rooms to make it easily spottable
             if (type != RoomType.Normal)                                                                                        // verander floor per item room zodat models en rooms kloppen
@@ -344,6 +342,45 @@ public class FloorGenerator : MonoBehaviour
                 }
             }
 
+            switch (type)
+            {
+                case RoomType.Normal:
+                    {
+                        toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
+                        instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
+                        instance.transform.parent = parent.transform;
+                        break;
+                    }
+                case RoomType.Item:
+                    {
+                        toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
+                        instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
+                            instance.GetComponent<MeshRenderer>().material = item;
+                        instance.transform.parent = parent.transform;
+                        break;
+                    }
+                case RoomType.Shop:
+                    {
+                        toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
+                        instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
+                            instance.GetComponent<MeshRenderer>().material = shop;                                              // shop, kun je kiezen uit 4 items die je kunt kopen
+                        instance.transform.parent = parent.transform;
+                        break;
+                    }
+                case RoomType.BossRoom:
+                    {
+                        toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
+                        instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
+                        instance.GetComponent<MeshRenderer>().material = boss;                                              // dark room, boss level.
+                        instance.transform.parent = parent.transform;
+                        break;
+                    }
+            }
+
             Vector3[] wallScales = { new Vector3(roomDimension.x / 2.0f, 5, 1), new Vector3(1, 5, roomDimension.y / 2.0f) };
             Vector3[] wallOffsets = { new Vector3(0, 2.5f, -roomDimension.y / 4.0f), new Vector3(roomDimension.y / 4.0f, 2.5f, 0), new Vector3(0, 2.5f, roomDimension.y / 4.0f), new Vector3(-roomDimension.y / 4.0f, 2.5f, 0) };
             for (int i = 0; i < 4; i++) // Generating Walls
@@ -360,7 +397,7 @@ public class FloorGenerator : MonoBehaviour
             Vector3[] doorOffsets = { new Vector3(0, 2.5f, -roomDimension.y / 4.0f), new Vector3(roomDimension.x / 4.0f, 2.5f, 0), new Vector3(0, 2.5f, roomDimension.y / 4.0f), new Vector3(-roomDimension.x / 4.0f, 2.5f, 0) };
 
             // Generate Rooms and Doors
-            for (int i = 0; i < 4; i++) 
+            for (int i = 0; i < 4; i++)
             {
                 if (directions[i])
                 {

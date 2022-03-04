@@ -14,8 +14,7 @@ public class ItemBase : MonoBehaviour
     public ItemType itemtype;
     public ItemBase(ItemBase toCopy) { itemtype = toCopy.itemtype;  }
 
-    public float playerHealth;
-    public float fireDamage;
+   
 
     public void Items()
     {
