@@ -2,15 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class CharacterSelect : MonoBehaviour
 {
+    [Header("Character Information")]
+    [Space(8)]
     public GameObject[] characterModels;
     public Transform[] uiCharacterInfo;
 
 
+    [Header("Skill Points")]
+    [Space(8)]
+    public Text teddyStats;
+    public Text pandaStats;
+    public Text pinkBearStats;
+    public Text iceBearStats;
+    public Text shrekStats;
+    public Text rainbowBearStats;
+
+    [Header("Active Information")]
+    [Space(8)]
     public GameObject activeCharacter;
     public Transform activeInfo;
 
+    [Header("Other")]
+    [Space(8)]
     public int index;
     public GameObject playerObj;
     public Transform playerPos;

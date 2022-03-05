@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MovPlayer : MonoBehaviour
 {
@@ -12,38 +13,53 @@ public class MovPlayer : MonoBehaviour
     }
 
     public PlayerTypes playerTypes;
+
+    [Header("Animation Variables")]
+    [Space(8)]
     public Animator playerAnimator;
     public bool playerisMoving;
-
     public bool walking;
 
+    [Header("Player Variables")]
+    [Space(8)]
     public Rigidbody playerController;
     public Transform cam;
 
+    [Header("Moving and Rotation")]
+    [Space(8)]
     public float turnSmoothTime = 0.1f;
     public Vector3 moveVector;
     float verticalVelosity;
     float targetAngle;
 
+    [Header("Items Equipped")]
+    [Space(8)]
     public List<ItemBase> items = new List<ItemBase>();
 
+    [Header("Base Speed and Health")]
+    [Space(8)]
     // public float strength = 5; // player strength
     [SerializeField] private float speed = 10; // player speed
-    [SerializeField] private float baseHealth = 4; // player health            HEALTH
+    [SerializeField] private float baseHealth; // player health            HEALTH
 
     [SerializeField] public float calculatedSpeed => GetSpeed(); // gebruik deze om speed aan te roepen.
     [SerializeField] public float calculatedHealth => GetHealth(); // gebruik deze om health mee aan te roepen.
-     
+
+    [Header("Child Kick Variables")]
+    [Space(8)]
     public float kickForce;
 
     public float radius = 10; // radius voor de kinderen om te schoppen
 
+
     private void Update()
     {
-        Move(calculatedSpeed);   
-    
+        SkillPoints(); //  even checken want je gebruikt de variable baseHealth;
+        Move(calculatedSpeed);
+        TakeDamage(calculatedHealth);
         KickChildren();
     }
+
 
     #region Move % Rotation
  
@@ -99,21 +115,54 @@ public class MovPlayer : MonoBehaviour
 
     public void SkillPoints() // voor skillpoints
     {
+    
         switch (playerTypes)
         {
             case PlayerTypes.TeddyBear:
                 {
-
-                    return;
+                    baseHealth = 4; // deze variables veranderen! gwn alleen voor testen!
+                    speed = 10;
+                    break;
                 }
+
+            case PlayerTypes.Panda:
+                {
+                    baseHealth = 5;
+                    speed = 20;
+                    break;
+                }
+
+            case PlayerTypes.PinkBear:
+                {
+                    baseHealth = 6;
+                    speed = 30;
+                    break;
+                }
+
+            case PlayerTypes.IceBear:
+                {
+                    baseHealth = 7;
+                    speed = 40;
+                    break;
+                }
+                
         }
+
+     
+        
     }
 
     #endregion
 
+    public void TakeDamage(float health)
+    {
+        health -= 10;
+        Debug.Log(health);
+    }
+
     #region GetHealth and Speed
 
-    public float GetHealth()
+    public float GetHealth() // hiervoor een functie zodat health ook echt aangepast word!
     {
         float output = baseHealth;
 
@@ -158,7 +207,7 @@ public class MovPlayer : MonoBehaviour
     }
 
 
-    public float GetSpeed()
+    public float GetSpeed() // deze word aangepast in de update met calculated speed!
     {
         float output = speed;
         foreach (ItemBase item in items)
