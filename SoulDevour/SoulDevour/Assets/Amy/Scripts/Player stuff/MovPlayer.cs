@@ -12,8 +12,9 @@ public class MovPlayer : MonoBehaviour
     }
 
     public PlayerTypes playerTypes;
-
     public Animator playerAnimator;
+    public bool playerisMoving;
+
     public bool walking;
 
     public Rigidbody playerController;
@@ -24,15 +25,11 @@ public class MovPlayer : MonoBehaviour
     float verticalVelosity;
     float targetAngle;
 
-    bool done = true;
-    bool changed = false;
-
     public List<ItemBase> items = new List<ItemBase>();
 
     // public float strength = 5; // player strength
     [SerializeField] private float speed = 10; // player speed
     [SerializeField] private float baseHealth = 4; // player health            HEALTH
-
 
     [SerializeField] public float calculatedSpeed => GetSpeed(); // gebruik deze om speed aan te roepen.
     [SerializeField] public float calculatedHealth => GetHealth(); // gebruik deze om health mee aan te roepen.
@@ -43,43 +40,26 @@ public class MovPlayer : MonoBehaviour
 
     private void Update()
     {
-        Move(calculatedSpeed);
-        TakeDamage(calculatedHealth);
-
-       
-        //GetStrength();
+        Move(calculatedSpeed);   
+    
         KickChildren();
     }
 
     #region Move % Rotation
-    private void SetRotation()
+ 
+    public void Animations()
     {
-        float hor = Input.GetAxisRaw("Horizontal");
-        float ver = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(hor, 0, ver).normalized;
-       
-
-        if (direction.magnitude >= 0.1f)
+        if (playerisMoving)
         {
-            if (targetAngle != (Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y))
-            {
-                changed = true;
-               // StartCoroutine(LerpRotation(Quaternion.Euler(0f, targetAngle, 0f), 0.25f));
-                // StopAllCoroutines();
-            }
-            targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-
-            if (done || changed)
-            {
-                changed = false;
-                done = false;
-                StartCoroutine(LerpRotation(Quaternion.Euler(0f, targetAngle, 0f), 0.25f));
-            }
-
+            walking = true;
+            playerAnimator.SetBool("Walking", walking);
         }
-        moveVector = new Vector3(direction.x, verticalVelosity, direction.z);
+        else
+        {
+            walking = false;
+            playerAnimator.SetBool("Walking", walking);
+        }
     }
-
     
     private void Move(float speed)
     {
@@ -87,36 +67,31 @@ public class MovPlayer : MonoBehaviour
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(hor, 0, ver).normalized;
-        walking = false;
+       
         if (direction.magnitude >= 0.1f)
         {
-            walking = true;
-            playerAnimator.SetBool( "Walking", walking);
+           
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref verticalVelosity, turnSmoothTime);
+            Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             transform.position += moveDir.normalized * speed * Time.deltaTime;
-        }
-        moveVector = new Vector3(direction.x, verticalVelosity, direction.z); 
-       
-        SetRotation();
 
+            StartCoroutine(LerpRotation(Quaternion.Euler(1f, angle, 1f), 5));
+        }   
+        moveVector = new Vector3(direction.x, verticalVelosity, direction.z); 
     }
 
     IEnumerator LerpRotation(Quaternion endRotation, float duration)
     {
 
         float time = 0;
-        Quaternion startRotation = transform.rotation;
-        while (time < duration)
-        {
 
-            transform.rotation = Quaternion.Lerp(startRotation, endRotation, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
+
+        time += Time.deltaTime;
+        transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, time * duration);
+        yield return null;
         transform.rotation = endRotation;
-        done = true;
+        
     }
     #endregion
 
@@ -208,11 +183,6 @@ public class MovPlayer : MonoBehaviour
 
     #endregion
 
-    public void TakeDamage(float health)
-    {
-        
-    }
-
     #region KickChild
 
     public void KickChildren()
@@ -236,8 +206,11 @@ public class MovPlayer : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<ItemBase>(out ItemBase comp))
-        {       
-            items.Add(new ItemBase(comp));
+        {
+            // copy item, do it in array, so it doesnt say "none"
+            items.Add(Instantiate(comp));
+
+            //items.Add(new ItemBase(comp));
             collision.gameObject.SetActive(false);
             Debug.Log(items[0].itemtype);
             

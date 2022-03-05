@@ -8,15 +8,13 @@ public class ItemBase : MonoBehaviour
     {
         // items 
         PropjePapier, Fireballs, Feather, Fruit, BandAid, Diaper, BestFriend, BadGrade, Ressurect, Glasses, Crown,
-        Tooth, Soup, Lego, PeanutButter, Socks, Slime, Poop, Fart, UniCornHorn, Scissor, Plant, TextBook,
+        Tooth, Soup, Lego, PeanutButter, Socks, Slime, Poop, Fart, UniCornHorn, Scissor, Plant, TextBook, Radio, 
     }
 
     public ItemType itemtype;
     public ItemBase(ItemBase toCopy) { itemtype = toCopy.itemtype;  }
-
     public int itemCost; // prices of items, for in ShopRoom
     
-
     public void Items()
     {
         switch (itemtype)
@@ -145,8 +143,11 @@ public class ItemBase : MonoBehaviour
                     itemCost = 1;
                     // playermov
                     break;
-
-
+                }
+            case ItemType.Radio:
+                {
+                    // play marco b moosic and do daamahaeee
+                    break;
                 }
         }
     }

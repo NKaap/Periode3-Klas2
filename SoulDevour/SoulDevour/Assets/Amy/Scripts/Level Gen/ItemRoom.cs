@@ -6,20 +6,16 @@ public class ItemRoom : MonoBehaviour
 {
 
     public GameObject[] allItems;
-
     public int random;
-    // Start is called before the first frame update
+    public Transform spawnPointPedestal;
+  
     void Start()
     {
-        //  Instantiate(allItems[Random.RandomRange(0, allItems.Length)], gameObject.transform.position, gameObject.transform.rotation);
-        
-        // werkt ook niet.    returned altijd dezelfde int. 
+        Instantiate(allItems[Random.Range(0, allItems.Length)], spawnPointPedestal.position, spawnPointPedestal.rotation);
+        // werkt met seed, verander de seed, dan veranderd dit ook.
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
 }

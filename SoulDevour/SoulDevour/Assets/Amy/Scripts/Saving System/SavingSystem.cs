@@ -7,14 +7,29 @@ using UnityEngine.SceneManagement;
 
 public class Data
 {
-   
-
+  
+    // active scene
     public string activeSceneName;
-    public float health;
-    public string levelSeed;
-    public List<ItemBase> itemsEquipped = new List<ItemBase>();
 
     
+
+    // level seed
+    public string levelSeed;
+
+    // items equipped. WERKT NIET>
+    public List<ItemBase> itemsEquipped = new List<ItemBase>();
+
+    // shop room 
+    public GameObject shopItemOne;
+    public GameObject shopItemTwo;
+    public GameObject shopItemThree;
+
+    // item room
+    public GameObject itemRoomItem;
+
+    // boss room 
+    public GameObject teacherObj;
+
 }
 
 public class SavingSystem : MonoBehaviour
@@ -45,7 +60,6 @@ public class SavingSystem : MonoBehaviour
 
         gameSaving.activeSceneName = scene.name;
 
-        gameSaving.health = player.GetComponent<MovPlayer>().calculatedHealth;
         gameSaving.levelSeed = generator.GetComponent<FloorGenerator>().seed;
         gameSaving.itemsEquipped = player.GetComponent<MovPlayer>().items;
       
@@ -63,12 +77,14 @@ public class SavingSystem : MonoBehaviour
        
 
         // alleen dit nog laten werken ingame ! :) 
-        Debug.Log(loadedData.health);
+        
         Debug.Log(loadedData.levelSeed);
         Debug.Log(loadedData.itemsEquipped);
 
-        generator.GetComponent<FloorGenerator>().seed = gameSaving.levelSeed;
-        SceneManager.LoadScene(gameSaving.activeSceneName);
+       
+        player.GetComponent<MovPlayer>().items = loadedData.itemsEquipped;
+        generator.GetComponent<FloorGenerator>().seed = loadedData.levelSeed;
+        SceneManager.LoadScene(loadedData.activeSceneName);
         
     }
 
