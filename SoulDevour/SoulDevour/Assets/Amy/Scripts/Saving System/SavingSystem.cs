@@ -9,7 +9,7 @@ public class Data
 {
    
 
-    public Scene activeScene;
+    public string activeSceneName;
     public float health;
     public string levelSeed;
     public List<ItemBase> itemsEquipped = new List<ItemBase>();
@@ -43,9 +43,8 @@ public class SavingSystem : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
 
-      
+        gameSaving.activeSceneName = scene.name;
 
-        gameSaving.activeScene = scene;
         gameSaving.health = player.GetComponent<MovPlayer>().calculatedHealth;
         gameSaving.levelSeed = generator.GetComponent<FloorGenerator>().seed;
         gameSaving.itemsEquipped = player.GetComponent<MovPlayer>().items;
@@ -61,13 +60,16 @@ public class SavingSystem : MonoBehaviour
 
         string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         Data loadedData = JsonUtility.FromJson<Data>(json);
+       
 
-        
         // alleen dit nog laten werken ingame ! :) 
         Debug.Log(loadedData.health);
         Debug.Log(loadedData.levelSeed);
         Debug.Log(loadedData.itemsEquipped);
-        Debug.Log(loadedData.activeScene);
+
+        generator.GetComponent<FloorGenerator>().seed = gameSaving.levelSeed;
+        SceneManager.LoadScene(gameSaving.activeSceneName);
+        
     }
 
    
