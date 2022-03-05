@@ -56,7 +56,7 @@ public class MovPlayer : MonoBehaviour
         KickChildren();
     }
 
-    #region SkillPoints Player
+    #region SkillPoints And Unlock Player
 
     #region SkillPoints Switch Case
     public void SkillPoints() // voor skillpoints
@@ -108,12 +108,13 @@ public class MovPlayer : MonoBehaviour
 
     public void AddSkillPointHealth()
     {
-
+        
     }
 
     public void AddSkillPointSpeed()
     {
 
+    
     }
 
     public void ResetSkillPoints()
@@ -125,7 +126,11 @@ public class MovPlayer : MonoBehaviour
 
     #endregion
 
-    #region Player Functions
+    #region Abilities and Unlock Player
+
+    #endregion
+
+    #region Basic Player Functionality
 
     #region Move % Rotation
 
