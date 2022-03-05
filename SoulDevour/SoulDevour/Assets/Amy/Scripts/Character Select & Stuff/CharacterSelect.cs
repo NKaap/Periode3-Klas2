@@ -40,13 +40,11 @@ public class CharacterSelect : MonoBehaviour
         {
             obj.SetActive(false);
         }
-
         foreach(Transform text in uiCharacterInfo)
         {
             text.gameObject.SetActive(false);
         }
-
-       
+    
         activeInfo.gameObject.SetActive(false);
         activeInfo = uiCharacterInfo[0];
         activeInfo.gameObject.SetActive(true);
@@ -55,6 +53,8 @@ public class CharacterSelect : MonoBehaviour
         activeCharacter = characterModels[0];    
         activeCharacter.SetActive(true);
     }
+
+    #region Buttons
 
     public void LeftButton()
     {
@@ -87,7 +87,6 @@ public class CharacterSelect : MonoBehaviour
             activeCharacter = characterModels[index];
             activeCharacter.SetActive(true);
 
-
             activeInfo.gameObject.SetActive(false);
             activeInfo = uiCharacterInfo[index];
             activeInfo.gameObject.SetActive(true);
@@ -107,10 +106,5 @@ public class CharacterSelect : MonoBehaviour
         SceneManager.LoadScene(1); // 1 is de game denk ik ?
     }
 
-    public void ExitSelectMode()
-    {
-        
-        
-        // cancel character select mode
-    }
+    #endregion
 }

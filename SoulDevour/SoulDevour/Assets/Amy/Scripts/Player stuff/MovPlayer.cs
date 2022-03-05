@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class MovPlayer : MonoBehaviour
 {
-    // ToDo ANIMATIONS ADD EN ROTATION FIX
 
     public enum PlayerTypes
     {
@@ -38,18 +37,15 @@ public class MovPlayer : MonoBehaviour
 
     [Header("Base Speed and Health")]
     [Space(8)]
-    // public float strength = 5; // player strength
     [SerializeField] private float speed = 10; // player speed
     [SerializeField] private float baseHealth; // player health            HEALTH
-
     [SerializeField] public float calculatedSpeed => GetSpeed(); // gebruik deze om speed aan te roepen.
     [SerializeField] public float calculatedHealth => GetHealth(); // gebruik deze om health mee aan te roepen.
 
     [Header("Child Kick Variables")]
     [Space(8)]
     public float kickForce;
-
-    public float radius = 10; // radius voor de kinderen om te schoppen
+    public float radius = 10; 
 
 
     private void Update()
@@ -60,9 +56,79 @@ public class MovPlayer : MonoBehaviour
         KickChildren();
     }
 
+    #region SkillPoints Player
+
+    #region SkillPoints Switch Case
+    public void SkillPoints() // voor skillpoints
+    {
+
+        switch (playerTypes)
+        {
+            case PlayerTypes.TeddyBear:
+                {
+                    baseHealth = 4; // deze variables veranderen! gwn alleen voor testen!
+                    speed = 10;
+                    break;
+                }
+
+            case PlayerTypes.Panda:
+                {
+                    baseHealth = 5;
+                    speed = 20;
+                    break;
+                }
+
+            case PlayerTypes.PinkBear:
+                {
+                    baseHealth = 6;
+                    speed = 30;
+                    break;
+                }
+
+            case PlayerTypes.IceBear:
+                {
+                    baseHealth = 7;
+                    speed = 40;
+                    break;
+                }
+
+        }
+
+
+
+    }
+    #endregion
+
+    #region UI Buttons Skill Points
+
+    public void UnlockAbility()
+    {
+        // unlock one ability. like a drop kick, or lasereyes, or whatever.
+    }
+
+    public void AddSkillPointHealth()
+    {
+
+    }
+
+    public void AddSkillPointSpeed()
+    {
+
+    }
+
+    public void ResetSkillPoints()
+    {
+
+    }
+
+    #endregion
+
+    #endregion
+
+    #region Player Functions
 
     #region Move % Rotation
- 
+
     public void Animations()
     {
         if (playerisMoving)
@@ -111,48 +177,6 @@ public class MovPlayer : MonoBehaviour
     }
     #endregion
 
-    #region SkillPoints Player
-
-    public void SkillPoints() // voor skillpoints
-    {
-    
-        switch (playerTypes)
-        {
-            case PlayerTypes.TeddyBear:
-                {
-                    baseHealth = 4; // deze variables veranderen! gwn alleen voor testen!
-                    speed = 10;
-                    break;
-                }
-
-            case PlayerTypes.Panda:
-                {
-                    baseHealth = 5;
-                    speed = 20;
-                    break;
-                }
-
-            case PlayerTypes.PinkBear:
-                {
-                    baseHealth = 6;
-                    speed = 30;
-                    break;
-                }
-
-            case PlayerTypes.IceBear:
-                {
-                    baseHealth = 7;
-                    speed = 40;
-                    break;
-                }
-                
-        }
-
-     
-        
-    }
-
-    #endregion
 
     public void TakeDamage(float health)
     {
@@ -271,5 +295,7 @@ public class MovPlayer : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + 4, transform.position.z), radius);
     }
+    #endregion
+
     #endregion
 }
