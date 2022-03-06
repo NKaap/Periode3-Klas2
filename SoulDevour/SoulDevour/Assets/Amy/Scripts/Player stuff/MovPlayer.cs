@@ -37,8 +37,12 @@ public class MovPlayer : MonoBehaviour
 
     [Header("Base Speed and Health")]
     [Space(8)]
+
     [SerializeField] private float speed = 10; // player speed
+
     [SerializeField] private float baseHealth; // player health            HEALTH
+    [SerializeField] private float baseJumpHeight; // player health   
+
     [SerializeField] public float calculatedSpeed => GetSpeed(); // gebruik deze om speed aan te roepen.
     [SerializeField] public float calculatedHealth => GetHealth(); // gebruik deze om health mee aan te roepen.
 
@@ -62,41 +66,12 @@ public class MovPlayer : MonoBehaviour
     public void SkillPoints() // voor skillpoints
     {
 
-        switch (playerTypes)
-        {
-            case PlayerTypes.TeddyBear:
-                {
-                    baseHealth = 4; // deze variables veranderen! gwn alleen voor testen!
-                    speed = 10;
-                    break;
-                }
-
-            case PlayerTypes.Panda:
-                {
-                    baseHealth = 5;
-                    speed = 20;
-                    break;
-                }
-
-            case PlayerTypes.PinkBear:
-                {
-                    baseHealth = 6;
-                    speed = 30;
-                    break;
-                }
-
-            case PlayerTypes.IceBear:
-                {
-                    baseHealth = 7;
-                    speed = 40;
-                    break;
-                }
-
-        }
-
-
-
     }
+
+  
+
+
+
     #endregion
 
     #region UI Buttons Skill Points
