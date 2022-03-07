@@ -12,15 +12,6 @@ public class CharacterSelect : MonoBehaviour
     public Transform[] uiCharacterInfo;
 
 
-    [Header("Skill Points")]
-    [Space(8)]
-    public Text teddyStats;
-    public Text pandaStats;
-    public Text pinkBearStats;
-    public Text iceBearStats;
-    public Text shrekStats;
-    public Text rainbowBearStats;
-
     [Header("Active Information")]
     [Space(8)]
     public GameObject activeCharacter;
@@ -74,7 +65,7 @@ public class CharacterSelect : MonoBehaviour
         {
             index = characterModels.Length -1;
         }
-       
+        Debug.Log((MovPlayer.PlayerTypes)index);
     }
 
     public void RightButton()
@@ -95,7 +86,8 @@ public class CharacterSelect : MonoBehaviour
         {
             index = 0;
         }
-       
+        Debug.Log((MovPlayer.PlayerTypes)index);
+
     }
 
     public void SelectButton()

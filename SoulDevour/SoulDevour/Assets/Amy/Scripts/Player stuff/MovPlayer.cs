@@ -10,7 +10,7 @@ public class MovPlayer : MonoBehaviour
 
     public enum PlayerTypes
     {
-        TeddyBear, Panda, PinkBear, IceBear, RainbowBear, Shrek
+        TeddyBear, Panda, PinkBear, IceBear, RainbowBear, ClownBear, BlackBear,
     }
 
     public PlayerTypes playerTypes;
