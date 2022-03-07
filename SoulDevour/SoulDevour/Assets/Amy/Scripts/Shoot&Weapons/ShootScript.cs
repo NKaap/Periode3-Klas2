@@ -51,9 +51,9 @@ public class ShootScript : MonoBehaviour
         float output = delay;
         output -= Time.deltaTime;
 
-        foreach (ItemBase item in player.items)
+        foreach (ItemBase.ItemType item in player.items)
         {
-            switch (item.itemtype)
+            switch (item)
             {
                 case ItemBase.ItemType.BadGrade:
                     {
@@ -81,9 +81,9 @@ public class ShootScript : MonoBehaviour
     {
         GameObject outputBomb = bombTypes[0];
 
-        foreach (ItemBase item in player.items)
+        foreach (ItemBase.ItemType item in player.items)
         {
-            switch (item.itemtype)
+            switch (item)
             {
                 case ItemBase.ItemType.PeanutButter:
                     {
@@ -107,9 +107,9 @@ public class ShootScript : MonoBehaviour
         GameObject output = bulletTypes[0];
        
 
-        foreach (ItemBase item in player.items)
+        foreach (ItemBase.ItemType item in player.items)
         {
-            switch (item.itemtype)
+            switch (item)
             {           
                 case ItemBase.ItemType.Fireballs:
                     {
@@ -118,12 +118,12 @@ public class ShootScript : MonoBehaviour
                     }
                 case ItemBase.ItemType.Glasses:
                     {
-                        output = bulletTypes[2]; // deze prefab heeft 2 bullets.
+                       // output = bulletTypes[2]; // deze prefab heeft 2 bullets.
                         break;
                     }
                 case ItemBase.ItemType.Poop:
                     {
-                        output = bulletTypes[3]; // poop model.
+                        //output = bulletTypes[3]; // poop model.
                         break;
                     }
             }

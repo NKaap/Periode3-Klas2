@@ -11,12 +11,13 @@ public class ChildController : MonoBehaviour
     public GameObject playerTarget;
     public bool childMove = true;
 
-    
+
     [Header("Child Variables")]
     [Space(8)]
+    public float health = 2;
     public GameObject childHead;
     public float speed;
-
+    public GameObject coinPrefab;
     // throw pencil
     
     [Header("Shooting Variables")]
@@ -27,7 +28,7 @@ public class ChildController : MonoBehaviour
 
     // timer
     
-    public float timeLeft = 3f;
+    public float timeLeft = 1.5f;
 
     void Update()
     {
@@ -44,12 +45,22 @@ public class ChildController : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0)
         {
-            timeLeft = 3;
+            timeLeft = 1.5f;
            // GameObject pencil = Instantiate(pencilForThrow, shootPos.position, Quaternion.identity);
             //pencil.GetComponent<Rigidbody>().AddForce(transform.forward * force);
 
             Rigidbody pencilRB = Instantiate(pencilForThrow.GetComponent<Rigidbody>(), shootPos.transform.position, shootPos.transform.rotation) as Rigidbody;
             pencilRB.velocity = shootPos.transform.TransformDirection(new Vector3(0, 0, pencilSpeed));
+        }
+    }
+
+    public void ChildDead()
+    {
+        if(health <= 0)
+        {
+            Instantiate(coinPrefab, transform.position, new Quaternion(0, 0, 0, 0));
+            Destroy(gameObject);
+            
         }
     }
 }

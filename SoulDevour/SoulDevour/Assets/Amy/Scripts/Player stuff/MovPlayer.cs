@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class MovPlayer : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class MovPlayer : MonoBehaviour
     }
 
     public PlayerTypes playerTypes;
+    public SkillPointManager skillManager;
 
     [Header("Animation Variables")]
     [Space(8)]
@@ -33,7 +36,7 @@ public class MovPlayer : MonoBehaviour
 
     [Header("Items Equipped")]
     [Space(8)]
-    public List<ItemBase> items = new List<ItemBase>();
+    public List<ItemBase.ItemType> items = new List<ItemBase.ItemType>();
 
     [Header("Base Speed and Health")]
     [Space(8)]
@@ -49,10 +52,11 @@ public class MovPlayer : MonoBehaviour
     [Header("Child Kick Variables")]
     [Space(8)]
     public float kickForce;
-    public float radius = 10; 
+    public float radius = 10;
 
 
-    private void Update()
+
+    private void FixedUpdate()
     {
         SkillPoints(); //  even checken want je gebruikt de variable baseHealth;
         Move(calculatedSpeed);
@@ -161,7 +165,7 @@ public class MovPlayer : MonoBehaviour
     public void TakeDamage(float health)
     {
         health -= 10;
-        Debug.Log(health);
+        //Debug.Log(health);
     }
 
     #region GetHealth and Speed
@@ -170,9 +174,9 @@ public class MovPlayer : MonoBehaviour
     {
         float output = baseHealth;
 
-        foreach (ItemBase item in items)
+        foreach (ItemBase.ItemType item in items)
         {
-            switch (item.itemtype)
+            switch (item)
             {
                
                 case ItemBase.ItemType.Fruit:
@@ -214,9 +218,9 @@ public class MovPlayer : MonoBehaviour
     public float GetSpeed() // deze word aangepast in de update met calculated speed!
     {
         float output = speed;
-        foreach (ItemBase item in items)
+        foreach (ItemBase.ItemType item in items)
         {
-            switch (item.itemtype)
+            switch (item)
             {
                 case ItemBase.ItemType.Feather:
                     {
@@ -261,11 +265,12 @@ public class MovPlayer : MonoBehaviour
         if (collision.gameObject.TryGetComponent<ItemBase>(out ItemBase comp))
         {
             // copy item, do it in array, so it doesnt say "none"
-            items.Add(Instantiate(comp));
+            if (!items.Contains(comp.itemtype))
+                items.Add(comp.itemtype);
 
             //items.Add(new ItemBase(comp));
             collision.gameObject.SetActive(false);
-            Debug.Log(items[0].itemtype);
+            Debug.Log(items[0]);
             
         }
     }

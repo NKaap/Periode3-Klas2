@@ -41,9 +41,9 @@ public class BombBase : MonoBehaviour
 
     public void DoBombEffect()
     {
-        foreach (ItemBase item in source.items)
+        foreach (ItemBase.ItemType item in source.items)
         {
-            switch (item.itemtype)
+            switch (item)
             {
                 case ItemBase.ItemType.PeanutButter:
                     {

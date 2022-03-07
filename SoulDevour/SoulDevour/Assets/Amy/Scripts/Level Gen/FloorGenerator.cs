@@ -399,8 +399,11 @@ public class FloorGenerator : MonoBehaviour
             // Generate Rooms and Doors
             for (int i = 0; i < 4; i++)
             {
-                if (directions[i])
+                if (directions[i]) // dit betekent dat er een duer moet
                 {
+                    // ook tralies instantiaten als je de kamer binnen komt, en destroy als enemies dood zijn.
+
+
                     int randomIndex = Random.Range(0, customList[2].objects.Length);
                     worldPos = new Vector3(position.x * roomDimension.x, customList[2].objects[randomIndex].transform.localScale.y, position.y * roomDimension.y) + roomOffsets[i];
                     Quaternion rot = new Quaternion(0, 0, 0, 0);

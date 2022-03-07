@@ -7,17 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class Data
 {
-  
+    // character select scene switch 
+    public MovPlayer.PlayerTypes type;
+
+
     // active scene
     public string activeSceneName;
 
-    
-
     // level seed
-    public string levelSeed;
+    public int levelSeed;
 
     // items equipped. WERKT NIET>
-    public List<ItemBase> itemsEquipped = new List<ItemBase>();
+    public List<ItemBase.ItemType> itemsEquipped = new List<ItemBase.ItemType>();
 
     // shop room 
     public GameObject shopItemOne;
@@ -29,7 +30,6 @@ public class Data
 
     // boss room 
     public GameObject teacherObj;
-
 }
 
 public class SavingSystem : MonoBehaviour
@@ -41,7 +41,13 @@ public class SavingSystem : MonoBehaviour
 
     private void Start()
     {
-        
+        string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
+        Data loadedData = JsonUtility.FromJson<Data>(json);
+
+        Debug.Log(loadedData.itemsEquipped.Count);
+
+        Random.InitState(loadedData.levelSeed);
+        player.GetComponent<MovPlayer>().items = loadedData.itemsEquipped;
     }
 
     public void LoadButton()
@@ -54,43 +60,43 @@ public class SavingSystem : MonoBehaviour
         Save();
     }
 
+    public void ResetButton()
+    {
+        ResetSave();
+    }
+
     public void Save()
     {
         Scene scene = SceneManager.GetActiveScene();
 
         gameSaving.activeSceneName = scene.name;
 
-        gameSaving.levelSeed = generator.GetComponent<FloorGenerator>().seed;
+        gameSaving.levelSeed = Random.seed;
+
         gameSaving.itemsEquipped = player.GetComponent<MovPlayer>().items;
       
         string json = JsonUtility.ToJson(gameSaving);
         File.WriteAllText(Application.dataPath + "/saveFile.json", json);
-
+        Debug.Log(gameSaving.itemsEquipped.Count);
     }
 
     public void Load()
     {
-
-
         string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         Data loadedData = JsonUtility.FromJson<Data>(json);
-       
-
-        // alleen dit nog laten werken ingame ! :) 
-        
-        Debug.Log(loadedData.levelSeed);
-        Debug.Log(loadedData.itemsEquipped);
-
-       
-        player.GetComponent<MovPlayer>().items = loadedData.itemsEquipped;
-        generator.GetComponent<FloorGenerator>().seed = loadedData.levelSeed;
         SceneManager.LoadScene(loadedData.activeSceneName);
-        
+
     }
 
-   
+    public void ResetSave()
+    {
+        string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
+        Data loadedData = JsonUtility.FromJson<Data>(json);
+        File.WriteAllText(Application.dataPath + "/saveFile.json", "");
+        SceneManager.LoadScene(loadedData.activeSceneName);
+    }
 
-    
 
-   
+
+
 }

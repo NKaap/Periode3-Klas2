@@ -35,9 +35,9 @@ public class BulletBase : MonoBehaviour
     {
         float output = baseDamage;
 
-        foreach (ItemBase item in source.items)
+        foreach (ItemBase.ItemType item in source.items)
         {
-            switch (item.itemtype)
+            switch (item)
             {
                 case ItemBase.ItemType.PropjePapier: // base bullet
                     {
@@ -74,9 +74,9 @@ public class BulletBase : MonoBehaviour
 
     public void DoEffect()
     {
-        foreach (ItemBase item in source.items)
+        foreach (ItemBase.ItemType item in source.items)
         {
-            switch (item.itemtype)
+            switch (item)
             {
                 case ItemBase.ItemType.Fireballs:
                     {
