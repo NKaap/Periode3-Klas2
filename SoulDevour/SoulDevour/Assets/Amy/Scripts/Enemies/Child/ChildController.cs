@@ -36,11 +36,17 @@ public class ChildController : MonoBehaviour
 
     void Update()
     {
+
+        ChildAnimations();
+
+
         speed = 4 * Time.deltaTime;
         childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 6;
         childHead.transform.LookAt(playerTarget.transform);
         gameObject.transform.LookAt(playerTarget.transform);
 
+
+        
         if (childMove)
         {
             gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
@@ -62,13 +68,17 @@ public class ChildController : MonoBehaviour
     {
         if (rb.velocity.magnitude > 0.01)
         {
-            isMoving = true;
-            childAnimator.SetBool("Walk", isMoving);
+            childAnimator.SetBool("Rest", false);
+
+            childAnimator.SetBool("Walk", true);
+            
         }
         if (rb.velocity.magnitude <= 0.01)
         {
-            isMoving = false;
-            childAnimator.SetBool("Walk", isMoving);
+           
+            childAnimator.SetBool("Walk", false);
+
+            childAnimator.SetBool("Rest", true);
         }
     }
 
