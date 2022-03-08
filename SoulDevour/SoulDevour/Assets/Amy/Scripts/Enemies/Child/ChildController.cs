@@ -18,6 +18,10 @@ public class ChildController : MonoBehaviour
     public GameObject childHead;
     public float speed;
     public GameObject coinPrefab;
+
+    public Animator childAnimator;
+    public bool isMoving;
+    public Rigidbody rb;
     // throw pencil
     
     [Header("Shooting Variables")]
@@ -51,6 +55,20 @@ public class ChildController : MonoBehaviour
 
             Rigidbody pencilRB = Instantiate(pencilForThrow.GetComponent<Rigidbody>(), shootPos.transform.position, shootPos.transform.rotation) as Rigidbody;
             pencilRB.velocity = shootPos.transform.TransformDirection(new Vector3(0, 0, pencilSpeed));
+        }
+    }
+
+    public void ChildAnimations()
+    {
+        if (rb.velocity.magnitude > 0.01)
+        {
+            isMoving = true;
+            childAnimator.SetBool("Walk", isMoving);
+        }
+        if (rb.velocity.magnitude <= 0.01)
+        {
+            isMoving = false;
+            childAnimator.SetBool("Walk", isMoving);
         }
     }
 

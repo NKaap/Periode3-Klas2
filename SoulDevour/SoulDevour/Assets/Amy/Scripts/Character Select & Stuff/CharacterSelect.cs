@@ -51,7 +51,7 @@ public class CharacterSelect : MonoBehaviour
     {
         index++;
         Debug.Log(index);
-        if (index <= characterModels.Length -1 && index <= uiCharacterInfo.Length -1)
+        if (index <= characterModels.Length -1 && index <= uiCharacterInfo.Length )
         {
             activeCharacter.SetActive(false);
             activeCharacter = characterModels[index];
@@ -63,7 +63,7 @@ public class CharacterSelect : MonoBehaviour
         }
         else
         {
-            index = characterModels.Length -1;
+            index = characterModels.Length ;
         }
         Debug.Log((MovPlayer.PlayerTypes)index);
     }
@@ -72,6 +72,7 @@ public class CharacterSelect : MonoBehaviour
     {
         index--;
         Debug.Log(index);
+
         if (index >= 0)
         {
             activeCharacter.SetActive(false);
