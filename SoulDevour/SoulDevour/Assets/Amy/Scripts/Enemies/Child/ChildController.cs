@@ -38,7 +38,7 @@ public class ChildController : MonoBehaviour
     {
 
         ChildAnimations();
-
+        ChildDead();
 
         speed = 4 * Time.deltaTime;
         childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 6;
@@ -88,6 +88,8 @@ public class ChildController : MonoBehaviour
         {
             Instantiate(coinPrefab, transform.position, new Quaternion(0, 0, 0, 0));
             Destroy(gameObject);
+
+            
             
         }
     }
