@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class DoorLerp : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class DoorLerp : MonoBehaviour
 
     public bool side1, side2;
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -31,8 +34,8 @@ public class DoorLerp : MonoBehaviour
         {
             gameObject.transform.eulerAngles = new Vector3(
                 gameObject.transform.eulerAngles.x,
-                gameObject.transform.eulerAngles.y + 180,
-                gameObject.transform.eulerAngles.z
+                gameObject.transform.eulerAngles.y ,
+                gameObject.transform.eulerAngles.z + 180
                  );
             side1 = false;
         }
@@ -40,8 +43,8 @@ public class DoorLerp : MonoBehaviour
         {
             gameObject.transform.eulerAngles = new Vector3(
               gameObject.transform.eulerAngles.x,
-              gameObject.transform.eulerAngles.y - 180,
-              gameObject.transform.eulerAngles.z
+              gameObject.transform.eulerAngles.y ,
+              gameObject.transform.eulerAngles.z - 180
               );
             side1 = true;
         }
@@ -64,8 +67,8 @@ public class DoorLerp : MonoBehaviour
         {
             gameObject.transform.eulerAngles = new Vector3(
                 gameObject.transform.eulerAngles.x,
-                gameObject.transform.eulerAngles.y - 180,
-                gameObject.transform.eulerAngles.z
+                gameObject.transform.eulerAngles.y ,
+                gameObject.transform.eulerAngles.z - 180
                  );
             side2 = false;
         }
@@ -73,19 +76,25 @@ public class DoorLerp : MonoBehaviour
         {
             gameObject.transform.eulerAngles = new Vector3(
               gameObject.transform.eulerAngles.x,
-              gameObject.transform.eulerAngles.y + 180,
-              gameObject.transform.eulerAngles.z
+              gameObject.transform.eulerAngles.y ,
+              gameObject.transform.eulerAngles.z + 180
               );
             side2 = true;
         }
 
     }
-
-
+    
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(3f);
+    }
+   
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(doorpos1.position, radius);
         Gizmos.DrawWireSphere(doorpos2.position, radius);
     }
+
+    
 }

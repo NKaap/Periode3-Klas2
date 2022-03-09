@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class MovPlayer : MonoBehaviour
 {
-
     public enum PlayerTypes
     {
         TeddyBear, Panda, PinkBear, IceBear, RainbowBear, ClownBear, BlackBear,
@@ -55,7 +54,7 @@ public class MovPlayer : MonoBehaviour
     public float radius = 10;
 
 
-
+   
     private void FixedUpdate()
     {
         SkillPoints(); //  even checken want je gebruikt de variable baseHealth;
@@ -244,12 +243,12 @@ public class MovPlayer : MonoBehaviour
 
     public void KickChildren()
     {
-        Collider[] colliders = Physics.OverlapSphere(new Vector3 (transform.position.x, transform.position.y + 4, transform.position.z) , radius);
+        Collider[] colliders = Physics.OverlapSphere(new Vector3 (transform.position.x, transform.position.y, transform.position.z) , radius);
         foreach (Collider collider in colliders)
         {
             if (collider.transform.CompareTag("Child") && Input.GetButtonDown("Fire2"))
             {
-                collider.GetComponent<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+                collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
                 Debug.Log("Yass");
             }
         }
