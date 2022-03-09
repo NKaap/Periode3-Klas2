@@ -1,32 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-8962337380516935126
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Dancing Twerk
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 55aef67cf91d3354cbaa32beb4b9114c, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &-5540774731781850207
+--- !u!1102 &-7856405846172309275
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -46,39 +20,13 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 680e2a60319f79643811cf4d7a7b8581, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 27fce52683ad8b649b1418245fbd8d2e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-5264598684085876373
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Zombie Dying
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 5f12a04e32ccae149be7a73a64c15011, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &-3225299093299526889
+--- !u!1102 &-6852336332083186916
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -98,13 +46,39 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: e80d7f9570e009a4ebeaecced0aec0ec, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: b4e682083a313cc48a66aef757a78593, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-1538600383022060997
+--- !u!1102 &-5601837774086546631
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Zombie Dying
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: d9f6d920ba6fb7d43829e68c0202c0b3, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-2392830502765361227
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -124,7 +98,33 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: d86114f4002038845a7936740c730536, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 569e0f4c987199240a33d2255cdacd97, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-437531999421203573
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mixamo_com
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: dfb34381c68d11c45832d2a5bf450ce5, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -136,13 +136,13 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M3
+  m_Name: M1
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: 1726553743014909782}
+    m_StateMachine: {fileID: 2694704754758819542}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -152,7 +152,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1107 &1726553743014909782
+--- !u!1107 &2694704754758819542
 AnimatorStateMachine:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -162,26 +162,26 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -5540774731781850207}
-    m_Position: {x: 200, y: 0, z: 0}
+    m_State: {fileID: -7856405846172309275}
+    m_Position: {x: 370, y: -80, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -8962337380516935126}
-    m_Position: {x: 420, y: 230, z: 0}
+    m_State: {fileID: 3072084353592744642}
+    m_Position: {x: 460, y: 20, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -1538600383022060997}
-    m_Position: {x: 550, y: 200, z: 0}
+    m_State: {fileID: -2392830502765361227}
+    m_Position: {x: 450, y: 100, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1807398077087415338}
-    m_Position: {x: 340, y: 310, z: 0}
+    m_State: {fileID: 6368580772000159564}
+    m_Position: {x: 460, y: 170, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -3225299093299526889}
-    m_Position: {x: 660, y: 240, z: 0}
+    m_State: {fileID: -6852336332083186916}
+    m_Position: {x: 470, y: 220, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -5264598684085876373}
-    m_Position: {x: 430, y: 390, z: 0}
+    m_State: {fileID: -5601837774086546631}
+    m_Position: {x: 480, y: 260, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 8105453523771934419}
-    m_Position: {x: 640, y: 360, z: 0}
+    m_State: {fileID: -437531999421203573}
+    m_Position: {x: 500, y: 300, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -191,8 +191,34 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -5540774731781850207}
---- !u!1102 &1807398077087415338
+  m_DefaultState: {fileID: -7856405846172309275}
+--- !u!1102 &3072084353592744642
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dancing Twerk
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 09a8e8c56456bf248ae2be621c7c7f00, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &6368580772000159564
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -212,33 +238,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 5e99026a8fa49994387d94d895603c3b, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &8105453523771934419
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Zombie Kicking
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 5e50fbb73a1366c40878808b0abd1123, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: a07264b34afa4ae43b337ef0f31d2ff4, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
