@@ -37,13 +37,15 @@ public class MovPlayer : MonoBehaviour
     [Space(8)]
     public List<ItemBase.ItemType> items = new List<ItemBase.ItemType>();
 
-    [Header("Base Speed and Health")]
+    [Header("Base Speed, Jump and Health")]
     [Space(8)]
 
     [SerializeField] private float speed = 10; // player speed
 
     [SerializeField] private float baseHealth; // player health            HEALTH
-    [SerializeField] private float baseJumpHeight; // player health   
+    [SerializeField] private Vector3 baseJumpHeight; // player jump
+    public int maxJump = 2;
+    public int timesJumped = 0;
 
     [SerializeField] public float calculatedSpeed => GetSpeed(); // gebruik deze om speed aan te roepen.
     [SerializeField] public float calculatedHealth => GetHealth(); // gebruik deze om health mee aan te roepen.
@@ -57,56 +59,15 @@ public class MovPlayer : MonoBehaviour
    
     private void FixedUpdate()
     {
-        SkillPoints(); //  even checken want je gebruikt de variable baseHealth;
+         //  even checken want je gebruikt de variable baseHealth;
         Move(calculatedSpeed);
         TakeDamage(calculatedHealth);
         KickChildren();
     }
-
-    #region SkillPoints And Unlock Player
-
-    #region SkillPoints Switch Case
-    public void SkillPoints() // voor skillpoints
+    private void Update()
     {
-
+        Jump();
     }
-
-  
-
-
-
-    #endregion
-
-    #region UI Buttons Skill Points
-
-    public void UnlockAbility()
-    {
-        // unlock one ability. like a drop kick, or lasereyes, or whatever.
-    }
-
-    public void AddSkillPointHealth()
-    {
-        
-    }
-
-    public void AddSkillPointSpeed()
-    {
-
-    
-    }
-
-    public void ResetSkillPoints()
-    {
-
-    }
-
-    #endregion
-
-    #endregion
-
-    #region Abilities and Unlock Player
-
-    #endregion
 
     #region Basic Player Functionality
 
@@ -132,10 +93,12 @@ public class MovPlayer : MonoBehaviour
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(hor, 0, ver).normalized;
-       
+
+
+     
+
         if (direction.magnitude >= 0.1f)
         {
-           
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref verticalVelosity, turnSmoothTime);
             Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
@@ -143,15 +106,24 @@ public class MovPlayer : MonoBehaviour
 
             StartCoroutine(LerpRotation(Quaternion.Euler(1f, angle, 1f), 5));
         }   
-        moveVector = new Vector3(direction.x, verticalVelosity, direction.z); 
-    }
+        moveVector = new Vector3(direction.x, verticalVelosity, direction.z);
 
+       
+    }
+    public void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && timesJumped < maxJump)
+        {
+
+            timesJumped++;
+
+            GetComponent<Rigidbody>().velocity = baseJumpHeight;
+
+        }
+    }
     IEnumerator LerpRotation(Quaternion endRotation, float duration)
     {
-
         float time = 0;
-
-
         time += Time.deltaTime;
         transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, time * duration);
         yield return null;
@@ -248,8 +220,13 @@ public class MovPlayer : MonoBehaviour
         {
             if (collider.transform.CompareTag("Child") && Input.GetButtonDown("Fire2"))
             {
+                //playerAnimator.SetBool(Kick, true);
                 collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
                 Debug.Log("Yass");
+            }
+            else
+            {
+                //playerAnimator.SetBool(Kick, false);
             }
         }
 
@@ -261,6 +238,8 @@ public class MovPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        timesJumped = 0;
+
         if (collision.gameObject.TryGetComponent<ItemBase>(out ItemBase comp))
         {
             // copy item, do it in array, so it doesnt say "none"

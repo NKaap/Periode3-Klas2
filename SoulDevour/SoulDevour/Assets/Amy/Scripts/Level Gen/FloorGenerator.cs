@@ -47,6 +47,7 @@ public class FloorGenerator : MonoBehaviour
 
     public List<CustomArray> list = new List<CustomArray>();
 
+    public List<CustomArray> floor = new List<CustomArray>();
 
     [Header("Room Types")]
     [Space(8)]
@@ -194,7 +195,7 @@ public class FloorGenerator : MonoBehaviour
         //Generate all meshes for all rooms
         foreach (KeyValuePair<Vector2, Room> pair in FloorLayout)
         {
-            pair.Value.GenerateMesh(RoomDimension, Cube, door, gameObject, ref wallsGenerated, list, BossRoom, ItemRoom, ShopRoom);
+            pair.Value.GenerateMesh(RoomDimension, Cube, door, gameObject, ref wallsGenerated, list, floor, BossRoom, ItemRoom, ShopRoom);
         }
     }
 
@@ -301,7 +302,7 @@ public class FloorGenerator : MonoBehaviour
         /// <param name="boss">Material for the cube above the boss room</param>
         /// <param name="item">Material for the cube above the item room</param>
         /// <param name="shop">Material for the cube above the shop</param>
-        public void GenerateMesh(Vector2 roomDimension, GameObject toInstantiate, GameObject Door, GameObject parent, ref List<Vector3> wallsGen, List<CustomArray> customList, Material boss, Material item, Material shop)
+        public void GenerateMesh(Vector2 roomDimension, GameObject toInstantiate, GameObject Door, GameObject parent, ref List<Vector3> wallsGen, List<CustomArray> customList, List<CustomArray> customListFloor, Material boss, Material item, Material shop)
         {
             //Can be used as index for prefabs
             int index = 0;
@@ -346,36 +347,45 @@ public class FloorGenerator : MonoBehaviour
             {
                 case RoomType.Normal:
                     {
-                        toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
-                        worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
-                        instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
+                       
+                        int randomIndex = Random.Range(0, customListFloor[0].objects.Length);
+                        worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
+                        instance = Instantiate(customListFloor[0].objects[randomIndex], worldPos, new Quaternion(0,0,0,0));
+                        instance.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                  
+                         // middelste van deze is voor de hoogte van de vloer. ook bij de rest
+                        //instance = Instantiate(customList[2].objects[randomIndex], worldPos, rot);
+                      
                         instance.transform.parent = parent.transform;
                         break;
                     }
                 case RoomType.Item:
                     {
-                        toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
-                        worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
-                        instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
-                            instance.GetComponent<MeshRenderer>().material = item;
+                        int randomIndex = Random.Range(0, customListFloor[1].objects.Length);
+                        worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
+                        instance = Instantiate(customListFloor[1].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0));
+                        instance.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+
                         instance.transform.parent = parent.transform;
                         break;
                     }
                 case RoomType.Shop:
                     {
-                        toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
-                        worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
-                        instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
-                            instance.GetComponent<MeshRenderer>().material = shop;                                              // shop, kun je kiezen uit 4 items die je kunt kopen
+                        int randomIndex = Random.Range(0, customListFloor[2].objects.Length);
+                        worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
+                        instance = Instantiate(customListFloor[2].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0));
+                        instance.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        // shop, kun je kiezen uit 4 items die je kunt kopen
                         instance.transform.parent = parent.transform;
                         break;
                     }
                 case RoomType.BossRoom:
                     {
-                        toInstantiate.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
-                        worldPos = new Vector3(position.x * roomDimension.x, 0, position.y * roomDimension.y);
-                        instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
-                        instance.GetComponent<MeshRenderer>().material = boss;                                              // dark room, boss level.
+                        int randomIndex = Random.Range(0, customListFloor[3].objects.Length);
+                        worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
+                        instance = Instantiate(customListFloor[3].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0));
+                        instance.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        // dark room, boss level.
                         instance.transform.parent = parent.transform;
                         break;
                     }
