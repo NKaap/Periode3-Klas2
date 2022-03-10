@@ -7,8 +7,9 @@ public class SkillPointManager : MonoBehaviour
     // skill manager, controller die alle logic regelt om skill points etc.
 
 
-    private SkillData skillData;
+    private SkillData skillData;// skillData is never set.
 
+    public SkillData.SkillTypes skillType;
 
     public void SetSkillData(MovPlayer.PlayerTypes playerType)
     {
@@ -25,36 +26,38 @@ public class SkillPointManager : MonoBehaviour
 
     public bool CanSpendPointOn(SkillData.SkillTypes skillType)
     {
+        // when a teacher dies, add a point 
+
         return true;
 
         
     }
 
     
-    public void SpendPoint(SkillData.SkillTypes skillType) // zo maken hoe je die wel gewoon kan krijgen dat je in de Onlclick, "naar een int of string"
+    public void SpendPoint(int typeValue)  // werkt met onclick
     {
         if (skillData.unusedSkillPoints == 0)
             return;
 
         skillData.unusedSkillPoints--;
-        switch (skillType)
+        switch ((SkillData.SkillTypes)typeValue)
         {
-            case SkillData.SkillTypes.Speed:
+            case SkillData.SkillTypes.Speed: // value 0
                 {
-                    skillData.characterSpeed++;
+                    skillData.characterSpeed++; // hoe zet je deze naar de player speed?
                     break;
                 }
-            case SkillData.SkillTypes.JumpHeight:
+            case SkillData.SkillTypes.JumpHeight: // value 1
                 {
                     skillData.characterJumpHeight++;
                     break;
                 }
-            case SkillData.SkillTypes.Health:
+            case SkillData.SkillTypes.Health: // value 2
                 {
                     skillData.characterHealth++;
                     break;
                 }
-            case SkillData.SkillTypes.Damage:
+            case SkillData.SkillTypes.Damage: // value 3
                 {
                     skillData.characterDamage++;
                     break;
@@ -62,15 +65,5 @@ public class SkillPointManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }

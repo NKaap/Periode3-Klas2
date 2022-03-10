@@ -16,15 +16,16 @@ public class FloorGenerator : MonoBehaviour
         BossRoom
     }
 
+    public GameObject playerObj;
+
     [Header("Generator")]
     [Space(8)]
     [Range(0, 100)]
     public float relativeDepthFactor = 20.0f;
-
     //[Range(100000, 999999)]
     public string seed = "";
-
     public Dictionary<Vector2, Room> FloorLayout;
+
     [Header("Room Info")]
     [Space(8)]
     public Vector2 RoomDimension = new Vector2(50, 50);
@@ -38,11 +39,8 @@ public class FloorGenerator : MonoBehaviour
     [Header("Walls & Prefab List")]
     [Space(8)]
     public Dictionary<Vector3,GameObject> wallsGenerated = new Dictionary<Vector3, GameObject>();
-
     public List<CustomArray> list = new List<CustomArray>();
-
     public List<CustomArray> floor = new List<CustomArray>();
-
     public List<CustomArray> ceiling = new List<CustomArray>();
 
     [Header("Room Types")]
@@ -423,8 +421,9 @@ public class FloorGenerator : MonoBehaviour
                     {
                         instance = Instantiate(customList[2].objects[randomIndex], worldPos, rot);
                         instance.transform.parent = parent.transform;
+                        instanceCeiling = Instantiate(customList[randomIndex].objects[randomIndex], worldPos, rot);
+                        instanceCeiling.transform.parent = parent.transform;
 
-                        
 
                         wallsGen.Add(worldPos, instance);
                     }
@@ -447,7 +446,8 @@ public class FloorGenerator : MonoBehaviour
                         instance = Instantiate(customList[randomWall].objects[randomIndex], worldPos, rot);
                         instance.transform.parent = parent.transform;
 
-                    
+                        instanceCeiling = Instantiate(customList[randomWall].objects[randomIndex], worldPos, rot);
+                        instanceCeiling.transform.parent = parent.transform;
 
                         wallsGen.Add(worldPos, instance);
                     }
@@ -456,11 +456,38 @@ public class FloorGenerator : MonoBehaviour
         }
     }
 
-    //public Vector3 GetRoomPosition()
-    //{
+    /*
+        1 functie voor het afronden van de huidige positie van de player, die dan de center van de rooms zijn.
+        1 functie voor het enablen van iron bars bij de doors
+        1 functie voor het disablen van iron bars bij de doors
+        Voor deze 2 moet je in de functie een offset toevoegen aan de 1e functie, om zo de posities van de walls te krijgen, die je kan gebruiken voor de dictionary van de walls
+    */
+
+    public Vector3 GetRoomPosition()
+    {
+        //functie voor het afronden van de huidige positie van de player, die dan de center van de rooms zijn.
+        // pak de positions uit de dictionary van de muren die het dichtste bij zijn bij de vloer waar je op staat. alleen eerst de vloer pos pakken waar je op staat. 
+        // door alle floor prefabs heen om de dichtstbijzijnde positie te pakken, daarna de muren, dan de tralies.
+
+        Vector3 center = playerObj.transform.position / RoomDimension.x * RoomDimension.y;
+        Debug.Log(center);
+
+        return center;
+      //  playerObj.transform.position; // player position
+      // wallsGenerated // Dictionary with vector3 positions and wall objects,
 
 
-    //}
+    }
+
+    public void IronBarsActive()
+    {
+
+    }
+    public void IronBarsDestroy()
+    {
+
+    }
+
 
 
     //A custom array for gameobjects that is visible in inspector

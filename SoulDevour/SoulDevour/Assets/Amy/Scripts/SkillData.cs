@@ -8,14 +8,14 @@ public class SkillData : MonoBehaviour
     // model voor storing data, class die je kan opslaan als json file. 
     public int unusedSkillPoints;
 
-    public int characterSpeed;
+    public int characterSpeed;// hoe zet je deze naar de player speed?
     public int characterJumpHeight;
     public int characterHealth;
     public int characterDamage;
    
     public enum SkillTypes
     {
-        Speed, JumpHeight, Health, Damage
+        Speed = 0, JumpHeight = 1, Health = 2, Damage = 3
     }
 
 
