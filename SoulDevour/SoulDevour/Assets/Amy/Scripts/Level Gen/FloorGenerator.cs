@@ -49,6 +49,8 @@ public class FloorGenerator : MonoBehaviour
 
     public List<CustomArray> floor = new List<CustomArray>();
 
+    //public List<CustomArray> ceiling = new List<CustomArray>();
+
     [Header("Room Types")]
     [Space(8)]
     public Material BossRoom;
@@ -195,7 +197,7 @@ public class FloorGenerator : MonoBehaviour
         //Generate all meshes for all rooms
         foreach (KeyValuePair<Vector2, Room> pair in FloorLayout)
         {
-            pair.Value.GenerateMesh(RoomDimension, Cube, door, gameObject, ref wallsGenerated, list, floor, BossRoom, ItemRoom, ShopRoom);
+            pair.Value.GenerateMesh(RoomDimension, Cube, gameObject, ref wallsGenerated, list, floor);
         }
     }
 
@@ -302,7 +304,7 @@ public class FloorGenerator : MonoBehaviour
         /// <param name="boss">Material for the cube above the boss room</param>
         /// <param name="item">Material for the cube above the item room</param>
         /// <param name="shop">Material for the cube above the shop</param>
-        public void GenerateMesh(Vector2 roomDimension, GameObject toInstantiate, GameObject Door, GameObject parent, ref List<Vector3> wallsGen, List<CustomArray> customList, List<CustomArray> customListFloor, Material boss, Material item, Material shop)
+        public void GenerateMesh(Vector2 roomDimension, GameObject toInstantiate, GameObject parent, ref List<Vector3> wallsGen, List<CustomArray> customList, List<CustomArray> customListFloor)
         {
             //Can be used as index for prefabs
             int index = 0;
@@ -314,44 +316,21 @@ public class FloorGenerator : MonoBehaviour
             //Generate the floor
             Vector3 worldPos;
             GameObject instance;
-
-            //Make a cube above special rooms to make it easily spottable
-            if (type != RoomType.Normal)                                                                                        // verander floor per item room zodat models en rooms kloppen
-            {
-                toInstantiate.transform.localScale = new Vector3(roomDimension.x, 10, roomDimension.y);
-                worldPos = new Vector3(position.x * roomDimension.x, 20, position.y * roomDimension.y);
-                instance = Instantiate(toInstantiate, worldPos, new Quaternion(0, 0, 0, 0));
-                instance.transform.parent = parent.transform;
-
-                switch (type)
-                {
-                    case RoomType.Normal:
-                        {
-                            break;
-                        }
-                    case RoomType.Item:                                                                                         // item room, alle items in vitrine kasten etc. show welke je unlocked hebt
-                        {
-                            instance.GetComponent<MeshRenderer>().material = item;
-                            break;
-                        }
-                    case RoomType.Shop:
-                        {
-                            instance.GetComponent<MeshRenderer>().material = shop;                                              // shop, kun je kiezen uit 4 items die je kunt kopen
-                            break;
-                        }
-                    case RoomType.BossRoom:
-                        {
-                            instance.GetComponent<MeshRenderer>().material = boss;                                              // dark room, boss level.
-                            break;
-                        }
-                }
-            }
+            GameObject instanceCeiling;
+           
 
             switch (type)
             {
                 case RoomType.Normal:
                     {
-                       
+                        // Ceiling
+                        //int randomIndexCeiling = Random.Range(0, customCeiling[0].objects.Length);
+                        //worldPos = new Vector3(position.x * roomDimension.x, 7f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
+                        //instanceCeiling = Instantiate(customCeiling[0].objects[randomIndexCeiling], worldPos, new Quaternion(0, 0, 0, 0));
+                        //instanceCeiling.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+
+                        //instanceCeiling.transform.parent = parent.transform;
+                        // Floor
                         int randomIndex = Random.Range(0, customListFloor[0].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
                         instance = Instantiate(customListFloor[0].objects[randomIndex], worldPos, new Quaternion(0,0,0,0));
@@ -365,6 +344,13 @@ public class FloorGenerator : MonoBehaviour
                     }
                 case RoomType.Item:
                     {
+                        // Ceiling
+                        //int randomIndexCeiling = Random.Range(0, customCeiling[1].objects.Length);
+                        //worldPos = new Vector3(position.x * roomDimension.x, 7f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
+                        //instanceCeiling = Instantiate(customCeiling[1].objects[randomIndexCeiling], worldPos, new Quaternion(0, 0, 0, 0));
+                        //instanceCeiling.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        //instanceCeiling.transform.parent = parent.transform;
+                        // Floor
                         int randomIndex = Random.Range(0, customListFloor[1].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
                         instance = Instantiate(customListFloor[1].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0));
@@ -375,6 +361,14 @@ public class FloorGenerator : MonoBehaviour
                     }
                 case RoomType.Shop:
                     {
+                        // Ceiling
+                        //int randomIndexCeiling = Random.Range(0, customCeiling[2].objects.Length);
+                        //worldPos = new Vector3(position.x * roomDimension.x, 7f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
+                        //instanceCeiling = Instantiate(customCeiling[2].objects[randomIndexCeiling], worldPos, new Quaternion(0, 0, 0, 0));
+                        //instanceCeiling.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        //instanceCeiling.transform.parent = parent.transform;
+
+                        // Floor
                         int randomIndex = Random.Range(0, customListFloor[2].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
                         instance = Instantiate(customListFloor[2].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0));
@@ -385,6 +379,14 @@ public class FloorGenerator : MonoBehaviour
                     }
                 case RoomType.BossRoom:
                     {
+                        // Ceiling
+                        //int randomIndexCeiling = Random.Range(0, customCeiling[3].objects.Length);
+                        //worldPos = new Vector3(position.x * roomDimension.x, 7f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
+                        //instanceCeiling = Instantiate(customCeiling[3].objects[randomIndexCeiling], worldPos, new Quaternion(0, 0, 0, 0));
+                        //instanceCeiling.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        //instanceCeiling.transform.parent = parent.transform;
+
+                        // Floor
                         int randomIndex = Random.Range(0, customListFloor[3].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
                         instance = Instantiate(customListFloor[3].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0));

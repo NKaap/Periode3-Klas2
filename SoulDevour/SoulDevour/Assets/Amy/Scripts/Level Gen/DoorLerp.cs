@@ -21,7 +21,7 @@ public class DoorLerp : MonoBehaviour
         {    
             if (collider1.transform.CompareTag("Player"))
             {          
-                // voor nu 0,0,0, ff testen als muren er goed in zitten 
+              
                 outOfRange = true;
             }
         }
@@ -30,8 +30,8 @@ public class DoorLerp : MonoBehaviour
         {   
             gameObject.transform.eulerAngles = new Vector3(
                 gameObject.transform.eulerAngles.x,
-                gameObject.transform.eulerAngles.y ,
-                gameObject.transform.eulerAngles.z + 80 
+                gameObject.transform.eulerAngles.y + 80,
+                gameObject.transform.eulerAngles.z 
                  );
            
             side1 = false;
@@ -49,7 +49,7 @@ public class DoorLerp : MonoBehaviour
         {
             if (collider.transform.CompareTag("Player"))
             {
-            // voor nu 0,0,0, ff testen als muren er goed in zitten 
+            
                 Debug.Log("Yass");
                 outOfRange2 = true;
             } 
@@ -59,8 +59,8 @@ public class DoorLerp : MonoBehaviour
         {
             gameObject.transform.eulerAngles = new Vector3(
                 gameObject.transform.eulerAngles.x,
-                gameObject.transform.eulerAngles.y ,
-                gameObject.transform.eulerAngles.z - 80
+                gameObject.transform.eulerAngles.y - 80,
+                gameObject.transform.eulerAngles.z 
                  );
            
             side2 = false;
@@ -78,8 +78,8 @@ public class DoorLerp : MonoBehaviour
         yield return new WaitForSeconds(2f);
         gameObject.transform.eulerAngles = new Vector3(
             gameObject.transform.eulerAngles.x,
-            gameObject.transform.eulerAngles.y,
-            gameObject.transform.eulerAngles.z - 80
+            gameObject.transform.eulerAngles.y - 80,
+            gameObject.transform.eulerAngles.z 
             );
       
     }
@@ -89,8 +89,8 @@ public class DoorLerp : MonoBehaviour
         yield return new WaitForSeconds(2f);
         gameObject.transform.eulerAngles = new Vector3(
           gameObject.transform.eulerAngles.x,
-          gameObject.transform.eulerAngles.y,
-          gameObject.transform.eulerAngles.z + 80
+          gameObject.transform.eulerAngles.y + 80,
+          gameObject.transform.eulerAngles.z
           );
         
     }
