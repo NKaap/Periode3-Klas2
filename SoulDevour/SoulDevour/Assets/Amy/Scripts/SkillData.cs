@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillData : MonoBehaviour
-{ //  storing dataa
+{ 
+
+    // model voor storing data, class die je kan opslaan als json file. 
     public int unusedSkillPoints;
 
     public int characterSpeed;

@@ -95,6 +95,7 @@ public class CharacterSelect : MonoBehaviour
     {
         // playerObj word de player met scripts etc.
         //TODO saven van welke character je hebt gekozen met een index (int), in de start functie van de volgende scene het loaden - in MovPlayer want daar staat die type in.
+
         playerObj = activeCharacter;
         SceneManager.LoadScene(1); // 1 is de game denk ik ?
 
