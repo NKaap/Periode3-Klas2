@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillData : MonoBehaviour
-{
+{ //  storing dataa
     public int unusedSkillPoints;
 
     public int characterSpeed;
