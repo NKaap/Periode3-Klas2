@@ -30,23 +30,21 @@ public class ChildController : MonoBehaviour
     public Transform shootPos;
     public float pencilSpeed;
 
+
+    public float dist;
     // timer
-    
+
     public float timeLeft = 1.5f;
 
     void Update()
     {
-
         ChildAnimations();
-        ChildDead();
 
         speed = 4 * Time.deltaTime;
-        childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 6;
+        childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 3;
         childHead.transform.LookAt(playerTarget.transform);
         gameObject.transform.LookAt(playerTarget.transform);
 
-
-        
         if (childMove)
         {
             gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
@@ -66,31 +64,28 @@ public class ChildController : MonoBehaviour
 
     public void ChildAnimations()
     {
-        if (rb.velocity.magnitude > 0.01)
+        dist = Vector3.Distance(playerTarget.transform.position, gameObject.transform.position);
+        if (dist < 3f)
+        {
+            childAnimator.SetBool("Walk", false);
+            childAnimator.SetBool("Rest", true);
+        }
+        else
         {
             childAnimator.SetBool("Rest", false);
-
             childAnimator.SetBool("Walk", true);
-            
-        }
-        if (rb.velocity.magnitude <= 0.01)
-        {
-           
-            childAnimator.SetBool("Walk", false);
-
-            childAnimator.SetBool("Rest", true);
+            // timer so they slap u once every 2 seconds
         }
     }
 
-    public void ChildDead()
+    public void SubtractHealth(float amount)
     {
+        health -= amount;
         if(health <= 0)
         {
             Instantiate(coinPrefab, transform.position, new Quaternion(0, 0, 0, 0));
-            Destroy(gameObject);
-
-            
-            
+            Destroy(gameObject); 
+            // set ragdoll active
         }
     }
 }

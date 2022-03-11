@@ -67,25 +67,15 @@ public class MovPlayer : MonoBehaviour
     private void Update()
     {
         Jump();
+        playerAnimator.SetBool("Walking", true);
+      
     }
 
     #region Basic Player Functionality
 
     #region Move % Rotation
 
-    public void Animations()
-    {
-        if (playerisMoving)
-        {
-            walking = true;
-            playerAnimator.SetBool("Walking", walking);
-        }
-        else
-        {
-            walking = false;
-            playerAnimator.SetBool("Walking", walking);
-        }
-    }
+   
     
     private void Move(float speed)
     {
@@ -95,7 +85,7 @@ public class MovPlayer : MonoBehaviour
         Vector3 direction = new Vector3(hor, 0, ver).normalized;
 
 
-     
+       
 
         if (direction.magnitude >= 0.1f)
         {
@@ -103,9 +93,14 @@ public class MovPlayer : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref verticalVelosity, turnSmoothTime);
             Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             transform.position += moveDir.normalized * speed * Time.deltaTime;
-
+            playerisMoving = true;
             StartCoroutine(LerpRotation(Quaternion.Euler(1f, angle, 1f), 5));
-        }   
+        }
+        else
+        {
+            playerisMoving = false;
+        }
+        
         moveVector = new Vector3(direction.x, verticalVelosity, direction.z);
 
        
@@ -220,13 +215,13 @@ public class MovPlayer : MonoBehaviour
         {
             if (collider.transform.CompareTag("Child") && Input.GetButtonDown("Fire2"))
             {
-                //playerAnimator.SetBool(Kick, true);
+                playerAnimator.SetBool("Kick", true);
                 collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
                 Debug.Log("Yass");
             }
             else
             {
-                //playerAnimator.SetBool(Kick, false);
+                playerAnimator.SetBool("Kick", false);
             }
         }
 

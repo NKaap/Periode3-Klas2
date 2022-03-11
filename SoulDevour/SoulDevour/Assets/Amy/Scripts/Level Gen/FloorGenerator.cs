@@ -421,7 +421,7 @@ public class FloorGenerator : MonoBehaviour
                     {
                         instance = Instantiate(customList[2].objects[randomIndex], worldPos, rot);
                         instance.transform.parent = parent.transform;
-                        instanceCeiling = Instantiate(customList[randomIndex].objects[randomIndex], worldPos, rot);
+                        instanceCeiling = Instantiate(customList[2].objects[randomIndex], worldPos, rot);
                         instanceCeiling.transform.parent = parent.transform;
 
 
@@ -463,21 +463,21 @@ public class FloorGenerator : MonoBehaviour
         Voor deze 2 moet je in de functie een offset toevoegen aan de 1e functie, om zo de posities van de walls te krijgen, die je kan gebruiken voor de dictionary van de walls
     */
 
-    public Vector3 GetRoomPosition()
-    {
-        //functie voor het afronden van de huidige positie van de player, die dan de center van de rooms zijn.
-        // pak de positions uit de dictionary van de muren die het dichtste bij zijn bij de vloer waar je op staat. alleen eerst de vloer pos pakken waar je op staat. 
-        // door alle floor prefabs heen om de dichtstbijzijnde positie te pakken, daarna de muren, dan de tralies.
+    //public Vector3 GetRoomPosition()
+    //{
+    //    //functie voor het afronden van de huidige positie van de player, die dan de center van de rooms zijn.
+    //    // pak de positions uit de dictionary van de muren die het dichtste bij zijn bij de vloer waar je op staat. alleen eerst de vloer pos pakken waar je op staat. 
+    //    // door alle floor prefabs heen om de dichtstbijzijnde positie te pakken, daarna de muren, dan de tralies.
 
-        Vector3 center = playerObj.transform.position / RoomDimension.x * RoomDimension.y;
-        Debug.Log(center);
+    //    Vector3 center = playerObj.transform.position / RoomDimension.x * RoomDimension.y;
+    //    Debug.Log(center);
 
-        return center;
-      //  playerObj.transform.position; // player position
-      // wallsGenerated // Dictionary with vector3 positions and wall objects,
+    //    return center;
+    //  //  playerObj.transform.position; // player position
+    //  // wallsGenerated // Dictionary with vector3 positions and wall objects,
 
 
-    }
+    //}
 
     public void IronBarsActive()
     {

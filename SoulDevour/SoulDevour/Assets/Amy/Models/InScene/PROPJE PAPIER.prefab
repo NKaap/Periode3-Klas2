@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 611f735890ff91842a6675d2253c1030, type: 2}
+  - {fileID: 2100000, guid: c1737a4b3fb90174d8a2020aaf51fc41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 3851534620472256085}
   - component: {fileID: 3851534620472256082}
   - component: {fileID: 3851534620472256073}
+  - component: {fileID: 2929754816745286047}
   m_Layer: 0
   m_Name: PROPJE PAPIER
   m_TagString: Untagged
@@ -125,7 +126,7 @@ Transform:
   m_GameObject: {fileID: 3851534620472256083}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -24.89, y: -14.03, z: 18.99783}
-  m_LocalScale: {x: 0.91428065, y: 0.91428065, z: 0.91428065}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 3851534619492242694}
   m_Father: {fileID: 0}
@@ -158,7 +159,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 611f735890ff91842a6675d2253c1030, type: 2}
+  - {fileID: 2100000, guid: c1737a4b3fb90174d8a2020aaf51fc41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,3 +225,17 @@ MonoBehaviour:
   bullet: {fileID: 3851534620472256086}
   baseDamage: 0
   source: {fileID: 0}
+  fireParticle: {fileID: 0}
+--- !u!114 &2929754816745286047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851534620472256083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e79711478bb7f48b5b5982e458e978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemtype: 0

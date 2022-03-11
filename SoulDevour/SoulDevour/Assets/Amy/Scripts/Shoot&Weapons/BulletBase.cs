@@ -17,21 +17,22 @@ public class BulletBase : MonoBehaviour
    
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))
-        //{
-        //    huts.SubtractHealth(CalculateDamage());
-        //    DoEffect();
-        //    Destroy(gameObject);
-        //}
-        //if (collision.gameObject)
-        //{
-        //    DoEffect();
-        //    Destroy(gameObject);
-        //}
+        if (collision.gameObject.transform.CompareTag("Child"))
+        {
+            GameObject coll = collision.gameObject.GetComponent<ChildController>().gameObject;
+            coll.GetComponent<ChildController>(). SubtractHealth(calculatedDamage);
+            //DoEffect();
+            Destroy(gameObject);
+        }
+        if (collision.gameObject)
+        {
+            DoEffect();
+            Destroy(gameObject);
+        }
     }
 
 
-    public float CalculateDamage()
+    public float CalculateDamage() // doesnt work.
     {
         float output = baseDamage;
 
