@@ -26,6 +26,7 @@ public class Step : MonoBehaviour
     private void Slap()
     {
         audiosource.PlayOneShot(slap);
+        kicking.Play();
     }
     private void Walk()
     {
