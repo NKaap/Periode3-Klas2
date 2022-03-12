@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnterRoom : MonoBehaviour
 {
     public GameObject[] enemiesInRoom;
+    public Collider[] doorLock;
 
     // player enters room, locks, enemies are activated. 
     // Dit script op de floor, enemies die in de floor prefab zitten, in de array gooien..... 
@@ -16,6 +17,11 @@ public class EnterRoom : MonoBehaviour
         foreach (GameObject enemy in enemiesInRoom)
         {     
             enemy.SetActive(false);
+        }
+
+        foreach (Collider coll in doorLock)
+        {
+            coll.enabled = false;
         }
     }
 
@@ -29,7 +35,14 @@ public class EnterRoom : MonoBehaviour
                 StartCoroutine(Enemies());
                 enemy.SetActive(true);
             }
+
+            foreach(Collider coll in doorLock)
+            {
+                coll.enabled = true;
+            }
         }
+
+
     }
 
     IEnumerator Enemies()
