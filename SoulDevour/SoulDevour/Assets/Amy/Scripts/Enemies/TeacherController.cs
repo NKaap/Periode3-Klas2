@@ -76,4 +76,9 @@ public class TeacherController : MonoBehaviour
 
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // if damage, yes.
+    }
 }
