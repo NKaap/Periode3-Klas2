@@ -70,55 +70,37 @@ public class MovPlayer : MonoBehaviour
             case 0:
                 {
                     secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[0];
-                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
-                    // gameObjectMesh = playerModel[0].GetComponentInChildren<SkinnedMeshRenderer>();
-
                     break;
                 }
             case 1:
                 {
                     secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[1];
-                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
-                    // gameObjectMesh = playerModel[1].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
             case 2:
                 {
                     secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[2];
-                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
-                    // gameObjectMesh = playerModel[2].GetComponentInChildren<SkinnedMeshRenderer>();
-
                     break;
                 }
             case 3:
                 {
-                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[3];
-                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
-                    //gameObjectMesh = playerModel[3].GetComponentInChildren<SkinnedMeshRenderer>();
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[3];                 
                     break;
                 }
             case 4:
                 {
 
                     secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[4];
-                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
-                    //gameObjectMesh = playerModel[4].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
             case 5:
                 {
-
                     secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[5];
-                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
-                    //gameObjectMesh = playerModel[5].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
             case 6:
                 {
-
                     secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[6];
-                    // secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
-                    //gameObjectMesh = playerModel[6].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
         }
@@ -154,10 +136,6 @@ public class MovPlayer : MonoBehaviour
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(hor, 0, ver).normalized;
-
-
-       
-
         if (direction.magnitude >= 0.1f)
         {
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -166,10 +144,15 @@ public class MovPlayer : MonoBehaviour
             transform.position += moveDir.normalized * speed * Time.deltaTime;
             playerisMoving = true;
             StartCoroutine(LerpRotation(Quaternion.Euler(1f, angle, 1f), 5));
+            playerAnimator.SetBool("Rest", false);
+            playerAnimator.SetBool("Walking", true);
         }
         else
         {
             playerisMoving = false;
+        
+            playerAnimator.SetBool("Walking", false);
+            playerAnimator.SetBool("Rest", true);
         }
         
         moveVector = new Vector3(direction.x, verticalVelosity, direction.z);

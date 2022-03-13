@@ -13,7 +13,7 @@ public class DoorLerp : MonoBehaviour
 
     
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Collider[] collidersOne = Physics.OverlapSphere(doorpos1.position, radius);
         bool outOfRange = false;
