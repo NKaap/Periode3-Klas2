@@ -10,7 +10,7 @@ public class MenuScript : MonoBehaviour
 {
     public Dropdown dropdown;
     public SceneRenderPipeline[] qualityLevels;
-
+    public AudioMixer audioMixer;
     void Start()
     {
         dropdown.value = QualitySettings.GetQualityLevel();
@@ -45,5 +45,15 @@ public class MenuScript : MonoBehaviour
         print("heehee");
     }
 
-
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main");
+    }
+    
+    
+    public void SetVolume(float volume)
+    {
+        print("eee");
+        audioMixer.SetFloat("Volume", volume);
+    }
 }
