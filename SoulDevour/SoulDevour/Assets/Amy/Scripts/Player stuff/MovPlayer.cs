@@ -48,7 +48,7 @@ public class MovPlayer : MonoBehaviour
 
     [SerializeField] private float speed = 10; // player speed
 
-    [SerializeField] private float baseHealth; // player health            HEALTH
+    public float baseHealth = 4; // player health            HEALTH
     [SerializeField] private Vector3 baseJumpHeight; // player jump
     public int maxJump = 2;
     public int timesJumped = 0;
@@ -111,7 +111,7 @@ public class MovPlayer : MonoBehaviour
     {
          //  even checken want je gebruikt de variable baseHealth;
         Move(calculatedSpeed);
-        TakeDamage(calculatedHealth);
+       
         KickChildren();
     }
     private void Update()
@@ -121,6 +121,11 @@ public class MovPlayer : MonoBehaviour
         PlayerModel();
         Jump();
         playerAnimator.SetBool("Walking", true);
+
+        if(baseHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
       
     }
 
@@ -128,8 +133,6 @@ public class MovPlayer : MonoBehaviour
 
     #region Move % Rotation
 
-   
-    
     private void Move(float speed)
     {
 
@@ -180,13 +183,6 @@ public class MovPlayer : MonoBehaviour
         
     }
     #endregion
-
-
-    public void TakeDamage(float health)
-    {
-        health -= 10;
-        //Debug.Log(health);
-    }
 
     #region GetHealth and Speed
 
@@ -299,6 +295,11 @@ public class MovPlayer : MonoBehaviour
             collision.gameObject.SetActive(false);
             Debug.Log(items[0]);
             
+        }
+
+        if (collision.transform.CompareTag("BulletChild"))
+        {
+            baseHealth -= 2;
         }
     }
 

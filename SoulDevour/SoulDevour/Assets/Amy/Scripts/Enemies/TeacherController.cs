@@ -22,7 +22,7 @@ public class TeacherController : MonoBehaviour
     public float throwChildSpeed;
     public Animator teacherAnimator;
 
-    public Rigidbody[] kidVariantsForThrow;
+    public GameObject[] kidVariantsForThrow;
     // Update is called once per frame
 
     void Update()
@@ -48,8 +48,8 @@ public class TeacherController : MonoBehaviour
         {
             timeLeft = 1.5f;
 
-            Rigidbody kid = Instantiate(kidVariantsForThrow[Random.Range(0,kidVariantsForThrow.Length)], hand.transform.position, hand.transform.rotation) as Rigidbody;
-            kid.velocity = hand.transform.TransformDirection(new Vector3(0, 0, throwChildSpeed));
+            GameObject kid = Instantiate(kidVariantsForThrow[Random.Range(0,kidVariantsForThrow.Length)], hand.transform.position, hand.transform.rotation);
+            kid.GetComponent<Rigidbody>().velocity = hand.transform.TransformDirection(new Vector3(0, 0, throwChildSpeed));
         }
     }
 
