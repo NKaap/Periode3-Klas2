@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class MenuScript : MonoBehaviour
 {
+    public Dropdown dropdown;
+    public SceneRenderPipeline[] qualityLevels;
+
     void Start()
     {
-       
+        dropdown.value = QualitySettings.GetQualityLevel();
     }
 
     //Scene's openen
@@ -35,6 +39,11 @@ public class MenuScript : MonoBehaviour
         print(qualityIndex);
     }
 
+    public void ChangeLevel(int value)
+    {
+        QualitySettings.SetQualityLevel(value);
+        print("heehee");
+    }
 
 
 }
