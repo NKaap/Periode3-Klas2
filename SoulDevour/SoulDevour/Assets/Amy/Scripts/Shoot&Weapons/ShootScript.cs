@@ -34,13 +34,13 @@ public class ShootScript : MonoBehaviour
             
           
         }
-        if (Input.GetButtonDown("E")) // inventory, niet op dezelfde manier als de bullet 
-        {
-            //delayBomb = 2f; // delay gwn niet, en dan in de inventory bijv 3 bommen zodat je zelf kiest
-            Rigidbody instantiatedBomb = Instantiate(GetBombModel().GetComponent<Rigidbody>(), transform.position, transform.rotation) as Rigidbody;
-            instantiatedBomb.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
-            instantiatedBomb.transform.rotation = Random.rotation;
-        }
+        //if (Input.GetButtonDown("E")) // inventory, niet op dezelfde manier als de bullet 
+        //{
+        //    //delayBomb = 2f; // delay gwn niet, en dan in de inventory bijv 3 bommen zodat je zelf kiest
+        //    Rigidbody instantiatedBomb = Instantiate(GetBombModel().GetComponent<Rigidbody>(), transform.position, transform.rotation) as Rigidbody;
+        //    instantiatedBomb.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
+        //    instantiatedBomb.transform.rotation = Random.rotation;
+        //}
 
     }
 
@@ -77,30 +77,30 @@ public class ShootScript : MonoBehaviour
 
     #region GetModels
 
-    public GameObject GetBombModel()
-    {
-        GameObject outputBomb = bombTypes[0];
+    //public GameObject GetBombModel()
+    //{
+    //    GameObject outputBomb = bombTypes[0];
 
-        foreach (ItemBase.ItemType item in player.items)
-        {
-            switch (item)
-            {
-                case ItemBase.ItemType.PeanutButter:
-                    {
-                        outputBomb = bombTypes[1];  // let op dat nr 1 ook echt peanut butter is!
-                        //bulletTypes[1].transform.rotation = Random.rotation;
-                        break;
-                    }
-                case ItemBase.ItemType.Lego:
-                    {
-                        outputBomb = bombTypes[2];
-                        break;
-                    }
+    //    foreach (ItemBase.ItemType item in player.items)
+    //    {
+    //        switch (item)
+    //        {
+    //            case ItemBase.ItemType.PeanutButter:
+    //                {
+    //                    outputBomb = bombTypes[1];  // let op dat nr 1 ook echt peanut butter is!
+    //                    //bulletTypes[1].transform.rotation = Random.rotation;
+    //                    break;
+    //                }
+    //            case ItemBase.ItemType.Lego:
+    //                {
+    //                    outputBomb = bombTypes[2];
+    //                    break;
+    //                }
 
-            }
-        }
-        return outputBomb;
-    }
+    //        }
+    //    }
+    //    return outputBomb;
+    //}
 
     public GameObject GetBulletModel()
     {

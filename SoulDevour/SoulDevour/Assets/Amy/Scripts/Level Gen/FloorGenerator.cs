@@ -326,12 +326,12 @@ public class FloorGenerator : MonoBehaviour
                         int randomIndex = Random.Range(0, customListFloor[0].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
                         instance = Instantiate(customListFloor[0].objects[randomIndex], worldPos, new Quaternion(0,0,0,0), parent.transform);
-                        instance.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
-                  
-                         // middelste van deze is voor de hoogte van de vloer. ook bij de rest
+                        instance.transform.localScale = new Vector3(1, 1, 1);
+
+                        // middelste van deze is voor de hoogte van de vloer. ook bij de rest
                         //instance = Instantiate(customList[2].objects[randomIndex], worldPos, rot);
-                      
-                        
+
+
                         break;
                     }
                 case RoomType.Item:
@@ -346,9 +346,9 @@ public class FloorGenerator : MonoBehaviour
                         int randomIndex = Random.Range(0, customListFloor[1].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
                         instance = Instantiate(customListFloor[1].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0), parent.transform);
-                        instance.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        instance.transform.localScale = new Vector3(1, 1, 1);
 
-                       
+
                         break;
                     }
                 case RoomType.Shop:
@@ -365,9 +365,9 @@ public class FloorGenerator : MonoBehaviour
                         int randomIndex = Random.Range(0, customListFloor[2].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
                         instance = Instantiate(customListFloor[2].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0), parent.transform);
-                        instance.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        instance.transform.localScale = new Vector3(1, 1, 1);
                         // shop, kun je kiezen uit 4 items die je kunt kopen
-                        
+
                         break;
                     }
                 case RoomType.BossRoom:
@@ -383,9 +383,9 @@ public class FloorGenerator : MonoBehaviour
                         int randomIndex = Random.Range(0, customListFloor[3].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 0.5f, position.y * roomDimension.y); // 0.5 is de hoogte van de floor
                         instance = Instantiate(customListFloor[3].objects[randomIndex], worldPos, new Quaternion(0, 0, 0, 0), parent.transform);
-                        instance.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        instance.transform.localScale =  new Vector3(1, 1, 1);
                         // dark room, boss level.
-                        
+
                         break;
                     }
             }
