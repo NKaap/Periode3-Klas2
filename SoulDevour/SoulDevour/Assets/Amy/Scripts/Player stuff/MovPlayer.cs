@@ -9,7 +9,7 @@ public class MovPlayer : MonoBehaviour
 {
     public enum PlayerTypes
     {
-        TeddyBear, Panda, PinkBear, IceBear, RainbowBear, ClownBear, BlackBear,
+        TeddyBear = 0, Panda = 1, PinkBear = 2, IceBear = 3, RainbowBear = 4, ClownBear = 5, BlackBear = 6,
     }
 
     public PlayerTypes playerTypes;
@@ -26,6 +26,12 @@ public class MovPlayer : MonoBehaviour
     public Rigidbody playerController;
     public Transform cam;
 
+    public GameObject playerObject;
+    public SkinnedMeshRenderer gameObjectMesh;
+    public GameObject secondObj;
+    public Material gameObjectMaterial;
+    public GameObject[] playerModel;
+    public Material[] playerMaterials;
     [Header("Moving and Rotation")]
     [Space(8)]
     public float turnSmoothTime = 0.1f;
@@ -55,8 +61,82 @@ public class MovPlayer : MonoBehaviour
     public float kickForce;
     public float radius = 10;
 
+    
 
-   
+    public void PlayerModel()
+    {
+        switch (((int)playerTypes))
+        {
+            case 0:
+                {
+                    secondObj.GetComponent<MeshRenderer>().material = playerMaterials[0];
+
+                    secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
+
+                  
+
+                    gameObjectMesh = playerModel[0].GetComponentInChildren<SkinnedMeshRenderer>();
+                   
+                    break;
+                }
+            case 1:
+                {
+                    gameObjectMaterial = secondObj.GetComponent<Material>();
+                    gameObjectMesh = secondObj.GetComponent<SkinnedMeshRenderer>();
+
+                    gameObjectMesh = playerModel[1].GetComponentInChildren<SkinnedMeshRenderer>();
+                    gameObjectMaterial = playerMaterials[1];
+                    break;
+                }
+            case 2:
+                {
+                    gameObjectMaterial = GetComponent<Material>();
+                    gameObjectMesh = GetComponent<SkinnedMeshRenderer>();
+                    gameObjectMesh = playerModel[2].GetComponentInChildren<SkinnedMeshRenderer>();
+                    gameObjectMaterial = playerMaterials[2];
+
+                    break;
+                }
+            case 3:
+                {
+                    gameObjectMaterial = secondObj.GetComponent<Material>();
+                    gameObjectMesh = secondObj.GetComponent<SkinnedMeshRenderer>();
+                    gameObjectMesh = playerModel[3].GetComponentInChildren<SkinnedMeshRenderer>();
+                    gameObjectMaterial = playerMaterials[3];
+                    break;
+                }
+            case 4:
+                {
+                
+                    gameObjectMaterial = secondObj.GetComponent<Material>();
+                    gameObjectMesh = secondObj.GetComponent<SkinnedMeshRenderer>();
+                    gameObjectMesh = playerModel[4].GetComponentInChildren<SkinnedMeshRenderer>();
+                    gameObjectMaterial = playerMaterials[4];
+
+                    break;
+                }
+            case 5:
+                {
+
+                    gameObjectMaterial = secondObj.GetComponent<Material>();
+                    gameObjectMesh = secondObj.GetComponent<SkinnedMeshRenderer>();
+                    gameObjectMesh = playerModel[5].GetComponentInChildren<SkinnedMeshRenderer>();
+                    gameObjectMaterial = playerMaterials[5];
+                    break;
+                }
+            case 6:
+                {
+
+                    gameObjectMaterial = gameObject.GetComponentInChildren<Material>();
+                    gameObjectMesh = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+                    gameObjectMesh = playerModel[6].GetComponentInChildren<SkinnedMeshRenderer>();
+                    gameObjectMaterial = playerMaterials[6];
+                    break;
+                }
+        }
+    }
+
+    
     private void FixedUpdate()
     {
          //  even checken want je gebruikt de variable baseHealth;
@@ -66,6 +146,9 @@ public class MovPlayer : MonoBehaviour
     }
     private void Update()
     {
+      
+        Debug.Log(((int)playerTypes));
+        PlayerModel();
         Jump();
         playerAnimator.SetBool("Walking", true);
       

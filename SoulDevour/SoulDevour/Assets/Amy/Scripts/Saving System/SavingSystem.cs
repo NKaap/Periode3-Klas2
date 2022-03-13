@@ -30,6 +30,10 @@ public class Data
 
     // boss room 
     public GameObject teacherObj;
+
+
+    // player
+
 }
 
 public class SavingSystem : MonoBehaviour
@@ -41,17 +45,17 @@ public class SavingSystem : MonoBehaviour
 
     private void Start()
     {
-
-        
         string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         Data loadedData = JsonUtility.FromJson<Data>(json);
 
+        string charjson = File.ReadAllText(Application.dataPath + "/characterSaveFile.json");
+        Data loadedCharData = JsonUtility.FromJson<Data>(charjson);
+        
         Random.InitState(loadedData.levelSeed);
-
         player.GetComponent<MovPlayer>().items = loadedData.itemsEquipped;
 
-        player.GetComponent<MovPlayer>().playerTypes = loadedData.type; // -- 
-
+        player.GetComponent<MovPlayer>().playerTypes = loadedCharData.type;
+        
     }
 
     public void LoadButton()

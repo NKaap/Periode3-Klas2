@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using System.IO;
 public class CharacterSelect : MonoBehaviour
 {
     [Header("Character Information")]
@@ -95,11 +95,11 @@ public class CharacterSelect : MonoBehaviour
     {
         // playerObj word de player met scripts etc.
         //TODO saven van welke character je hebt gekozen met een index (int), in de start functie van de volgende scene het loaden - in MovPlayer want daar staat die type in.
-
-        playerObj = activeCharacter;
+        Data gameSavingChar = new Data();
+        gameSavingChar.type = (MovPlayer.PlayerTypes)index;
+        string jsonChar = JsonUtility.ToJson(gameSavingChar);
+        File.WriteAllText(Application.dataPath + "/characterSaveFile.json", jsonChar);
         SceneManager.LoadScene(1); // 1 is de game denk ik ?
-
-
     }
 
     #endregion

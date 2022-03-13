@@ -14,7 +14,7 @@ public class TeacherController : MonoBehaviour
     public float range;
     public GameObject playerTarget;
     public bool teacherMove = true;
-    public GameObject teacherHead;
+   
     public float health = 20;
     public float speed;
     public float timeLeft = 5; // time left for throwing kid
@@ -29,11 +29,11 @@ public class TeacherController : MonoBehaviour
     {
 
         TeacherAnimations();
-        ChildDead();
+        TeacherDead();
 
         speed = 4 * Time.deltaTime;
         teacherMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 6;
-        teacherHead.transform.LookAt(playerTarget.transform);
+      
         gameObject.transform.LookAt(playerTarget.transform);
 
 
@@ -47,8 +47,6 @@ public class TeacherController : MonoBehaviour
         if (timeLeft <= 0)
         {
             timeLeft = 1.5f;
-            // GameObject pencil = Instantiate(pencilForThrow, shootPos.position, Quaternion.identity);
-            //pencil.GetComponent<Rigidbody>().AddForce(transform.forward * force);
 
             Rigidbody kid = Instantiate(kidVariantsForThrow[Random.Range(0,kidVariantsForThrow.Length)], hand.transform.position, hand.transform.rotation) as Rigidbody;
             kid.velocity = hand.transform.TransformDirection(new Vector3(0, 0, throwChildSpeed));
@@ -65,7 +63,7 @@ public class TeacherController : MonoBehaviour
      // if player is dead, twerk
     }
 
-    public void ChildDead()
+    public void TeacherDead()
     {
         if (health <= 0)
         {
@@ -79,6 +77,10 @@ public class TeacherController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.CompareTag("Bullet"))
+        {
+            health -= 1;
+        }
         // if damage, yes.
     }
 }
