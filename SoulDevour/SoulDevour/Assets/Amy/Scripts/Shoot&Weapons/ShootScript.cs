@@ -4,72 +4,126 @@ using UnityEngine;
 
 public class ShootScript : MonoBehaviour
 {
-
-    public float speed = 20;
     
     public MovPlayer player;
 
+    [Header("Shoot Things")]
+
+    public float speed = 20; // shoot speed;
+    public float delay;
+    private float calculatedDelay => ShootItems();
     public GameObject[] bulletTypes;
     public GameObject[] bombTypes;
 
-    private float delay = 0.5f;
+    //private float delayBomb = 2f;
 
-   
 
     // Update is called once per frame
     void Update()
     {
-        delay -= Time.deltaTime;
+        
+        //delayBomb -= Time.deltaTime;
         // het enige wat nodig is is dat je forward schiet, of met je pijltjes zoals Binding of Isaac
-        if (Input.GetButtonDown("Fire1") && delay < 0)
+        if (Input.GetButtonDown("Fire1") && calculatedDelay < 0)
         {
-            delay = 0.5f;
+            ShootItems();
             Rigidbody instantiatedProjectile = Instantiate(GetBulletModel().GetComponent<Rigidbody>(), transform.position, transform.rotation) as Rigidbody;
             instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
             instantiatedProjectile.transform.rotation = Random.rotation;
+
+            
           
         }
-        if (Input.GetButtonDown("E"))
-        {
-            Rigidbody instantiatedBomb = Instantiate(GetBombModel().GetComponent<Rigidbody>(), transform.position, transform.rotation) as Rigidbody;
-            instantiatedBomb.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
-            instantiatedBomb.transform.rotation = Random.rotation;
-        }
+        //if (Input.GetButtonDown("E")) // inventory, niet op dezelfde manier als de bullet 
+        //{
+        //    //delayBomb = 2f; // delay gwn niet, en dan in de inventory bijv 3 bommen zodat je zelf kiest
+        //    Rigidbody instantiatedBomb = Instantiate(GetBombModel().GetComponent<Rigidbody>(), transform.position, transform.rotation) as Rigidbody;
+        //    instantiatedBomb.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
+        //    instantiatedBomb.transform.rotation = Random.rotation;
+        //}
 
     }
 
-    public GameObject GetBombModel()
-    {
-        GameObject outputBomb = bombTypes[0];
+    #region Item Stuff
 
-        foreach (ItemBase item in player.items)
+    public float ShootItems()
+    {
+        float output = delay;
+        output -= Time.deltaTime;
+
+        foreach (ItemBase.ItemType item in player.items)
         {
-            switch (item.itemtype)
+            switch (item)
             {
-                case ItemBase.ItemType.PeanutButter:
+                case ItemBase.ItemType.BadGrade:
                     {
-                        outputBomb = bombTypes[1];  // let op dat nr 1 ook echt peanut butter is!
-                        //bulletTypes[1].transform.rotation = Random.rotation;
+
+                        output -= 0.2f;
+                        break;
+                    }
+                case ItemBase.ItemType.Plant:
+                    {
+                        output -= 0.2f;
+
                         break;
                     }
 
             }
+          
         }
-        return outputBomb;
+        return output;
+
     }
+
+    #region GetModels
+
+    //public GameObject GetBombModel()
+    //{
+    //    GameObject outputBomb = bombTypes[0];
+
+    //    foreach (ItemBase.ItemType item in player.items)
+    //    {
+    //        switch (item)
+    //        {
+    //            case ItemBase.ItemType.PeanutButter:
+    //                {
+    //                    outputBomb = bombTypes[1];  // let op dat nr 1 ook echt peanut butter is!
+    //                    //bulletTypes[1].transform.rotation = Random.rotation;
+    //                    break;
+    //                }
+    //            case ItemBase.ItemType.Lego:
+    //                {
+    //                    outputBomb = bombTypes[2];
+    //                    break;
+    //                }
+
+    //        }
+    //    }
+    //    return outputBomb;
+    //}
 
     public GameObject GetBulletModel()
     {
         GameObject output = bulletTypes[0];
        
 
-        foreach (ItemBase item in player.items)
+        foreach (ItemBase.ItemType item in player.items)
         {
-            switch (item.itemtype)
+            switch (item)
             {           
                 case ItemBase.ItemType.Fireballs:
                     {
-                        output = bulletTypes[1];
+                        output = bulletTypes[1]; // ball with fireee
+                        break;
+                    }
+                case ItemBase.ItemType.Glasses:
+                    {
+                       // output = bulletTypes[2]; // deze prefab heeft 2 bullets.
+                        break;
+                    }
+                case ItemBase.ItemType.Poop:
+                    {
+                        //output = bulletTypes[3]; // poop model.
                         break;
                     }
             }
@@ -78,4 +132,6 @@ public class ShootScript : MonoBehaviour
         return output;
     }
 
+    #endregion
+    #endregion
 }
