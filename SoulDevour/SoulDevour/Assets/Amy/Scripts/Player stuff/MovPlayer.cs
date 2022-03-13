@@ -69,68 +69,56 @@ public class MovPlayer : MonoBehaviour
         {
             case 0:
                 {
-                    secondObj.GetComponent<MeshRenderer>().material = playerMaterials[0];
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[0];
+                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
+                    // gameObjectMesh = playerModel[0].GetComponentInChildren<SkinnedMeshRenderer>();
 
-                    secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
-
-                  
-
-                    gameObjectMesh = playerModel[0].GetComponentInChildren<SkinnedMeshRenderer>();
-                   
                     break;
                 }
             case 1:
                 {
-                    gameObjectMaterial = secondObj.GetComponent<Material>();
-                    gameObjectMesh = secondObj.GetComponent<SkinnedMeshRenderer>();
-
-                    gameObjectMesh = playerModel[1].GetComponentInChildren<SkinnedMeshRenderer>();
-                    gameObjectMaterial = playerMaterials[1];
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[1];
+                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
+                    // gameObjectMesh = playerModel[1].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
             case 2:
                 {
-                    gameObjectMaterial = GetComponent<Material>();
-                    gameObjectMesh = GetComponent<SkinnedMeshRenderer>();
-                    gameObjectMesh = playerModel[2].GetComponentInChildren<SkinnedMeshRenderer>();
-                    gameObjectMaterial = playerMaterials[2];
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[2];
+                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
+                    // gameObjectMesh = playerModel[2].GetComponentInChildren<SkinnedMeshRenderer>();
 
                     break;
                 }
             case 3:
                 {
-                    gameObjectMaterial = secondObj.GetComponent<Material>();
-                    gameObjectMesh = secondObj.GetComponent<SkinnedMeshRenderer>();
-                    gameObjectMesh = playerModel[3].GetComponentInChildren<SkinnedMeshRenderer>();
-                    gameObjectMaterial = playerMaterials[3];
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[3];
+                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
+                    //gameObjectMesh = playerModel[3].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
             case 4:
                 {
-                
-                    gameObjectMaterial = secondObj.GetComponent<Material>();
-                    gameObjectMesh = secondObj.GetComponent<SkinnedMeshRenderer>();
-                    gameObjectMesh = playerModel[4].GetComponentInChildren<SkinnedMeshRenderer>();
-                    gameObjectMaterial = playerMaterials[4];
 
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[4];
+                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
+                    //gameObjectMesh = playerModel[4].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
             case 5:
                 {
 
-                    gameObjectMaterial = secondObj.GetComponent<Material>();
-                    gameObjectMesh = secondObj.GetComponent<SkinnedMeshRenderer>();
-                    gameObjectMesh = playerModel[5].GetComponentInChildren<SkinnedMeshRenderer>();
-                    gameObjectMaterial = playerMaterials[5];
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[5];
+                    //secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
+                    //gameObjectMesh = playerModel[5].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
             case 6:
                 {
 
-                    gameObjectMaterial = gameObject.GetComponentInChildren<Material>();
-                    gameObjectMesh = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-                    gameObjectMesh = playerModel[6].GetComponentInChildren<SkinnedMeshRenderer>();
-                    gameObjectMaterial = playerMaterials[6];
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[6];
+                    // secondObj.GetComponent<SkinnedMeshRenderer>().skinnedMotionVectors = gameObjectMesh;
+                    //gameObjectMesh = playerModel[6].GetComponentInChildren<SkinnedMeshRenderer>();
                     break;
                 }
         }
