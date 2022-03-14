@@ -19,7 +19,7 @@ public class TeacherController : MonoBehaviour
     public float speed;
     public float timeLeft = 5; // time left for throwing kid
     public Transform hand;
-    public float throwChildSpeed;
+    public float throwChildSpeed = 10;
     public Animator teacherAnimator;
 
     public GameObject[] kidVariantsForThrow;

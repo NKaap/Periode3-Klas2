@@ -64,64 +64,64 @@ public class MovPlayer : MonoBehaviour
 
     
 
-    public void PlayerModel()
-    {
-        switch (((int)playerTypes))
-        {
-            case 0:
-                {
-                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[0];
-                    break;
-                }
-            case 1:
-                {
-                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[1];
-                    break;
-                }
-            case 2:
-                {
-                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[2];
-                    break;
-                }
-            case 3:
-                {
-                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[3];                 
-                    break;
-                }
-            case 4:
-                {
+    //public void PlayerModel()
+    //{
+    //    switch (((int)playerTypes))
+    //    {
+    //        case 0:
+    //            {
+    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[0];
+    //                break;
+    //            }
+    //        case 1:
+    //            {
+    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[1];
+    //                break;
+    //            }
+    //        case 2:
+    //            {
+    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[2];
+    //                break;
+    //            }
+    //        case 3:
+    //            {
+    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[3];                 
+    //                break;
+    //            }
+    //        case 4:
+    //            {
 
-                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[4];
-                    break;
-                }
-            case 5:
-                {
-                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[5];
-                    break;
-                }
-            case 6:
-                {
-                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[6];
-                    break;
-                }
-        }
-    }
+    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[4];
+    //                break;
+    //            }
+    //        case 5:
+    //            {
+    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[5];
+    //                break;
+    //            }
+    //        case 6:
+    //            {
+    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[6];
+    //                break;
+    //            }
+    //    }
+    //}
 
     
     private void FixedUpdate()
     {
          //  even checken want je gebruikt de variable baseHealth;
-        Move(calculatedSpeed);
-       
-        KickChildren();
+        
     }
     private void Update()
     {
-      
-        Debug.Log(((int)playerTypes));
-        PlayerModel();
+        Move(calculatedSpeed);
+
+        KickChildren();
+
+        // PlayerModel();
         Jump();
-        playerAnimator.SetBool("Walking", true);
+        //playerAnimator.SetBool("Walking", true);
 
         if(baseHealth <= 0)
         {
@@ -149,6 +149,7 @@ public class MovPlayer : MonoBehaviour
             transform.position += moveDir.normalized * speed * Time.deltaTime;
             playerisMoving = true;
             StartCoroutine(LerpRotation(Quaternion.Euler(1f, angle, 1f), 5));
+
             playerAnimator.SetBool("Rest", false);
             playerAnimator.SetBool("Walking", true);
         }
@@ -242,7 +243,7 @@ public class MovPlayer : MonoBehaviour
             {
                 case ItemBase.ItemType.Feather:
                     {
-                        output += 10f;
+                        output += 5f;
                         break;
                     }
                 case ItemBase.ItemType.Socks:
