@@ -62,66 +62,65 @@ public class MovPlayer : MonoBehaviour
     public float kickForce;
     public float radius = 10;
 
-    
 
-    //public void PlayerModel()
-    //{
-    //    switch (((int)playerTypes))
-    //    {
-    //        case 0:
-    //            {
-    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[0];
-    //                break;
-    //            }
-    //        case 1:
-    //            {
-    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[1];
-    //                break;
-    //            }
-    //        case 2:
-    //            {
-    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[2];
-    //                break;
-    //            }
-    //        case 3:
-    //            {
-    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[3];                 
-    //                break;
-    //            }
-    //        case 4:
-    //            {
 
-    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[4];
-    //                break;
-    //            }
-    //        case 5:
-    //            {
-    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[5];
-    //                break;
-    //            }
-    //        case 6:
-    //            {
-    //                secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[6];
-    //                break;
-    //            }
-    //    }
-    //}
+    public void PlayerModel()
+    {
+        switch (((int)playerTypes))
+        {
+            case 0:
+                {
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[0];
+                    break;
+                }
+            case 1:
+                {
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[1];
+                    break;
+                }
+            case 2:
+                {
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[2];
+                    break;
+                }
+            case 3:
+                {
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[3];
+                    break;
+                }
+            case 4:
+                {
 
-    
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[4];
+                    break;
+                }
+            case 5:
+                {
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[5];
+                    break;
+                }
+            case 6:
+                {
+                    secondObj.GetComponent<SkinnedMeshRenderer>().material = playerMaterials[6];
+                    break;
+                }
+        }
+    }
+
+
     private void FixedUpdate()
     {
-         //  even checken want je gebruikt de variable baseHealth;
+        //  even checken want je gebruikt de variable baseHealth;
+        Move(calculatedSpeed);
         
     }
     private void Update()
     {
-        Move(calculatedSpeed);
 
         KickChildren();
-
-        // PlayerModel();
+        PlayerModel();
         Jump();
-        //playerAnimator.SetBool("Walking", true);
+        
 
         if(baseHealth <= 0)
         {
@@ -150,17 +149,19 @@ public class MovPlayer : MonoBehaviour
             playerisMoving = true;
             StartCoroutine(LerpRotation(Quaternion.Euler(1f, angle, 1f), 5));
 
-            playerAnimator.SetBool("Rest", false);
+            playerAnimator.SetBool("Idle", false);
             playerAnimator.SetBool("Walking", true);
         }
-        else
+
+        if(direction.magnitude <= 0.1f)
         {
-            playerisMoving = false;
-        
             playerAnimator.SetBool("Walking", false);
-            playerAnimator.SetBool("Rest", true);
+            playerAnimator.SetBool("Idle", true);
+           
         }
-        
+     
+
+
         moveVector = new Vector3(direction.x, verticalVelosity, direction.z);
 
        
@@ -268,18 +269,28 @@ public class MovPlayer : MonoBehaviour
         {
             if (collider.transform.CompareTag("Child") && Input.GetButtonDown("Fire2"))
             {
+                playerAnimator.SetBool("Walking", false);
+                playerAnimator.SetBool("Idle", false);
                 playerAnimator.SetBool("Kick", true);
+               // playerAnimator.SetBool("UpperCut", true);
+                StartCoroutine(WaitForAnim());
                 collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
                 Debug.Log("Yass");
+                
+                
             }
-            else
-            {
-                playerAnimator.SetBool("Kick", false);
-            }
+          
         }
 
     }
 
+    IEnumerator WaitForAnim()
+    {
+        yield return new WaitForSeconds(1f);
+        playerAnimator.SetBool("Kick", false);
+        playerAnimator.SetBool("UpperCut", false);
+        
+    }
     #endregion
 
     #region Oncollision OnDawGizmos
