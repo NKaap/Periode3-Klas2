@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TeacherController : MonoBehaviour
 {
 
@@ -15,28 +15,23 @@ public class TeacherController : MonoBehaviour
     public GameObject playerTarget;
     public bool teacherMove = true;
    
-    public float health = 20;
+    public float health = 10;
     public float speed;
     public float timeLeft = 5; // time left for throwing kid
     public Transform hand;
     public float throwChildSpeed = 10;
     public Animator teacherAnimator;
 
-    public GameObject[] kidVariantsForThrow;
+    public GameObject kidVariantsForThrow;
     // Update is called once per frame
 
     void Update()
     {
 
-        TeacherAnimations();
         TeacherDead();
-
         speed = 4 * Time.deltaTime;
-        teacherMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 6;
-      
+        teacherMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 6;    
         gameObject.transform.LookAt(playerTarget.transform);
-
-
 
         if (teacherMove)
         {
@@ -44,24 +39,16 @@ public class TeacherController : MonoBehaviour
         }
 
         timeLeft -= Time.deltaTime;
+
         if (timeLeft <= 0)
         {
-            timeLeft = 1.5f;
-
-            GameObject kid = Instantiate(kidVariantsForThrow[Random.Range(0,kidVariantsForThrow.Length)], hand.transform.position, hand.transform.rotation);
+            GameObject kid = Instantiate(kidVariantsForThrow, hand.transform.position, hand.transform.rotation);
             kid.GetComponent<Rigidbody>().velocity = hand.transform.TransformDirection(new Vector3(0, 0, throwChildSpeed));
+
+            timeLeft = 1.5f;
         }
     }
 
-    public void TeacherAnimations()
-    {
-        // swing in scene als player in de kamer komt
-     // if moving, walk
-     // if throwing, throw
-     // if dead, dead
-     // als radio played, pain
-     // if player is dead, twerk
-    }
 
     public void TeacherDead()
     {
@@ -69,9 +56,7 @@ public class TeacherController : MonoBehaviour
         {
            // Instantiate(item, transform.position, new Quaternion(0, 0, 0, 0));  instantiate een item!
             Destroy(gameObject);
-            //teacherAnimator.SetBool(Dead, true);
-
-
+            SceneManager.LoadScene(4);            //teacherAnimator.SetBool(Dead, true);
         }
     }
 
