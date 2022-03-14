@@ -19,7 +19,7 @@ public class MenuScript : MonoBehaviour
     //Scene's openen
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Amy's Lobby Test Scene");
     }
     public void QuitGame()
     {

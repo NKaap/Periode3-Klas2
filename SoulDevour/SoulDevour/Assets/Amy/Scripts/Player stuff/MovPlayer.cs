@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class MovPlayer : MonoBehaviour
@@ -124,7 +125,8 @@ public class MovPlayer : MonoBehaviour
 
         if(baseHealth <= 0)
         {
-            Destroy(gameObject);
+            
+            SceneManager.LoadScene("GameOver");
         }
       
     }
