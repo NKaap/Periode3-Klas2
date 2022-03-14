@@ -23,12 +23,13 @@ public class ChildController : MonoBehaviour
     public bool isMoving;
     public Rigidbody rb;
     // throw pencil
-    
-    //[Header("Shooting Variables")]
-    //[Space(8)]
-    //public GameObject pencilForThrow;
-    //public Transform shootPos;
-    //public float pencilSpeed;
+
+    [Header("Shooting Variables")]
+    [Space(8)]
+    public GameObject pencilForThrow;
+    public Transform shootPos;
+    public float pencilSpeed;
+    public float force;
 
 
     public float dist;
@@ -42,7 +43,7 @@ public class ChildController : MonoBehaviour
        
         speed = 4 * Time.deltaTime;
         childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 3;
-      //  childHead.transform.LookAt(playerTarget.transform);
+    
         gameObject.transform.LookAt(playerTarget.transform);
 
         if (childMove)
@@ -54,17 +55,17 @@ public class ChildController : MonoBehaviour
         //if (timeLeft <= 0)
         //{
         //    timeLeft = 1.5f;
-        //   // GameObject pencil = Instantiate(pencilForThrow, shootPos.position, Quaternion.identity);
-        //    //pencil.GetComponent<Rigidbody>().AddForce(transform.forward * force);
+        //    GameObject pencil = Instantiate(pencilForThrow, shootPos.position, Quaternion.identity);
+        //    pencil.GetComponent<Rigidbody>().AddForce(transform.forward * force);
 
-        //    //Rigidbody pencilRB = Instantiate(pencilForThrow.GetComponent<Rigidbody>(), shootPos.transform.position, shootPos.transform.rotation) as Rigidbody;
-        //    //pencilRB.velocity = shootPos.transform.TransformDirection(new Vector3(0, 0, pencilSpeed));
+        //    Rigidbody pencilRB = Instantiate(pencilForThrow.GetComponent<Rigidbody>(), shootPos.transform.position, shootPos.transform.rotation) as Rigidbody;
+        //    pencilRB.velocity = shootPos.transform.TransformDirection(new Vector3(0, 0, pencilSpeed));
         //}
 
 
         if (health <= 0)
         {
-            Instantiate(coinPrefab, transform.position, new Quaternion(0, 0, 0, 0));
+            //Instantiate(coinPrefab, transform.position, new Quaternion(0, 0, 0, 0));
             Destroy(gameObject);
             // set ragdoll active
         }
@@ -86,16 +87,7 @@ public class ChildController : MonoBehaviour
         }
     }
 
-    //public void SubtractHealth(float amount)
-    //{
-    //    health -= amount;
-    //    if(health <= 0)
-    //    {
-    //        Instantiate(coinPrefab, transform.position, new Quaternion(0, 0, 0, 0));
-    //        Destroy(gameObject); 
-    //        // set ragdoll active
-    //    }
-    //}
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -103,5 +95,7 @@ public class ChildController : MonoBehaviour
         {
             health -= 1;
         }
+
+        
     }
 }

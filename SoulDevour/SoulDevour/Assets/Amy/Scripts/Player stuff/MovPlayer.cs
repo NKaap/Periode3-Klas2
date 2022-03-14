@@ -315,6 +315,11 @@ public class MovPlayer : MonoBehaviour
         {
             baseHealth -= 2;
         }
+
+        if (collision.transform.CompareTag("Child"))
+        {
+            baseHealth -= 0.5f;
+        }
     }
 
     private void OnDrawGizmos()
