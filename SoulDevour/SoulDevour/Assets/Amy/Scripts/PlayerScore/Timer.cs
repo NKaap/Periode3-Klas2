@@ -26,7 +26,8 @@ public class Timer : MonoBehaviour
 			countdown = 80;
 			
 			Debug.Log("Reached Zero");
-			
+
+			Debug.Log("test");
 			//if timer 0 do this
 		}
 	}
