@@ -11753,7 +11753,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: -895.4
-  m_Text: CONTINEU
+  m_Text: CONTINUE
 --- !u!222 &903138181
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22823,6 +22823,7 @@ GameObject:
   - component: {fileID: 1808568593}
   - component: {fileID: 1808568592}
   - component: {fileID: 1808568591}
+  - component: {fileID: 1808568594}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -22878,6 +22879,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1808568594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808568590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4113ca50b070b5b4cab5c137f9b587a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1808728914
 GameObject:
   m_ObjectHideFlags: 0
