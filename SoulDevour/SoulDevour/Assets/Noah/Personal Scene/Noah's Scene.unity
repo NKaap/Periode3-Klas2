@@ -2947,7 +2947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9075173145894287311, guid: 980db89a9cf8f924691e81f0650fe3d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9075173145894287311, guid: 980db89a9cf8f924691e81f0650fe3d4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3432,6 +3432,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 722382425148671762, guid: aca2a966534368c42979ac393a3afdba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.18
+      objectReference: {fileID: 0}
     - target: {fileID: 976387767137213669, guid: aca2a966534368c42979ac393a3afdba, type: 3}
       propertyPath: m_Name
       value: Kamer - 2
