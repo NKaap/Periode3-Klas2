@@ -1281,7 +1281,7 @@ MonoBehaviour:
   slap: {fileID: 8300000, guid: 502a30edb86a1024cadb4c11bb2a8b51, type: 3}
   clip: {fileID: 8300000, guid: cb977eba2e8716243a2eaceb8cc58d33, type: 3}
   walking: {fileID: 4478668869691885061}
-  kicking: {fileID: 0}
+  kicking: {fileID: 6189207360644460259}
 --- !u!82 &4779442147479079861
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3153,6 +3153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2afaa4b659bf6b84e8aece345ded1ce5, type: 3}
+--- !u!198 &6189207360644460259 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2399501863373640945, guid: 2afaa4b659bf6b84e8aece345ded1ce5, type: 3}
+  m_PrefabInstance: {fileID: 8406185815892572690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7153857094599397345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1724700990620661235, guid: 2afaa4b659bf6b84e8aece345ded1ce5, type: 3}

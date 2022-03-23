@@ -1290,8 +1290,8 @@ MonoBehaviour:
   cry: {fileID: 8300000, guid: dcb640ef88ebe4349b1387d56e4a4644, type: 3}
   slap: {fileID: 8300000, guid: 502a30edb86a1024cadb4c11bb2a8b51, type: 3}
   clip: {fileID: 8300000, guid: cb977eba2e8716243a2eaceb8cc58d33, type: 3}
-  walking: {fileID: 21858633163624477, guid: 2c7d1b57831cb754bb259fda3c8299c3, type: 3}
-  kicking: {fileID: 2399501863373640945, guid: 2afaa4b659bf6b84e8aece345ded1ce5, type: 3}
+  walking: {fileID: 4731433794023136791}
+  kicking: {fileID: 65284826175218152}
 --- !u!82 &6857070719007991023
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3139,6 +3139,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1724700990620661235, guid: 2afaa4b659bf6b84e8aece345ded1ce5, type: 3}
   m_PrefabInstance: {fileID: 2426118652029023513}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &65284826175218152 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2399501863373640945, guid: 2afaa4b659bf6b84e8aece345ded1ce5, type: 3}
+  m_PrefabInstance: {fileID: 2426118652029023513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4748137301420887562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3207,5 +3212,10 @@ PrefabInstance:
 --- !u!4 &4731433794023136784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 21858633163624474, guid: 2c7d1b57831cb754bb259fda3c8299c3, type: 3}
+  m_PrefabInstance: {fileID: 4748137301420887562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4731433794023136791 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 21858633163624477, guid: 2c7d1b57831cb754bb259fda3c8299c3, type: 3}
   m_PrefabInstance: {fileID: 4748137301420887562}
   m_PrefabAsset: {fileID: 0}

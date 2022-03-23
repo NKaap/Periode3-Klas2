@@ -1232,8 +1232,8 @@ MonoBehaviour:
   cry: {fileID: 8300000, guid: dcb640ef88ebe4349b1387d56e4a4644, type: 3}
   slap: {fileID: 8300000, guid: 502a30edb86a1024cadb4c11bb2a8b51, type: 3}
   clip: {fileID: 8300000, guid: cb977eba2e8716243a2eaceb8cc58d33, type: 3}
-  walking: {fileID: 0}
-  kicking: {fileID: 0}
+  walking: {fileID: 6276471293954730205}
+  kicking: {fileID: 2044173804077871141}
 --- !u!1 &3030267670016274101
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,6 +3083,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1724700990620661235, guid: 2afaa4b659bf6b84e8aece345ded1ce5, type: 3}
   m_PrefabInstance: {fileID: 4400829399855686868}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &2044173804077871141 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2399501863373640945, guid: 2afaa4b659bf6b84e8aece345ded1ce5, type: 3}
+  m_PrefabInstance: {fileID: 4400829399855686868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6293544275911506112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3148,6 +3153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c7d1b57831cb754bb259fda3c8299c3, type: 3}
+--- !u!198 &6276471293954730205 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 21858633163624477, guid: 2c7d1b57831cb754bb259fda3c8299c3, type: 3}
+  m_PrefabInstance: {fileID: 6293544275911506112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6276471293954730202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 21858633163624474, guid: 2c7d1b57831cb754bb259fda3c8299c3, type: 3}
