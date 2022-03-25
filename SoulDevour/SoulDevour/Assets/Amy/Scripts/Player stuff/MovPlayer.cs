@@ -62,7 +62,11 @@ public class MovPlayer : MonoBehaviour
     public float kickForce;
     public float radius = 10;
 
-
+    [Header("Money UI")]
+    [Space(8)]
+    public Text moneyUI;
+    public int moneyPlacement;
+    public Text healthUI;
 
     public void PlayerModel()
     {
@@ -114,15 +118,30 @@ public class MovPlayer : MonoBehaviour
         Move(calculatedSpeed);
         
     }
+
+    
+    
     private void Update()
     {
 
         KickChildren();
         PlayerModel();
         Jump();
-        
 
-        if(baseHealth <= 0)
+        moneyUI.text = (moneyPlacement + "Soul");
+        if (moneyPlacement == 1)
+        {
+            moneyUI.text = (moneyPlacement + ("Soul"));
+        }
+        else
+        {
+            moneyUI.text = (moneyPlacement + ("Souls"));
+        }
+
+        healthUI.text = (baseHealth + "Life Energy");
+
+
+        if (baseHealth <= 0)
         {
             
             SceneManager.LoadScene("GameOver");
