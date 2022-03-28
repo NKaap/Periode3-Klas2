@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
+
 public class CharacterSelect : MonoBehaviour
 {
     [Header("Character Information")]

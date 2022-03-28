@@ -37,7 +37,11 @@ public class SavingSystem : MonoBehaviour
     {
         string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         Data loadedData = JsonUtility.FromJson<Data>(json);
+
+
         string charjson = File.ReadAllText(Application.dataPath + "/characterSaveFile.json");
+
+
         Data loadedCharData = JsonUtility.FromJson<Data>(charjson);
         Random.InitState(loadedData.levelSeed);
         player.GetComponent<MovPlayer>().items = loadedData.itemsEquipped;

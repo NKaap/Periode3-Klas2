@@ -31,7 +31,7 @@ public class MovPlayer : MonoBehaviour
     public SkinnedMeshRenderer gameObjectMesh;
     public GameObject secondObj;
     public Material gameObjectMaterial;
-    public GameObject[] playerModel;
+   
     public Material[] playerMaterials;
     [Header("Moving and Rotation")]
     [Space(8)]
@@ -124,6 +124,8 @@ public class MovPlayer : MonoBehaviour
         {
             Move(calculatedSpeed);
         }
+
+        PlayerModel();
     }
 
     
@@ -132,7 +134,7 @@ public class MovPlayer : MonoBehaviour
     {
 
         KickChildren();
-        PlayerModel();
+       
         Jump();
 
         moneyUI.text = (moneyPlacement + "Soul");
@@ -286,7 +288,7 @@ public class MovPlayer : MonoBehaviour
 
     #endregion
 
-    #region KickChild
+    #region Kick and Slap Child
 
     public void KickChildren()
     {
@@ -296,8 +298,27 @@ public class MovPlayer : MonoBehaviour
 
             playerAnimator.SetTrigger("Kick");
         }
-      
 
+        if (Input.GetButtonDown("SlapChild"))
+        {
+            playerAnimator.SetBool("Walking", false);
+
+            playerAnimator.SetTrigger("Slap");
+        }
+    }
+
+    public void MidSlap()
+    {
+        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), radius);
+        foreach (Collider collider in colliders)
+        {
+            // playerAnimator.SetBool("UpperCut", true);
+            cantMove = true;
+            collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+            collider.GetComponent<ChildController>().health -= 10;
+            Debug.Log("Yass");
+
+        }
     }
 
     public void KickForceKids()
@@ -316,9 +337,12 @@ public class MovPlayer : MonoBehaviour
     public void EndKick()
     {
         cantMove = false;
-
     }
 
+    public void StopSlap()
+    {
+        cantMove = false;
+    }
 
 
     #endregion
