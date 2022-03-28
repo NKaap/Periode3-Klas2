@@ -35,33 +35,30 @@ public class ChildController : MonoBehaviour
     public float dist;
     // timer
 
-    public float timeLeft = 1.5f;
+
+    public float radius = 10f;
+   // public float timeLeft = 1.5f;
 
     void Update()
     {
-        ChildAnimations();
-       
-        speed = 4 * Time.deltaTime;
-        childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 3;
-    
-        gameObject.transform.LookAt(playerTarget.transform);
-
-        if (childMove)
+        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), radius);
+        foreach (Collider collider in colliders)
         {
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
+            if (collider.transform.CompareTag("Player"))
+            {
+                ChildAnimations();
+
+                speed = 4 * Time.deltaTime;
+                childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 3;
+
+                gameObject.transform.LookAt(playerTarget.transform);
+
+                if (childMove)
+                {
+                    gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
+                }
+            }
         }
-
-        //timeLeft -= Time.deltaTime;
-        //if (timeLeft <= 0)
-        //{
-        //    timeLeft = 1.5f;
-        //    GameObject pencil = Instantiate(pencilForThrow, shootPos.position, Quaternion.identity);
-        //    pencil.GetComponent<Rigidbody>().AddForce(transform.forward * force);
-
-        //    Rigidbody pencilRB = Instantiate(pencilForThrow.GetComponent<Rigidbody>(), shootPos.transform.position, shootPos.transform.rotation) as Rigidbody;
-        //    pencilRB.velocity = shootPos.transform.TransformDirection(new Vector3(0, 0, pencilSpeed));
-        //}
-
 
         if (health <= 0)
         {
@@ -87,8 +84,6 @@ public class ChildController : MonoBehaviour
         }
     }
 
-    
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Bullet") )
@@ -99,3 +94,15 @@ public class ChildController : MonoBehaviour
         
     }
 }
+
+
+//timeLeft -= Time.deltaTime;
+//if (timeLeft <= 0)
+//{
+//    timeLeft = 1.5f;
+//    GameObject pencil = Instantiate(pencilForThrow, shootPos.position, Quaternion.identity);
+//    pencil.GetComponent<Rigidbody>().AddForce(transform.forward * force);
+
+//    Rigidbody pencilRB = Instantiate(pencilForThrow.GetComponent<Rigidbody>(), shootPos.transform.position, shootPos.transform.rotation) as Rigidbody;
+//    pencilRB.velocity = shootPos.transform.TransformDirection(new Vector3(0, 0, pencilSpeed));
+//}

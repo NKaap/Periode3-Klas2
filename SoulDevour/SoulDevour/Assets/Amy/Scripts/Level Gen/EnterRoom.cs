@@ -18,6 +18,12 @@ public class EnterRoom : MonoBehaviour
        
     }
 
+
+    public void RandomChildSpawn()
+    {
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Player") && !first)
@@ -42,8 +48,6 @@ public class EnterRoom : MonoBehaviour
             }
         }
        
-      
-
     }
 
     IEnumerator Enemies()

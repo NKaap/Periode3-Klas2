@@ -68,6 +68,10 @@ public class MovPlayer : MonoBehaviour
     public int moneyPlacement;
     public Text healthUI;
 
+
+
+    public bool cantMove;
+
     public void PlayerModel()
     {
         switch (((int)playerTypes))
@@ -115,8 +119,11 @@ public class MovPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         //  even checken want je gebruikt de variable baseHealth;
-        Move(calculatedSpeed);
-        
+       
+        if (!cantMove)
+        {
+            Move(calculatedSpeed);
+        }
     }
 
     
@@ -201,7 +208,7 @@ public class MovPlayer : MonoBehaviour
         float time = 0;
         time += Time.deltaTime;
         transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, time * duration);
-        yield return null;
+        yield return endRotation;
         transform.rotation = endRotation;
         
     }
@@ -283,33 +290,37 @@ public class MovPlayer : MonoBehaviour
 
     public void KickChildren()
     {
-        Collider[] colliders = Physics.OverlapSphere(new Vector3 (transform.position.x, transform.position.y, transform.position.z) , radius);
+        if (Input.GetButtonDown("Fire2"))
+        {
+            playerAnimator.SetBool("Walking", false);
+
+            playerAnimator.SetTrigger("Kick");
+        }
+      
+
+    }
+
+    public void KickForceKids()
+    {
+        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), radius);
         foreach (Collider collider in colliders)
         {
-            if (collider.transform.CompareTag("Child") && Input.GetButtonDown("Fire2"))
-            {
-                playerAnimator.SetBool("Walking", false);
-                playerAnimator.SetBool("Idle", false);
-                playerAnimator.SetBool("Kick", true);
-               // playerAnimator.SetBool("UpperCut", true);
-                StartCoroutine(WaitForAnim());
-                collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
-                Debug.Log("Yass");
-                
-                
-            }
-          
+            // playerAnimator.SetBool("UpperCut", true);
+            cantMove = true;
+            collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+            Debug.Log("Yass");
+
         }
-
     }
 
-    IEnumerator WaitForAnim()
+    public void EndKick()
     {
-        yield return new WaitForSeconds(1f);
-        playerAnimator.SetBool("Kick", false);
-        playerAnimator.SetBool("UpperCut", false);
-        
+        cantMove = false;
+
     }
+
+
+
     #endregion
 
     #region Oncollision OnDawGizmos
