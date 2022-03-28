@@ -17,7 +17,7 @@ public class MenuScript : MonoBehaviour
     }
 
     //Scene's openen
-    public void StartGame()
+    public void LoadLevel()
     {
         SceneManager.LoadScene("Amy's Lobby Test Scene");
     }
@@ -55,5 +55,30 @@ public class MenuScript : MonoBehaviour
     {
         print("eee");
         audioMixer.SetFloat("Volume", volume);
+    }
+    
+    
+    public Animator transition;
+
+    public float transitionTime = 1f;
+
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(levelIndex);
+    }
+
+    public void ClickButoon()
+    {
+        
+        LoadNextLevel();
+    }
+    public void LoadNextLevel()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 }
