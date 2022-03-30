@@ -4,59 +4,60 @@ using UnityEngine;
 
 public class BombBase : MonoBehaviour
 {
-    // BASE BOMB == NIKS - met een curve 
-    public Transform bomb;
+    //    // BASE BOMB == NIKS - met een curve 
+    //    public Transform bomb;
 
-    public float baseDamage;
-    public float calculatedDamage => CalculateBombDamage();
-   
-    public MovPlayer source;
+    //    public float baseDamage;
+    //    public float calculatedDamage => CalculateBombDamage();
 
-    public GameObject peanutEffect;
-    public GameObject legoBlock;
+    //    public MovPlayer source;
 
-  
-    private void OnCollisionEnter(Collision collision)
-    {
-        //if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))
-        //{
-        //    huts.SubtractHealth(CalculateBombDamage());
-        //    DoBombEffect();
-        //    Destroy(gameObject);
-        //}
-        //if (collision.transform.name == "Floor")
-        //{
-        //    DoBombEffect();
-        //    Destroy(gameObject);
-        //}
-    }
+    //    public GameObject peanutEffect;
+    //    public GameObject legoBlock;
 
 
-    public float CalculateBombDamage()
-    {
-        float output = baseDamage;
-        // edit output
-        return output;
-    }
+    //    private void OnCollisionEnter(Collision collision)
+    //    {
+    //        //if (collision.gameObject.TryGetComponent<ChildBase>(out ChildBase huts))
+    //        //{
+    //        //    huts.SubtractHealth(CalculateBombDamage());
+    //        //    DoBombEffect();
+    //        //    Destroy(gameObject);
+    //        //}
+    //        //if (collision.transform.name == "Floor")
+    //        //{
+    //        //    DoBombEffect();
+    //        //    Destroy(gameObject);
+    //        //}
+    //    }
 
-    public void DoBombEffect()
-    {
-        foreach (ItemBase.ItemType item in source.items)
-        {
-            switch (item)
-            {
-                case ItemBase.ItemType.PeanutButter:
-                    {
-                        Instantiate(peanutEffect, transform.position, new Quaternion(0, 0, 0, 0));
-                        break;
-                    }
-                case ItemBase.ItemType.Lego:
-                    {
-                        Instantiate(legoBlock, transform.position, new Quaternion(0, 0, 0, 0));
-                        break;
-                    }
-                   
-            }
-        }
-    }
+
+    //    public float CalculateBombDamage()
+    //    {
+    //        float output = baseDamage;
+    //        // edit output
+    //        return output;
+    //    }
+
+    //    public void DoBombEffect()
+    //    {
+    //        foreach (ItemBase.ItemType item in source.items)
+    //        {
+    //            switch (item)
+    //            {
+    //                case ItemBase.ItemType.PeanutButter:
+    //                    {
+    //                        Instantiate(peanutEffect, transform.position, new Quaternion(0, 0, 0, 0));
+    //                        break;
+    //                    }
+    //                case ItemBase.ItemType.Lego:
+    //                    {
+    //                        Instantiate(legoBlock, transform.position, new Quaternion(0, 0, 0, 0));
+    //                        break;
+    //                    }
+
+    //            }
+    //        }
+    //    }
+    //}
 }

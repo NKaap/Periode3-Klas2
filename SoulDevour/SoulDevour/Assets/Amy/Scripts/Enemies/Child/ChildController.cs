@@ -17,20 +17,23 @@ public class ChildController : MonoBehaviour
     public float health = 2;
     public GameObject childHead;
     public float speed;
-    public GameObject coinPrefab;
+   
 
     public Animator childAnimator;
     public bool isMoving;
     public Rigidbody rb;
+
+
+    public GameObject childRagdoll;
     // throw pencil
 
-    [Header("Shooting Variables")]
-    [Space(8)]
-    public GameObject pencilForThrow;
-    public Transform shootPos;
-    public float pencilSpeed;
-    public float force;
-
+    //[Header("Shooting Variables")]
+    //[Space(8)]
+    //public GameObject pencilForThrow;
+    //public Transform shootPos;
+    //public float pencilSpeed;
+    //public float force;
+   // public GameObject coinPrefab;
 
     public float dist;
     // timer

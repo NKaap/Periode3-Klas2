@@ -125,7 +125,7 @@ public class MovPlayer : MonoBehaviour
             Move(calculatedSpeed);
         }
 
-        PlayerModel();
+     
     }
 
     
@@ -134,7 +134,7 @@ public class MovPlayer : MonoBehaviour
     {
 
         KickChildren();
-       
+        PlayerModel();
         Jump();
 
         moneyUI.text = (moneyPlacement + "Soul");
