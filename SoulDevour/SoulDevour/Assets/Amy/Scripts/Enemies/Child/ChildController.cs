@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class ChildController : MonoBehaviour
 {
     // ENEMIES IN DE ROOM PREFAB
@@ -16,7 +16,7 @@ public class ChildController : MonoBehaviour
     [Space(8)]
     public float health = 2;
     public GameObject childHead;
-    public float speed;
+
    
 
     public Animator childAnimator;
@@ -33,35 +33,49 @@ public class ChildController : MonoBehaviour
     //public Transform shootPos;
     //public float pencilSpeed;
     //public float force;
-   // public GameObject coinPrefab;
+    // public GameObject coinPrefab;
+
+
+    public NavMeshAgent agent;
+    public float detectionRange = 10f;
 
     public float dist;
     // timer
 
 
     public float radius = 10f;
-   // public float timeLeft = 1.5f;
+    // public float timeLeft = 1.5f;
 
+    private void Start()
+    {
+
+        agent = GetComponent<NavMeshAgent>();
+    }
     void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), radius);
-        foreach (Collider collider in colliders)
-        {
-            if (collider.transform.CompareTag("Player"))
-            {
-                ChildAnimations();
+        //Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), radius);
+        //foreach (Collider collider in colliders)
+        //{
+        //    if (collider.transform.CompareTag("Player"))
+        //    {
+        //        ChildAnimations();
 
-                speed = 4 * Time.deltaTime;
-                childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 3;
+        //        speed = 4 * Time.deltaTime;
+        //        childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 3;
 
-                gameObject.transform.LookAt(playerTarget.transform);
+        //        gameObject.transform.LookAt(playerTarget.transform);
 
-                if (childMove)
-                {
-                    gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
-                }
-            }
-        }
+        //        if (childMove)
+        //        {
+        //            gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
+        //        }
+        //    }
+        //}
+
+        ChildAnimations();
+        childHead.transform.LookAt(playerTarget.transform);
+
+      //  childMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 3;
 
         if (health <= 0)
         {
@@ -69,6 +83,24 @@ public class ChildController : MonoBehaviour
             Destroy(gameObject);
             // set ragdoll active
         }
+
+        if (playerTarget == null)
+        {
+            playerTarget = GameObject.FindGameObjectWithTag("Player");
+        }
+        float distance = Vector3.Distance(playerTarget.transform.position, transform.position);
+
+        if (distance <= detectionRange)
+        {
+            agent.SetDestination(playerTarget.transform.position); // de enemy volgt de player
+
+            if (distance <= agent.stoppingDistance)
+            {
+                FaceTarget();
+
+            }
+        }
+
     }
 
     public void ChildAnimations()
@@ -87,15 +119,30 @@ public class ChildController : MonoBehaviour
         }
     }
 
+
+    public void FaceTarget()
+    {
+        Vector3 direction = (playerTarget.transform.position - transform.position).normalized;
+        Quaternion lookRot = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 100f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawSphere(transform.position, detectionRange);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Bullet") )
+        if (collision.transform.CompareTag("Bullet"))
         {
             health -= 1;
         }
 
-        
+
     }
+
 }
 
 
