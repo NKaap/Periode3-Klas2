@@ -15415,7 +15415,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1368019263}
         m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: Con
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16970,6 +16970,8 @@ MonoBehaviour:
   dropdown: {fileID: 0}
   qualityLevels: []
   audioMixer: {fileID: 0}
+  transition: {fileID: 0}
+  transitionTime: 1
 --- !u!114 &1368019264
 MonoBehaviour:
   m_ObjectHideFlags: 0
