@@ -27,9 +27,13 @@ public class TeacherController : MonoBehaviour
     public float dist;
     public bool following = false;
 
+    public float timeLeft = 30;
+
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        playerTarget = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
@@ -41,11 +45,24 @@ public class TeacherController : MonoBehaviour
             playerTarget = GameObject.FindGameObjectWithTag("Player");
         }
 
+
+        timeLeft -= Time.deltaTime;
+        if (timeLeft <= 0)
+        {
+            GameObject kids = Instantiate(throwKids, rightHand.position, new Quaternion(0, 0, 0, 0));
+            timeLeft = 30;
+            kids.GetComponent<Rigidbody>().AddForce(Vector3.forward * 5, ForceMode.Force);
+            timeLeft = 30;
+        }
+      
+
         if (health <= 0)
         {
-          // death animation
-          // portal to next scene show.
-
+           
+            Destroy(gameObject);
+            // death animation
+            // portal to next scene show.
+           // SceneManager.LoadScene("LevelTwo"); // for each level a load scene, or different script. 
         }
 
         if (distance <= detectionRange)
@@ -62,9 +79,6 @@ public class TeacherController : MonoBehaviour
         {
             agent.enabled = false;
             // throw kids each 2 sec. w animation, under hand
-
-            GameObject kids = Instantiate(throwKids, rightHand.position, new Quaternion(0, 0, 0, 0));
-            kids.GetComponent<Rigidbody>().AddForce(Vector3.forward * 5, ForceMode.Force);
         }
         else
         {
@@ -83,7 +97,7 @@ public class TeacherController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
-        Gizmos.DrawSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 
     private void OnCollisionEnter(Collision collision)

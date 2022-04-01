@@ -11239,6 +11239,7 @@ MonoBehaviour:
   detectionRange: 10
   dist: 0
   following: 0
+  timeLeft: 2
 --- !u!195 &7114597857292992060
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11259,7 +11260,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!65 &1015573286411347009
 BoxCollider:
@@ -11288,7 +11289,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &2730895743975832143
 GameObject:

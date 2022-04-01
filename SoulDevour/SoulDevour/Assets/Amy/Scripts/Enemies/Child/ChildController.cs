@@ -95,7 +95,7 @@ public class ChildController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
-        Gizmos.DrawSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 
     private void OnCollisionEnter(Collision collision)
