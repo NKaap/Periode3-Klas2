@@ -68,8 +68,6 @@ public class MovPlayer : MonoBehaviour
     public int moneyPlacement;
     public Text healthUI;
 
-
-
     public bool cantMove;
 
     public void PlayerModel()
@@ -292,14 +290,15 @@ public class MovPlayer : MonoBehaviour
 
     public void KickChildren()
     {
+
         if (Input.GetButtonDown("Fire2"))
         {
             playerAnimator.SetBool("Walking", false);
-
+           
             playerAnimator.SetTrigger("Kick");
         }
 
-        if (Input.GetButtonDown("SlapChild"))
+        if (Input.GetButtonDown("SlapChild")) //
         {
             playerAnimator.SetBool("Walking", false);
 
@@ -309,13 +308,14 @@ public class MovPlayer : MonoBehaviour
 
     public void MidSlap()
     {
-        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), radius);
+        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 5);
         foreach (Collider collider in colliders)
         {
             // playerAnimator.SetBool("UpperCut", true);
             cantMove = true;
             collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
-            collider.GetComponent<ChildController>().health -= 10;
+            collider.GetComponent<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+            // collider.GetComponent<ChildController>().health -= 10;
             Debug.Log("Yass");
 
         }
@@ -323,10 +323,9 @@ public class MovPlayer : MonoBehaviour
 
     public void KickForceKids()
     {
-        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), radius);
+        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 5);
         foreach (Collider collider in colliders)
         {
-            // playerAnimator.SetBool("UpperCut", true);
             cantMove = true;
             collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
             Debug.Log("Yass");
@@ -363,16 +362,6 @@ public class MovPlayer : MonoBehaviour
             collision.gameObject.SetActive(false);
             Debug.Log(items[0]);
             
-        }
-
-        if (collision.transform.CompareTag("BulletChild"))
-        {
-            baseHealth -= 2;
-        }
-
-        if (collision.transform.CompareTag("Child"))
-        {
-            baseHealth -= 0.5f;
         }
     }
 

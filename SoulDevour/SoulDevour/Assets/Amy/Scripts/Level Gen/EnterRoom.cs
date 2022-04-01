@@ -19,10 +19,7 @@ public class EnterRoom : MonoBehaviour
     }
 
 
-    public void RandomChildSpawn()
-    {
-
-    }
+  
 
     private void OnCollisionEnter(Collision collision)
     {
