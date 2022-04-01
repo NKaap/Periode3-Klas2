@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
 public class ChildController : MonoBehaviour
 {
     [Header("Child Target Variables")]
@@ -26,18 +27,21 @@ public class ChildController : MonoBehaviour
     public float dist;
     public bool following = false;
 
+    public float timeLeft = 2;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        playerTarget = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
         float distance = Vector3.Distance(playerTarget.transform.position, transform.position);
         childHead.transform.LookAt(playerTarget.transform);
-
+      
         if (health <= 0)
         {
-            //Instantiate(childRagdoll, transform.position, new Quaternion(0, 0, 0, 0));
+            Instantiate(childRagdoll, transform.position, new Quaternion(0, 0, 0, 0));
             Destroy(gameObject);
         }
 
@@ -51,29 +55,41 @@ public class ChildController : MonoBehaviour
             }
         }
 
-        //transform.LookAt(new Vector3(playerTarget.transform.position.x, transform.position.y, playerTarget.transform.position.z));
-        //if (distance <= 1.5f)
-        //{
-        //    following = false;
-        //    //childAnimator.SetBool("Walk", false);
-        //    //childAnimator.SetBool("Rest", true);
-        //    agent.enabled = false;
-        //}
-        //else
-        //{
-        //    following = true;
-        //    //childAnimator.SetBool("Rest", false);
-        //    //childAnimator.SetBool("Walk", true);
-        //    agent.SetDestination(playerTarget.transform.position);
-        //    agent.enabled = true;
-        //}
+
+
+
+       // transform.LookAt(new Vector3(playerTarget.transform.position.x, transform.position.y, playerTarget.transform.position.z));
+        if (distance <= 2f)
+        {
+            //  following = false;
+            childAnimator.SetBool("Walk", false);
+            childAnimator.SetBool("Rest", true);
+            agent.enabled = false;
+
+            // slap
+            // childAnimator.SetBool("Slap", true);
+            timeLeft -= Time.deltaTime;
+            if (timeLeft < 0)
+            {
+               // playerTarget.GetComponent<MovPlayer>().baseHealth -= 1f;
+            }
+           
+        }
+        else
+        {
+            //  following = true;
+            childAnimator.SetBool("Rest", false);
+            childAnimator.SetBool("Walk", true);
+           // agent.SetDestination(playerTarget.transform.position);
+            agent.enabled = true;
+        }
     }
 
     public void FaceTarget()
     {
         Vector3 direction = (playerTarget.transform.position - transform.position).normalized;
         Quaternion lookRot = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 100f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime );
     }
 
     private void OnDrawGizmos()
