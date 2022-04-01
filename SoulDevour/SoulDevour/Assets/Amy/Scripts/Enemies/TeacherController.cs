@@ -2,69 +2,95 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
+
+
 public class TeacherController : MonoBehaviour
 {
-  
-    public float range;
-    [SerializeField] private GameObject playerTarget;
-    public bool teacherMove = true;
-   
-    public float health = 10;
-    public float speed;
+    public bool playerInRoom;
+    public GameObject playerTarget;
+    
 
-    public float timeLeft = 5; // time left for throwing kid
+    public float health = 2;
+    public GameObject teacherHead;
 
-    public Transform hand;
-    public float throwChildSpeed = 10;
-   // public Animator teacherAnimator;
+    public Animator teacherAnim;
+    public bool isMoving;
+    public Rigidbody rb;
 
-    public GameObject kidVariantsForThrow;
+    public GameObject throwKids;
+    public Transform rightHand;
 
+    public NavMeshAgent agent;
+    public float detectionRange = 10f;
 
+    public float dist;
+    public bool following = false;
+
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
     void Update()
     {
+        float distance = Vector3.Distance(playerTarget.transform.position, transform.position);
+        teacherHead.transform.LookAt(playerTarget.transform);
 
-        TeacherDead();
-        speed = 4 * Time.deltaTime;
-        teacherMove = Vector3.Distance(transform.position, playerTarget.transform.position) > 6;    
-        gameObject.transform.LookAt(playerTarget.transform);
-
-        playerTarget = GameObject.FindGameObjectWithTag("Player");
-
-
-        if (teacherMove)
+        if(playerTarget == null)
         {
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speed);
+            playerTarget = GameObject.FindGameObjectWithTag("Player");
         }
 
-        timeLeft -= Time.deltaTime;
-
-        if (timeLeft <= 0)
+        if (health <= 0)
         {
-            GameObject kid = Instantiate(kidVariantsForThrow, hand.transform.position, hand.transform.rotation);
-            kid.GetComponent<Rigidbody>().velocity = hand.transform.TransformDirection(new Vector3(0, 0, throwChildSpeed));
+          // death animation
+          // portal to next scene show.
 
-            timeLeft = 1.5f;
+        }
+
+        if (distance <= detectionRange)
+        {
+            agent.SetDestination(playerTarget.transform.position); // de enemy volgt de player
+
+            if (distance <= agent.stoppingDistance)
+            {
+                FaceTarget();
+            }
+        }
+
+        if (distance <= 3f)
+        {
+            agent.enabled = false;
+            // throw kids each 2 sec. w animation, under hand
+
+            GameObject kids = Instantiate(throwKids, rightHand.position, new Quaternion(0, 0, 0, 0));
+            kids.GetComponent<Rigidbody>().AddForce(Vector3.forward * 5, ForceMode.Force);
+        }
+        else
+        {
+            agent.SetDestination(playerTarget.transform.position);
+            agent.enabled = true;
         }
     }
 
-    public void TeacherDead()
+    public void FaceTarget()
     {
-        if (health <= 0)
-        {
-           // Instantiate(item, transform.position, new Quaternion(0, 0, 0, 0));  instantiate een item!
-            Destroy(gameObject);
-            SceneManager.LoadScene(4);
-            //teacherAnimator.SetBool(Dead, true);
-        }
+        Vector3 direction = (playerTarget.transform.position - transform.position).normalized;
+        Quaternion lookRot = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 100f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawSphere(transform.position, detectionRange);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Bullet"))
         {
-            health -= 0.5f;
+            health -= 1;
         }
-       
     }
 }
