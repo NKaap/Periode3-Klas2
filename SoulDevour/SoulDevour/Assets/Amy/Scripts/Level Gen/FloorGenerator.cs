@@ -57,7 +57,7 @@ public class FloorGenerator : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Random.InitState(((int)Time.time));
+      //  Random.InitState(((int)Time.time));
 
         DestroyFloor();
         GenerateFloor();
