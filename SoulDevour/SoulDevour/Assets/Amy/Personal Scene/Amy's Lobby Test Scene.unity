@@ -1258,7 +1258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Health
+  m_Text: 'Health: 0'
 --- !u!222 &479632924
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1464,7 +1464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Speed
+  m_Text: 'Speed: 0'
 --- !u!222 &573346014
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2659,7 +2659,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Damage
+  m_Text: 'Damage: 0'
 --- !u!222 &1099767915
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2758,7 +2758,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2951,6 +2951,7 @@ MonoBehaviour:
   index: 0
   playerObj: {fileID: 185700890}
   playerPos: {fileID: 1416452786}
+  skillPointManager: {fileID: 2104255327}
 --- !u!1 &1146538219
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,7 +3959,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540736646}
-  m_LocalRotation: {x: 0.26255485, y: 1e-45, z: -0, w: 0.96491706}
+  m_LocalRotation: {x: 0.26255485, y: -3e-45, z: 1e-45, w: 0.96491706}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4568,7 +4569,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: SpendPoint
           m_BoolArgument: 0
@@ -4701,7 +4702,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4768,7 +4769,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852610381}
-  m_LocalRotation: {x: 0.24500665, y: 0.000000016681955, z: -0.000000004215678, w: 0.9695214}
+  m_LocalRotation: {x: 0.24500665, y: -0.000000016681955, z: 0.000000004215678, w: 0.9695214}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5114,7 +5115,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jump
+  m_Text: 'Jump: 0'
 --- !u!222 &1965461317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5268,7 +5269,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020408784}
-  m_LocalRotation: {x: 0.26255485, y: -5.7240542e-11, z: -1.603371e-11, w: 0.96491706}
+  m_LocalRotation: {x: 0.26255485, y: 5.7240542e-11, z: 1.603371e-11, w: 0.96491706}
   m_LocalPosition: {x: 0, y: 7.453, z: -9.8}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
@@ -5868,6 +5869,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
+  ModelParent: {fileID: 1124477678}
+  speedText: {fileID: 573346013}
+  jumpText: {fileID: 1965461316}
+  healthText: {fileID: 479632923}
+  damageText: {fileID: 1099767914}
 --- !u!4 &2104255328
 Transform:
   m_ObjectHideFlags: 0
