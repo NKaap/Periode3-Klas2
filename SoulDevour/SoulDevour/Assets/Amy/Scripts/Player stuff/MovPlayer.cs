@@ -166,6 +166,7 @@ public class MovPlayer : MonoBehaviour
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(hor, 0, ver).normalized;
+
         if (direction.magnitude >= 0.1f)
         {
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -173,24 +174,18 @@ public class MovPlayer : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             transform.position += moveDir.normalized * speed * Time.deltaTime;
             playerisMoving = true;
-            StartCoroutine(LerpRotation(Quaternion.Euler(1f, angle, 1f), 5));
+            StartCoroutine(LerpRotation(Quaternion.Euler(1f, angle, 1f), 40));
 
             playerAnimator.SetBool("Idle", false);
             playerAnimator.SetBool("Walking", true);
         }
-
         if(direction.magnitude <= 0.1f)
         {
             playerAnimator.SetBool("Walking", false);
             playerAnimator.SetBool("Idle", true);
            
         }
-     
-
-
         moveVector = new Vector3(direction.x, verticalVelosity, direction.z);
-
-       
     }
     public void Jump()
     {
@@ -203,14 +198,13 @@ public class MovPlayer : MonoBehaviour
 
         }
     }
+
     IEnumerator LerpRotation(Quaternion endRotation, float duration)
     {
         float time = 0;
         time += Time.deltaTime;
         transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, time * duration);
         yield return endRotation;
-        transform.rotation = endRotation;
-        
     }
     #endregion
 
@@ -308,7 +302,7 @@ public class MovPlayer : MonoBehaviour
 
     public void MidSlap()
     {
-        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 5);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders)
         {
             // playerAnimator.SetBool("UpperCut", true);
@@ -323,12 +317,17 @@ public class MovPlayer : MonoBehaviour
 
     public void KickForceKids()
     {
-        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 5);
+        Debug.Log("Yass");
+        cantMove = true;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders)
         {
-            cantMove = true;
-            collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
-            Debug.Log("Yass");
+
+            if (collider.transform.CompareTag("Child"))
+            {
+            
+                collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+            }
 
         }
     }

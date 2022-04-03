@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5159283914810199352}
   m_Layer: 0
   m_Name: M1
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 9214875208930540779}
   m_Layer: 0
   m_Name: foot.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7676047227808161735}
   m_Layer: 0
   m_Name: pelvis.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 3814842452053931578}
   m_Layer: 0
   m_Name: pelvis.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -908,7 +908,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -8.49375e-11, y: 0.0029425698, z: -0.00035625417}
+  m_ConnectedAnchor: {x: -8.496144e-11, y: 0.002942567, z: -0.00035635417}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 2628717358859448525}
   m_Layer: 0
   m_Name: shin.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1018,7 +1018,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000001899025, y: 0.0016144277, z: 0.000000009953509}
+  m_ConnectedAnchor: {x: -7.2759576e-11, y: 0.0016144379, z: 9.895301e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -1129,7 +1129,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000002091656, y: 0.0014787081, z: -0.00000010721851}
+  m_ConnectedAnchor: {x: -0.0000000028157956, y: 0.0014786873, z: 4.0745363e-10}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1270,7 +1270,7 @@ GameObject:
   - component: {fileID: 3179578466773880147}
   m_Layer: 0
   m_Name: spine.001
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1331,7 +1331,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.721459e-15, y: 0.0012217263, z: 0.0000000069849184}
+  m_ConnectedAnchor: {x: -6.877557e-17, y: 0.0012217188, z: -4.6566123e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1562,7 +1562,7 @@ GameObject:
   - component: {fileID: 3732434316531750479}
   m_Layer: 0
   m_Name: thigh.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1624,7 +1624,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0010662843, y: 0.00014868774, z: 0.00067798566}
+  m_ConnectedAnchor: {x: 0.0010662902, y: 0.00014873414, z: 0.000678121}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -1730,7 +1730,7 @@ GameObject:
   - component: {fileID: 1264014594616813140}
   m_Layer: 0
   m_Name: metarig.002
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1858,7 +1858,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000020883817, y: 0.0014787087, z: -0.00000010718941}
+  m_ConnectedAnchor: {x: 0.00000000309592, y: 0.0014786867, z: 3.783498e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1933,7 +1933,7 @@ GameObject:
   - component: {fileID: 8130699424107620964}
   m_Layer: 0
   m_Name: heel.02.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2026,7 +2026,7 @@ GameObject:
   - component: {fileID: 82274614350802196}
   m_Layer: 0
   m_Name: pelvis.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2058,7 +2058,7 @@ GameObject:
   - component: {fileID: 4494744838852247868}
   m_Layer: 0
   m_Name: spine
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7110,7 +7110,7 @@ GameObject:
   - component: {fileID: 696476513840808522}
   m_Layer: 0
   m_Name: pelvis.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7237,7 +7237,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0023431394, y: 0.0019023637, z: -0.00012897697}
+  m_ConnectedAnchor: {x: 0.0023431703, y: 0.001902373, z: -0.00012884347}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -7282,7 +7282,7 @@ GameObject:
   - component: {fileID: 6715942528884197775}
   m_Layer: 0
   m_Name: heel.02.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7375,7 +7375,7 @@ GameObject:
   - component: {fileID: 2803069716966327202}
   m_Layer: 0
   m_Name: foot.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7591,7 +7591,7 @@ GameObject:
   - component: {fileID: 6889819656811368962}
   m_Layer: 0
   m_Name: '3 meid2 Ragdoll -- '
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7603,7 +7603,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6596985538495017679}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.2, y: -0.5225277, z: 1.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7718,7 +7718,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0023431398, y: 0.0019023637, z: -0.00012897607}
+  m_ConnectedAnchor: {x: -0.00234317, y: 0.001902373, z: -0.00012884254}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -7855,7 +7855,7 @@ GameObject:
   - component: {fileID: 8471503612352175867}
   m_Layer: 0
   m_Name: toe.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8070,7 +8070,7 @@ GameObject:
   - component: {fileID: 3304571566941839226}
   m_Layer: 0
   m_Name: spine.002
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8134,7 +8134,7 @@ GameObject:
   - component: {fileID: 8972502974903200267}
   m_Layer: 0
   m_Name: shin.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8196,7 +8196,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000018830178, y: 0.0016144274, z: 0.000000009546051}
+  m_ConnectedAnchor: {x: 2.4738256e-10, y: 0.0016144381, z: 5.820763e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -8274,7 +8274,7 @@ GameObject:
   - component: {fileID: 9159476153837716034}
   m_Layer: 0
   m_Name: thigh.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8336,7 +8336,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.001066284, y: 0.00014868774, z: 0.0006779861}
+  m_ConnectedAnchor: {x: -0.00106629, y: 0.00014873414, z: 0.00067812146}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -8412,7 +8412,7 @@ GameObject:
   - component: {fileID: 6375916396181759391}
   m_Layer: 0
   m_Name: toe.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

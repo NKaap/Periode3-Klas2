@@ -11,10 +11,11 @@ public class ChildTest : MonoBehaviour
     [SerializeField]
     float _moveSpeed = 5.0f;
 
-    public float health = 4;
+    [SerializeField]
+    float health = 4;
+
     public GameObject ragdoll;
     public GameObject head;
-    public GameObject playerbod;
     public Animator animations;
 
     // Use this for initialization
@@ -61,8 +62,8 @@ public class ChildTest : MonoBehaviour
     {
         if (health <= 0)
         {
-           // Instantiate(ragdoll, transform.position, new Quaternion(0, 0, 0, 0));
-            Destroy(gameObject);
+           Instantiate(ragdoll, transform.position, new Quaternion(0, 0, 0, 0));
+           Destroy(gameObject);
         }
     }
 

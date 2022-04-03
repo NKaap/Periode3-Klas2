@@ -45,7 +45,7 @@ public class TeacherController : MonoBehaviour
             playerTarget = GameObject.FindGameObjectWithTag("Player");
         }
 
-
+        
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0)
         {
