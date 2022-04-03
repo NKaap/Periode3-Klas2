@@ -31,8 +31,6 @@ public class ShootScript : MonoBehaviour
             instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
             instantiatedProjectile.transform.rotation = Random.rotation;
 
-            
-          
         }
         //if (Input.GetButtonDown("E")) // inventory, niet op dezelfde manier als de bullet 
         //{
@@ -107,27 +105,27 @@ public class ShootScript : MonoBehaviour
         GameObject output = bulletTypes[0];
        
 
-        foreach (ItemBase.ItemType item in player.items)
-        {
-            switch (item)
-            {           
-                case ItemBase.ItemType.Fireballs:
-                    {
-                        output = bulletTypes[1]; // ball with fireee
-                        break;
-                    }
-                case ItemBase.ItemType.Glasses:
-                    {
-                       // output = bulletTypes[2]; // deze prefab heeft 2 bullets.
-                        break;
-                    }
-                case ItemBase.ItemType.Poop:
-                    {
-                        //output = bulletTypes[3]; // poop model.
-                        break;
-                    }
-            }
-        }
+        //foreach (ItemBase.ItemType item in player.items)
+        //{
+        //    switch (item)
+        //    {           
+        //        case ItemBase.ItemType.Fireballs:
+        //            {
+        //                output = bulletTypes[1]; // ball with fireee
+        //                break;
+        //            }
+        //        case ItemBase.ItemType.Glasses:
+        //            {
+        //               // output = bulletTypes[2]; // deze prefab heeft 2 bullets.
+        //                break;
+        //            }
+        //        case ItemBase.ItemType.Poop:
+        //            {
+        //                //output = bulletTypes[3]; // poop model.
+        //                break;
+        //            }
+        //    }
+        //}
        
         return output;
     }

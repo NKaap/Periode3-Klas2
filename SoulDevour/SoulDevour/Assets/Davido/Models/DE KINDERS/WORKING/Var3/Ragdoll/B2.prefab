@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5685042819475571918}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REY.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,9 +39,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 263020968330635116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RM.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,9 +69,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665718270049009352}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BEY.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,9 +100,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2533517912834562944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.L.005
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,9 +131,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6376674894276453736}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pelvis.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,9 +161,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5783388064293634063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REY.L.002
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,9 +192,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8013201742860177748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EYEBR.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,9 +222,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5344215743498534555}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REY.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,9 +253,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6130652815615859766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.R.004
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,9 +284,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1395284710499298996}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.R.004_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,9 +314,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5708439582316049317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shoulder.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,9 +348,9 @@ GameObject:
   - component: {fileID: 5045939631018465840}
   - component: {fileID: 5045939631018465854}
   - component: {fileID: 5045939631018465855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: upper_arm.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,7 +412,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0024629545, y: 0.0028326411, z: -0.00044028385}
+  m_ConnectedAnchor: {x: 0.0024629545, y: 0.002832643, z: -0.00044028432}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -455,9 +455,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3979466426534008994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: metarig
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,9 +486,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3929527290290923727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EY.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,9 +519,9 @@ GameObject:
   - component: {fileID: 5045939632455105575}
   - component: {fileID: 5045939632455105592}
   - component: {fileID: 5045939632455105593}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: forearm.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,7 +584,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 9.458746e-10, y: 0.0014786813, z: 0}
+  m_ConnectedAnchor: {x: -3.4924602e-10, y: 0.0014786858, z: 0}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -627,9 +627,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5952638111670379852}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RM.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -658,9 +658,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5030316390758374627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.006_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -691,9 +691,9 @@ GameObject:
   - component: {fileID: 5045939630841133291}
   - component: {fileID: 5045939630841133292}
   - component: {fileID: 5045939630841133293}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shin.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -755,7 +755,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -9.458745e-10, y: 0.0016144406, z: 1.7462298e-10}
+  m_ConnectedAnchor: {x: -1.3096724e-10, y: 0.0016144374, z: 0}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -798,9 +798,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3830103823405271491}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RM.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -831,9 +831,9 @@ GameObject:
   - component: {fileID: 5045939631457175796}
   - component: {fileID: 5045939631457175797}
   - component: {fileID: 5045939631457175798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shin.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -895,7 +895,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000001193257, y: 0.0016144402, z: -2.3283055e-10}
+  m_ConnectedAnchor: {x: -8.440111e-10, y: 0.0016144373, z: 5.8207637e-11}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -938,9 +938,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4219322039859512900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: toe.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -968,9 +968,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1892765384766141472}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.L.004
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -999,9 +999,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 697013332432976248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: H.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1030,9 +1030,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8268684075698475069}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pelvis.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1061,9 +1061,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8070938770102275881}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: H.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1092,9 +1092,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7649480290060440195}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LLM.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1122,9 +1122,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7535000567354891218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: heel.02.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1155,9 +1155,9 @@ GameObject:
   - component: {fileID: 3275097709752818404}
   - component: {fileID: 5045939631609322668}
   - component: {fileID: 5045939631609322667}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.001
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1215,9 +1215,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1418576985740641451}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.002
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1246,9 +1246,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 909353395275101526}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REY.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1277,9 +1277,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4008183044075442985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EYEBR.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1307,9 +1307,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7701234426654287365}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: heel.02.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1338,9 +1338,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6400607633158284001}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LLM.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1372,9 +1372,9 @@ GameObject:
   - component: {fileID: 5045939630752772907}
   - component: {fileID: 5045939630752772905}
   - component: {fileID: 5045939630752772906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1439,7 +1439,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -5.988495e-11, y: -0.0011956217, z: -0.0002511754}
+  m_ConnectedAnchor: {x: -5.988487e-11, y: -0.0011956192, z: -0.00025117505}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1482,9 +1482,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3761890872981959603}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pelvis.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1515,9 +1515,9 @@ GameObject:
   - component: {fileID: 5045939631722909968}
   - component: {fileID: 5045939631722909982}
   - component: {fileID: 5045939631722909983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kick
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6319,7 +6319,7 @@ GameObject:
   - component: {fileID: 5045939632286096134}
   - component: {fileID: 5045939632286096132}
   - component: {fileID: 5045939632286096133}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WalkingDUUST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11121,9 +11121,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 932673120589689679}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REY.L.002_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11151,9 +11151,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7932495505295159927}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.L.002
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11185,9 +11185,9 @@ GameObject:
   - component: {fileID: 5045939631942732193}
   - component: {fileID: 5045939631942732207}
   - component: {fileID: 5045939631942732192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: thigh.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11249,7 +11249,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0010662912, y: -0.0011894789, z: 0.0004430377}
+  m_ConnectedAnchor: {x: -0.00106629, y: -0.0011894789, z: 0.0004430377}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -11292,9 +11292,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8048684477788487480}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EYEBR.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11323,9 +11323,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9103242028937670019}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11354,12 +11354,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4723288790664651957}
-  - component: {fileID: 5045939631075667961}
-  - component: {fileID: 5045939631075667962}
-  - component: {fileID: 5045939631075667963}
-  m_Layer: 0
+  - component: {fileID: 5763208829069981966}
+  m_Layer: 6
   m_Name: B2
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11381,138 +11379,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &5045939631075667961
-AudioSource:
+--- !u!54 &5763208829069981966
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5388467403302043151}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!95 &5045939631075667962
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5388467403302043151}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5bacc013ed091fb4f94dfb7f296ab9b5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5045939631075667963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5388467403302043151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfc991106573d41428012b81472e943f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cry: {fileID: 8300000, guid: dcb640ef88ebe4349b1387d56e4a4644, type: 3}
-  slap: {fileID: 8300000, guid: 502a30edb86a1024cadb4c11bb2a8b51, type: 3}
-  clip: {fileID: 8300000, guid: cb977eba2e8716243a2eaceb8cc58d33, type: 3}
-  walking: {fileID: 5045939632286096132}
-  kicking: {fileID: 5045939631722909982}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5530343857923217751
 GameObject:
   m_ObjectHideFlags: 0
@@ -11522,9 +11404,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2623695143317120999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EYEBR.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11553,9 +11435,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1785475816540068752}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LLM.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11584,9 +11466,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5226674064128113642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.R.001_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11614,9 +11496,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6303746434911283187}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: heel.02.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11647,9 +11529,9 @@ GameObject:
   - component: {fileID: 5045939632562572740}
   - component: {fileID: 5045939632562572738}
   - component: {fileID: 5045939632562572739}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: thigh.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11711,7 +11593,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.001066289, y: -0.0011894788, z: 0.00044303722}
+  m_ConnectedAnchor: {x: 0.001066289, y: -0.0011894788, z: 0.00044303702}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -11757,9 +11639,9 @@ GameObject:
   - component: {fileID: 5045939631564204361}
   - component: {fileID: 5045939631564204362}
   - component: {fileID: 5045939631564204363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.004
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11838,7 +11720,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -2.2738217e-10, y: 0.0040281615, z: -0.00095370866}
+  m_ConnectedAnchor: {x: -2.2738222e-10, y: 0.0040281606, z: -0.0009537096}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -11881,9 +11763,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262423859595735917}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.008
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11912,9 +11794,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8713148051048962248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.L.001
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11946,9 +11828,9 @@ GameObject:
   - component: {fileID: 5045939632416074432}
   - component: {fileID: 5045939632416074446}
   - component: {fileID: 5045939632416074447}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: upper_arm.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12011,7 +11893,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0024629568, y: 0.0028326411, z: -0.00044028246}
+  m_ConnectedAnchor: {x: -0.0024629557, y: 0.0028326435, z: -0.0004402834}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -12054,9 +11936,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3644177865260513719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EY.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12085,9 +11967,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1089950834939915551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.L.004_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12115,9 +11997,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1846249419849173981}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12146,9 +12028,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1747783324450343046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shoulder.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12177,9 +12059,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8953781272544301109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REY.R.002_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12207,9 +12089,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2422811503880425296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.R.005
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12238,9 +12120,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 940387636317839753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.008_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12268,9 +12150,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 770435724817149722}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EY.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12298,9 +12180,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8793247813277859372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pelvis.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12328,9 +12210,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7175784845224675384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BEY.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12358,9 +12240,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6076987647144860597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.005
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12389,9 +12271,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9123095380973590708}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: foot.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12421,9 +12303,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8378416961396210328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: toe.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12452,9 +12334,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6998994241137351700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.R.001
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12483,9 +12365,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3381064683312365168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.006
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12514,9 +12396,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3354594605803537522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.L.003
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12548,9 +12430,9 @@ GameObject:
   - component: {fileID: 5045939632089841694}
   - component: {fileID: 5045939632089841695}
   - component: {fileID: 5045939632089841680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: forearm.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12613,7 +12495,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000010622899, y: 0.0014786813, z: -2.3283067e-10}
+  m_ConnectedAnchor: {x: -4.3655753e-11, y: 0.0014786844, z: 5.8207666e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -12656,9 +12538,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8457314452855893665}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.003
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12689,9 +12571,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7204934491486813119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: H.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12719,9 +12601,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7460059330389082068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.R.003
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12750,9 +12632,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 970632374788722841}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.R.002
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12782,9 +12664,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3385630369851913943}
   - component: {fileID: 627773866027928082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boy2
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12925,9 +12807,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2956958687097667455}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REY.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12955,9 +12837,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8112500130747276985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: H.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12985,9 +12867,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4187302253864585982}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EY.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13016,9 +12898,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2722022657653895958}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: heel.02.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13046,9 +12928,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2379534263327486929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: foot.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13078,9 +12960,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2029217300143508370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hand.L.001_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13108,9 +12990,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7954010366743691023}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LLM.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13138,9 +13020,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4145139169147989040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REY.R.002
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13169,9 +13051,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 46525945465873027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RM.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13200,9 +13082,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7184592483126504902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: toe.R
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13231,9 +13113,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6339007517893943439}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.007
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13262,9 +13144,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6405462427476793250}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BEY.R_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13292,9 +13174,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68645194507510381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: toe.L_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13322,9 +13204,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4663990910080547317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BEY.L
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13353,9 +13235,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3946879304709928011}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine.007_end
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

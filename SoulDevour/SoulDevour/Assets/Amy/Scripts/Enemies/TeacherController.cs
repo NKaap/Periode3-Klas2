@@ -2,117 +2,77 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.AI;
 
 
 public class TeacherController : MonoBehaviour
 {
-    public bool playerInRoom;
-    public GameObject playerTarget;
-    
+    CharacterController _controller;
+    Transform target;
+    GameObject player;
 
-    public float health = 2;
-    public GameObject teacherHead;
+    [SerializeField]
+    private float _moveSpeed = 5.0f;
 
-    public Animator teacherAnim;
-    public bool isMoving;
-    public Rigidbody rb;
+    public float health = 4;
 
-    public GameObject throwKids;
-    public Transform rightHand;
+    public GameObject ragdoll;
+    public GameObject head;
+    public Animator animations;
 
-    public NavMeshAgent agent;
-    public float detectionRange = 10f;
-
-    public float dist;
-    public bool following = false;
-
-    public float timeLeft = 30;
+    public float timeLeft = 2;
 
 
-    public SkillPointManager skillManager;
-    public bool skillAdd = false;
-
-    private void Start()
+    // Use this for initialization
+    void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        playerTarget = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindWithTag("Player");
+        target = player.transform;
+        _controller = GetComponent<CharacterController>();
+
     }
+
+    // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(playerTarget.transform.position, transform.position);
-        teacherHead.transform.LookAt(playerTarget.transform);
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        head.transform.LookAt(player.transform);
+        transform.LookAt(player.transform);
 
-        if(playerTarget == null)
+        if (distance >= 3)
         {
-            playerTarget = GameObject.FindGameObjectWithTag("Player");
+            _moveSpeed = 5;
+            Vector3 direction = target.position - transform.position;
+            direction = direction.normalized;
+            Vector3 velocity = direction * _moveSpeed;
+            _controller.Move(velocity * Time.deltaTime);
+            animations.SetBool("Walk", true);
         }
 
-        
+        if (distance <= 3 || distance >= 10)
+        {
+            animations.SetBool("Walk", false);
+            _moveSpeed = 0;
+            Debug.Log("Pause.");
+        }
+
         timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0)
+        if (timeLeft < 0)
         {
-            GameObject kids = Instantiate(throwKids, rightHand.position, new Quaternion(0, 0, 0, 0));
-            timeLeft = 30;
-            kids.GetComponent<Rigidbody>().AddForce(Vector3.forward * 5, ForceMode.Force);
-            timeLeft = 30;
+            Debug.Log("gooi met kind");
+            timeLeft = 2;
         }
-      
 
+        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        TeacherDead();
+    }
+
+    public void TeacherDead()
+    {
         if (health <= 0)
         {
-            if(skillAdd == false)
-            {
-                skillManager.AddUnusedSkillPoint();
-                skillAdd = true;
-            }
-           
-            Destroy(gameObject);
-            // death animation
-            // portal to next scene show.
-           // SceneManager.LoadScene("LevelTwo"); // for each level a load scene, or different script. 
-        }
-
-        if (distance <= detectionRange)
-        {
-            agent.SetDestination(playerTarget.transform.position); // de enemy volgt de player
-
-            if (distance <= agent.stoppingDistance)
-            {
-                FaceTarget();
-            }
-        }
-
-        if (distance <= 3f)
-        {
-            agent.enabled = false;
-            // throw kids each 2 sec. w animation, under hand
-        }
-        else
-        {
-            agent.SetDestination(playerTarget.transform.position);
-            agent.enabled = true;
+            animations.SetBool("Dead", true);
         }
     }
 
-    public void FaceTarget()
-    {
-        Vector3 direction = (playerTarget.transform.position - transform.position).normalized;
-        Quaternion lookRot = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 100f);
-    }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Bullet"))
-        {
-            health -= 1;
-        }
-    }
 }

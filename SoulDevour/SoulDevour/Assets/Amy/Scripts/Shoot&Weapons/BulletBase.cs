@@ -17,11 +17,18 @@ public class BulletBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.transform.CompareTag("Child"))
+      
+        if (collision.gameObject.transform.CompareTag("Teacher"))
         {
-            GameObject coll = collision.gameObject.GetComponent<ChildController>().gameObject;
-            coll.GetComponent<ChildController>().health -= calculatedDamage;
-            Destroy(gameObject);
+            GameObject coll = collision.gameObject.GetComponent<TeacherController>().gameObject;
+            coll.GetComponent<TeacherController>().health -= calculatedDamage;
+           
+        }
+        if (collision.gameObject.transform.CompareTag("LivingChild"))
+        {
+            GameObject collChild = collision.gameObject.GetComponent <ChildTest>().gameObject;
+            collChild.GetComponent<ChildTest>().health -= calculatedDamage;
+           
         }
         if (collision.gameObject)
         {

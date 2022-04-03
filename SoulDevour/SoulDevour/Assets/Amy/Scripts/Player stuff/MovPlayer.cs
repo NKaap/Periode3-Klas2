@@ -322,13 +322,10 @@ public class MovPlayer : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders)
         {
-
             if (collider.transform.CompareTag("Child"))
             {
-            
                 collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
             }
-
         }
     }
 
@@ -342,6 +339,10 @@ public class MovPlayer : MonoBehaviour
         cantMove = false;
     }
 
+    public void Walk()
+    {
+        Debug.Log("pp");
+    }
 
     #endregion
 

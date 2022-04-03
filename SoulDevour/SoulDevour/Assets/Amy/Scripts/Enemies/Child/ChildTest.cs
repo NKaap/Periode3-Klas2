@@ -9,14 +9,16 @@ public class ChildTest : MonoBehaviour
     GameObject player;
 
     [SerializeField]
-    float _moveSpeed = 5.0f;
+    private float _moveSpeed = 5.0f;
 
-    [SerializeField]
-    float health = 4;
+    public float health = 4;
 
     public GameObject ragdoll;
     public GameObject head;
     public Animator animations;
+
+    public float timeLeft = 2;
+ 
 
     // Use this for initialization
     void Start()
@@ -48,15 +50,29 @@ public class ChildTest : MonoBehaviour
         if(distance <= 3 || distance >= 10)
         {
             animations.SetBool("Walk", false);
-          
+           
             _moveSpeed = 0;
             Debug.Log("Pause.");
-            
+
+         
+
         }
+
+     
+
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0)
+        {
+            animations.SetTrigger("Slap");
+            timeLeft = 2;
+        }
+
 
         transform.position = new Vector3(transform.position.x, 1, transform.position.z);
         ChildDead();
     }
+
+
 
     public void ChildDead()
     {
@@ -64,19 +80,14 @@ public class ChildTest : MonoBehaviour
         {
            Instantiate(ragdoll, transform.position, new Quaternion(0, 0, 0, 0));
            Destroy(gameObject);
+           
         }
     }
 
-    public void Slap()
+    public void ChildSlapEvent()
     {
         player.GetComponent<MovPlayer>().baseHealth -= 1;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Bullet"))
-        {
-            health -= 1;
-        }
-    }
+
 }

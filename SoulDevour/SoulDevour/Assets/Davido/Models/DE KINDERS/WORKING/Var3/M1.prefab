@@ -1475,6 +1475,7 @@ GameObject:
   - component: {fileID: 4587193449600533597}
   - component: {fileID: 4587193449600533596}
   - component: {fileID: 4587193449600533599}
+  - component: {fileID: 930510125994925154}
   m_Layer: 0
   m_Name: M1
   m_TagString: Untagged
@@ -1489,7 +1490,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3704657037771009692}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1631,6 +1632,23 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: cb977eba2e8716243a2eaceb8cc58d33, type: 3}
   walking: {fileID: 4587193448076427726}
   kicking: {fileID: 4587193449707394606}
+--- !u!114 &930510125994925154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3704657037771009692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6507ec18fcd7134468e9cdea1c7fdf90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 5
+  health: 4
+  ragdoll: {fileID: 3439796577405534561, guid: bf57ccde9a9304a4b91eaef065903b8a, type: 3}
+  head: {fileID: 3158811604999261084}
+  animations: {fileID: 4587193449600533596}
 --- !u!1 &3727177416377432823
 GameObject:
   m_ObjectHideFlags: 0

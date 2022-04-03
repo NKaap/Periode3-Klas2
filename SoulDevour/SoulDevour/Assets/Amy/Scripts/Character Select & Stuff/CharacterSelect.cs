@@ -102,10 +102,10 @@ public class CharacterSelect : MonoBehaviour
         string jsonChar = JsonUtility.ToJson(gameSavingChar);
         File.WriteAllText(Application.dataPath + "/characterSaveFile.json", jsonChar);
 
-        string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
-        Data loadedData = JsonUtility.FromJson<Data>(json);
-        json = JsonUtility.ToJson(new Data());
-        File.WriteAllText(Application.dataPath + "/saveFile.json", json);
+     //   string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
+     ////   Data loadedData = JsonUtility.FromJson<Data>(json);
+     //   json = JsonUtility.ToJson(new Data());
+     //   File.WriteAllText(Application.dataPath + "/saveFile.json", json);
       
 
         SceneManager.LoadScene(1); // 1 is de game denk ik ?
