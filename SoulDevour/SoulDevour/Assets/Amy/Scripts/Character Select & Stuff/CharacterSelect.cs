@@ -67,7 +67,6 @@ public class CharacterSelect : MonoBehaviour
         {
             index = characterModels.Length ;
         }
-        skillPointManager.SetSkillData((MovPlayer.PlayerTypes) index);
         //Debug.Log((MovPlayer.PlayerTypes)index);
     }
 
@@ -90,7 +89,6 @@ public class CharacterSelect : MonoBehaviour
         {
             index = 0;
         }
-        skillPointManager.SetSkillData((MovPlayer.PlayerTypes) index);
         // Debug.Log((MovPlayer.PlayerTypes)index);
 
     }

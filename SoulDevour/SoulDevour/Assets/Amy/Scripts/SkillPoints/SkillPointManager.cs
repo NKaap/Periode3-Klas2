@@ -17,11 +17,11 @@ public class SkillPointManager : MonoBehaviour
 
     private void Start()
     {
-        SetSkillData(MovPlayer.PlayerTypes.TeddyBear);
+        SetSkillData();
     }
-    public void SetSkillData(MovPlayer.PlayerTypes playerType)
+    public void SetSkillData()
     {
-        string fileName = Application.dataPath + "/" + playerType.ToString() + ".txt";
+        string fileName = Application.dataPath + "/skills.txt";
         Debug.Log("New Data: " + fileName);
         
         if (File.Exists(fileName))
@@ -98,7 +98,7 @@ public class SkillPointManager : MonoBehaviour
                 break;
             }
         }
-        string fileName = Application.dataPath + "/" + ((MovPlayer.PlayerTypes)activeIndex).ToString() + ".txt";
+        string fileName = Application.dataPath + "/skills.txt";
         string data = JsonUtility.ToJson(skillData);
         Debug.Log("Spent: " + fileName);
         File.WriteAllText(fileName,data);
