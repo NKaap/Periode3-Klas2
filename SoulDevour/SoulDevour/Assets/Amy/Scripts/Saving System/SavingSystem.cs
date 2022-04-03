@@ -35,6 +35,7 @@ public class SavingSystem : MonoBehaviour
 
     private void Start()
     {
+
         string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         Data loadedData = JsonUtility.FromJson<Data>(json);
 
@@ -43,9 +44,11 @@ public class SavingSystem : MonoBehaviour
 
 
         Data loadedCharData = JsonUtility.FromJson<Data>(charjson);
+
         Random.InitState(loadedData.levelSeed);
         player.GetComponent<MovPlayer>().items = loadedData.itemsEquipped;
-        player.GetComponent<MovPlayer>().playerTypes = loadedCharData.type; 
+        player.GetComponent<MovPlayer>().playerTypes = loadedCharData.type;
+        Debug.Log(loadedCharData.type);
     }
 
     #region Buttons
@@ -91,7 +94,8 @@ public class SavingSystem : MonoBehaviour
     {
         string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         Data loadedData = JsonUtility.FromJson<Data>(json);
-        File.WriteAllText(Application.dataPath + "/saveFile.json", "");
+        json = JsonUtility.ToJson(new Data());
+        File.WriteAllText(Application.dataPath + "/saveFile.json", json);
         SceneManager.LoadScene(loadedData.activeSceneName);
     }
 

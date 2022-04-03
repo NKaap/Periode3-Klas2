@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillPointManager : MonoBehaviour
 {
@@ -11,12 +11,35 @@ public class SkillPointManager : MonoBehaviour
 
     public SkillData.SkillTypes skillType;
 
+    public GameObject ModelParent;
+
+    public Text speedText, jumpText, healthText, damageText;
+
+    private void Start()
+    {
+        SetSkillData(MovPlayer.PlayerTypes.TeddyBear);
+    }
     public void SetSkillData(MovPlayer.PlayerTypes playerType)
     {
-        switch (playerType)
+        string fileName = Application.dataPath + "/" + playerType.ToString() + ".txt";
+        Debug.Log("New Data: " + fileName);
+        
+        if (File.Exists(fileName))
         {
-            
+            Debug.Log("File Exists!");
+            string data = File.ReadAllText(fileName);
+            skillData = JsonUtility.FromJson<SkillData>(data);
+            Debug.Log(skillData.unusedSkillPoints);
         }
+        else
+        {
+            Debug.Log("Creating new data");
+            skillData = new SkillData();
+            string json = JsonUtility.ToJson(skillData);
+            File.WriteAllText(fileName, json);
+        }
+
+        RefreshSkillInfo();
     }
 
     public int GetRemainingSkillPoints()
@@ -24,16 +47,18 @@ public class SkillPointManager : MonoBehaviour
         return skillData.unusedSkillPoints;
     }
 
+    public void AddUnusedSkillPoint()
+    {
+        skillData.unusedSkillPoints++;
+    }
+
     public bool CanSpendPointOn(SkillData.SkillTypes skillType)
     {
         // when a teacher dies, add a point 
-
         return true;
-
-        
     }
 
-    
+
     public void SpendPoint(int typeValue)  // werkt met onclick
     {
         if (skillData.unusedSkillPoints == 0)
@@ -63,7 +88,59 @@ public class SkillPointManager : MonoBehaviour
                     break;
                 }
         }
+        int activeIndex = 0;
+
+        for (int i = 0; i < ModelParent.transform.childCount; i++)
+        {
+            if (ModelParent.transform.GetChild(i).gameObject.activeInHierarchy)
+            {
+                activeIndex = i;
+                break;
+            }
+        }
+        string fileName = Application.dataPath + "/" + ((MovPlayer.PlayerTypes)activeIndex).ToString() + ".txt";
+        string data = JsonUtility.ToJson(skillData);
+        Debug.Log("Spent: " + fileName);
+        File.WriteAllText(fileName,data);
+
+        Debug.Log("Spent a point");
+        RefreshSkillInfo();
     }
 
-  
+    public void RefreshSkillInfo()
+    {
+        speedText.text = "Speed: " + GetAllocatedPointsOf(0).ToString();
+        jumpText.text = "Jump: " + GetAllocatedPointsOf(1).ToString();
+        healthText.text = "Health: " + GetAllocatedPointsOf(2).ToString();
+        damageText.text = "Damage: " + GetAllocatedPointsOf(3).ToString();
+    }
+
+    public int GetAllocatedPointsOf(int typeValue)
+    {
+        switch ((SkillData.SkillTypes)typeValue)
+        {
+            case SkillData.SkillTypes.Speed: // value 0
+                {
+                    return skillData.characterSpeed; // hoe zet je deze naar de player speed?
+
+                }
+            case SkillData.SkillTypes.JumpHeight: // value 1
+                {
+                    return skillData.characterJumpHeight;
+
+                }
+            case SkillData.SkillTypes.Health: // value 2
+                {
+                    return skillData.characterHealth;
+
+                }
+            case SkillData.SkillTypes.Damage: // value 3
+                {
+                    return skillData.characterDamage;
+
+                }
+        }
+        return 0;
+    }
+
 }

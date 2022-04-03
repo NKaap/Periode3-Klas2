@@ -23,6 +23,7 @@ public class CharacterSelect : MonoBehaviour
     public int index;
     public GameObject playerObj;
     public Transform playerPos;
+    public SkillPointManager skillPointManager;
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +67,8 @@ public class CharacterSelect : MonoBehaviour
         {
             index = characterModels.Length ;
         }
-        Debug.Log((MovPlayer.PlayerTypes)index);
+        skillPointManager.SetSkillData((MovPlayer.PlayerTypes) index);
+        //Debug.Log((MovPlayer.PlayerTypes)index);
     }
 
     public void RightButton()
@@ -88,7 +90,8 @@ public class CharacterSelect : MonoBehaviour
         {
             index = 0;
         }
-        Debug.Log((MovPlayer.PlayerTypes)index);
+        skillPointManager.SetSkillData((MovPlayer.PlayerTypes) index);
+        // Debug.Log((MovPlayer.PlayerTypes)index);
 
     }
 
@@ -100,7 +103,15 @@ public class CharacterSelect : MonoBehaviour
         gameSavingChar.type = (MovPlayer.PlayerTypes)index;
         string jsonChar = JsonUtility.ToJson(gameSavingChar);
         File.WriteAllText(Application.dataPath + "/characterSaveFile.json", jsonChar);
+
+        string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
+        Data loadedData = JsonUtility.FromJson<Data>(json);
+        json = JsonUtility.ToJson(new Data());
+        File.WriteAllText(Application.dataPath + "/saveFile.json", json);
+      
+
         SceneManager.LoadScene(1); // 1 is de game denk ik ?
+
     }
 
     #endregion
