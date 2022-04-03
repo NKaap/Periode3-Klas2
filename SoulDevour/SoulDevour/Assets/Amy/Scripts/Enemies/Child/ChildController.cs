@@ -29,6 +29,8 @@ public class ChildController : MonoBehaviour
 
     public float timeLeft = 2;
 
+    public float radius = 6;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -36,52 +38,71 @@ public class ChildController : MonoBehaviour
     }
     void Update()
     {
+        ChildDead();
+
         float distance = Vector3.Distance(playerTarget.transform.position, transform.position);
         childHead.transform.LookAt(playerTarget.transform);
-      
-        if (health <= 0)
+
+        if (distance >= 2)
         {
-            Instantiate(childRagdoll, transform.position, new Quaternion(0, 0, 0, 0));
-            Destroy(gameObject);
+            agent.enabled = true;
+            agent.SetDestination(playerTarget.transform.position);
+        }
+        else
+        {
+            this.agent.enabled = false;
+
         }
 
-        if (distance <= detectionRange)
-        {
-            agent.SetDestination(playerTarget.transform.position); // de enemy volgt de player
-
-            if (distance <= agent.stoppingDistance)
-            {
-                FaceTarget();
-            }
-        }
-
-
-
-
-       // transform.LookAt(new Vector3(playerTarget.transform.position.x, transform.position.y, playerTarget.transform.position.z));
         if (distance <= 2f)
         {
             //  following = false;
             childAnimator.SetBool("Walk", false);
             childAnimator.SetBool("Rest", true);
-            agent.enabled = false;
 
-            // slap
-            // childAnimator.SetBool("Slap", true);
-            timeLeft -= Time.deltaTime;
-            if (timeLeft < 0)
-            {
-               // playerTarget.GetComponent<MovPlayer>().baseHealth -= 1f;
-            }
-           
+            agent.enabled = false;
         }
         else
         {
             //  following = true;
             childAnimator.SetBool("Rest", false);
             childAnimator.SetBool("Walk", true);
-           // agent.SetDestination(playerTarget.transform.position);
+            // agent.SetDestination(playerTarget.transform.position);
             agent.enabled = true;
+        }
+
+        //if (distance <= detectionRange)
+        //{
+        //    agent.SetDestination(playerTarget.transform.position); // de enemy volgt de player
+
+        //    if (distance <= agent.stoppingDistance)
+        //    {
+        //        FaceTarget();
+        //    }
+        //}
+
+        //transform.LookAt(new Vector3(playerTarget.transform.position.x, transform.position.y, playerTarget.transform.position.z));
+        
+
+        // slap
+        // childAnimator.SetBool("Slap", true);
+        //timeLeft -= Time.deltaTime;
+        //if (timeLeft < 0)
+        //{
+        //    // playerTarget.GetComponent<MovPlayer>().baseHealth -= 1f;
+        //}
+
+
+    }
+
+
+
+    public void ChildDead()
+    {
+        if (health <= 0)
+        {
+            Instantiate(childRagdoll, transform.position, new Quaternion(0, 0, 0, 0));
+            Destroy(gameObject);
         }
     }
 

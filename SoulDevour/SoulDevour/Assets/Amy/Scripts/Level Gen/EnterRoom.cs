@@ -4,51 +4,96 @@ using UnityEngine;
 
 public class EnterRoom : MonoBehaviour
 {
+
     public GameObject[] enemiesInRoom;
-    public Collider[] doorLock;
-    public bool first = false;
+    public GameObject barOne, barTwo, barThree, barFour;
+  
+    public float radius = 2;
+
+    public bool allEnemiesDead;
+    public bool playerEnteredRoom = false;
+    public float timeLeft = 10;
+
     // player enters room, locks, enemies are activated. 
-    // Dit script op de floor, enemies die in de floor prefab zitten, in de array gooien..... 
-    // hoe doe je de deuren dicht als je vanaf dit script niet weet hoeveel deuren deze kamer heeft? 
+
+    private void Start()
+    {
+        barOne.SetActive(false);
+        barThree.SetActive(false);
+        barTwo.SetActive(false);
+        barFour.SetActive(false);
+    }
+
 
     private void Update()
     {
-     
+        if (playerEnteredRoom)
+        {
+            IronBarsRoomLock();
+            
+        }
+      
+  
+        if (allEnemiesDead)
+        {
+            barOne.SetActive(false);
+            barThree.SetActive(false);
+            barTwo.SetActive(false);
+            barFour.SetActive(false);
+        }
+    }
 
-       
+    public void IronBarsRoomLock()
+    {
+        Collider[] barOneColliders = Physics.OverlapSphere(barOne.transform.position, radius);
+        foreach (Collider collider in barOneColliders)
+        {
+            if (collider.transform.CompareTag("Door"))
+            {
+                barOne.SetActive(true);
+            }
+        }
+
+        Collider[] barTwoColliders = Physics.OverlapSphere(barTwo.transform.position, radius);
+        foreach (Collider collider in barTwoColliders)
+        {
+            if (collider.transform.CompareTag("Door"))
+            {
+                barTwo.SetActive(true);
+            }
+        }
+
+        Collider[] barThreeColliders = Physics.OverlapSphere(barThree.transform.position, radius);
+        foreach (Collider collider in barThreeColliders)
+        {
+            if (collider.transform.CompareTag("Door"))
+            {
+                barThree.SetActive(true);
+            }
+        }
+
+        Collider[] barFourColliders = Physics.OverlapSphere(barFour.transform.position, radius);
+        foreach (Collider collider in barFourColliders)
+        {
+            if (collider.transform.CompareTag("Door"))
+            {
+                barFour.SetActive(true);
+            }
+        }
     }
 
 
-  
+
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player") && !first)
+        if (collision.transform.CompareTag("Player"))
         {
-            first = true;
-            foreach(Collider coll in doorLock)
-            {
-                StartCoroutine(Enemies());
-                coll.enabled = true;
-            }
+            // nog een timer aan toevoegen
+            playerEnteredRoom = true;
         }
 
-        foreach(GameObject enemy in enemiesInRoom)
-        {
-            if(enemy == null)
-            {
-
-                foreach (Collider coll in doorLock)
-                {
-                    coll.enabled = false;
-                }
-            }
-        }
-       
     }
 
-    IEnumerator Enemies()
-    {
-        yield return new WaitForSeconds(3f);
-    }
+
 }
