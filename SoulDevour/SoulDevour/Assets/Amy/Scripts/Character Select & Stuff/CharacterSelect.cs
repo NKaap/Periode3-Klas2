@@ -68,6 +68,7 @@ public class CharacterSelect : MonoBehaviour
             index = characterModels.Length ;
         }
         //Debug.Log((MovPlayer.PlayerTypes)index);
+        skillPointManager.SetSkillData((MovPlayer.PlayerTypes)index);
     }
 
     public void RightButton()
@@ -90,13 +91,12 @@ public class CharacterSelect : MonoBehaviour
             index = 0;
         }
         // Debug.Log((MovPlayer.PlayerTypes)index);
-
+        skillPointManager.SetSkillData((MovPlayer.PlayerTypes)index);
     }
 
     public void SelectButton()
     {
-        // playerObj word de player met scripts etc.
-        //TODO saven van welke character je hebt gekozen met een index (int), in de start functie van de volgende scene het loaden - in MovPlayer want daar staat die type in.
+       
         Data gameSavingChar = new Data();
         gameSavingChar.type = (MovPlayer.PlayerTypes)index;
         string jsonChar = JsonUtility.ToJson(gameSavingChar);

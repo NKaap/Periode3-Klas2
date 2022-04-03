@@ -30,6 +30,9 @@ public class TeacherController : MonoBehaviour
     public float timeLeft = 30;
 
 
+    public SkillPointManager skillManager;
+    public bool skillAdd = false;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -58,6 +61,11 @@ public class TeacherController : MonoBehaviour
 
         if (health <= 0)
         {
+            if(skillAdd == false)
+            {
+                skillManager.AddUnusedSkillPoint();
+                skillAdd = true;
+            }
            
             Destroy(gameObject);
             // death animation

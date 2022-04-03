@@ -17,19 +17,27 @@ public class SkillPointManager : MonoBehaviour
 
     private void Start()
     {
-        SetSkillData();
+        SetSkillData(MovPlayer.PlayerTypes.TeddyBear);
     }
-    public void SetSkillData()
+
+    public void SetSkillData(MovPlayer.PlayerTypes playerType)
     {
-        string fileName = Application.dataPath + "/skills.txt";
+        string fileName = Application.dataPath + "/" + playerType.ToString() + ".txt";
+
         Debug.Log("New Data: " + fileName);
         
         if (File.Exists(fileName))
         {
             Debug.Log("File Exists!");
+            
             string data = File.ReadAllText(fileName);
+
+            Debug.Log(data);
+
             skillData = JsonUtility.FromJson<SkillData>(data);
+            
             Debug.Log(skillData.unusedSkillPoints);
+          
         }
         else
         {
@@ -98,7 +106,7 @@ public class SkillPointManager : MonoBehaviour
                 break;
             }
         }
-        string fileName = Application.dataPath + "/skills.txt";
+        string fileName = Application.dataPath + "/" + ((MovPlayer.PlayerTypes)activeIndex).ToString() + ".txt";
         string data = JsonUtility.ToJson(skillData);
         Debug.Log("Spent: " + fileName);
         File.WriteAllText(fileName,data);
@@ -121,7 +129,7 @@ public class SkillPointManager : MonoBehaviour
         {
             case SkillData.SkillTypes.Speed: // value 0
                 {
-                    return skillData.characterSpeed; // hoe zet je deze naar de player speed?
+                    return skillData.characterSpeed; 
 
                 }
             case SkillData.SkillTypes.JumpHeight: // value 1
