@@ -9,6 +9,8 @@ public class TutorialManager : MonoBehaviour
 
     public GameObject skipButton;
 
+    public GameObject tutorialCamera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,15 +35,8 @@ public class TutorialManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.tag == "Computer1")
-                    {
-                        popUpIndex++;
-                    }
-                }
+                popUpIndex++;
+                tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().roomView;
             }
         }
         else if (popUpIndex == 3)
