@@ -13,12 +13,14 @@ public class EndBossController : MonoBehaviour
 
     public float health = 4;
 
-    public GameObject ragdoll;
+    public Rigidbody ragdoll;
+    public GameObject ragdollModel;
     public GameObject head;
     public Animator animations;
+    public GameObject hand;
 
     public float timeLeft = 2;
-
+    public bool alive = true;
 
     // Use this for initialization
     void Start()
@@ -26,29 +28,45 @@ public class EndBossController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         target = player.transform;
         _controller = GetComponent<CharacterController>();
-
+        ragdoll = ragdoll.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (alive)
+        {
+            TeacherMove();
+        }
+
+        TeacherDead();
+
+        if (!alive)
+        {
+
+        }
+    }
+
+    public void TeacherMove()
+    {
         float distance = Vector3.Distance(player.transform.position, transform.position);
-        head.transform.LookAt(player.transform);
+
         transform.LookAt(player.transform);
 
-        if (distance >= 3)
+        if (distance >= 7)
         {
-            _moveSpeed = 5;
+            _moveSpeed = 3;
             Vector3 direction = target.position - transform.position;
             direction = direction.normalized;
             Vector3 velocity = direction * _moveSpeed;
             _controller.Move(velocity * Time.deltaTime);
-            animations.SetBool("Walk", true);
+
+            //  animations.SetBool("Walk", true);
         }
 
-        if (distance <= 3 || distance >= 10)
+        if (distance <= 7 || distance >= 10)
         {
-            animations.SetBool("Walk", false);
+            //  animations.SetBool("Walk", false);
             _moveSpeed = 0;
             Debug.Log("Pause.");
         }
@@ -56,21 +74,38 @@ public class EndBossController : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            Debug.Log("gooi met kind");
+            animations.SetTrigger("ThrowKid");
+
             timeLeft = 2;
         }
 
         transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-        TeacherDead();
     }
 
     public void TeacherDead()
     {
         if (health <= 0)
         {
+            Debug.Log("Teacher died, it just doesnt show");
+            animations.SetBool("Walk", false);
             animations.SetBool("Dead", true);
+            alive = false;
         }
     }
 
+    public void ThrowKid()
+    {
+        Rigidbody instantiatedProjectile = Instantiate(ragdoll, hand.transform.position, hand.transform.rotation) as Rigidbody;
+        Debug.Log(instantiatedProjectile);
+        instantiatedProjectile.GetComponent<Rigidbody>().AddForce(transform.up * 100);
+
+    }
+
+    public IEnumerator PickupKid()
+    {
+        GameObject handObj =  Instantiate(ragdollModel, hand.transform.position, hand.transform.rotation, parent: hand.transform);
+        yield return new WaitForSeconds(1f);
+        Destroy(handObj);
+    }
 
 }

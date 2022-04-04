@@ -12,7 +12,7 @@ public class EnterRoom : MonoBehaviour
 
     public bool allEnemiesDead;
     public bool playerEnteredRoom = false;
-    public float timeLeft = 10;
+    public float timeLeft = 2;
 
     // player enters room, locks, enemies are activated. 
 
@@ -90,7 +90,12 @@ public class EnterRoom : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             // nog een timer aan toevoegen
-            playerEnteredRoom = true;
+            timeLeft -= Time.deltaTime;
+            if (timeLeft < 0)
+            {
+                playerEnteredRoom = true;
+
+            }
         }
 
     }

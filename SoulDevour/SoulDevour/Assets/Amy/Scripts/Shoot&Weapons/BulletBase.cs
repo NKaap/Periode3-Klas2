@@ -18,11 +18,17 @@ public class BulletBase : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
       
+        if (collision.gameObject.transform.CompareTag("EndBoss"))
+        {
+            GameObject coll = collision.gameObject.GetComponent<EndBossController>().gameObject;
+            coll.GetComponent<EndBossController>().health -= calculatedDamage;
+           
+        }
         if (collision.gameObject.transform.CompareTag("Teacher"))
         {
             GameObject coll = collision.gameObject.GetComponent<TeacherController>().gameObject;
             coll.GetComponent<TeacherController>().health -= calculatedDamage;
-           
+
         }
         if (collision.gameObject.transform.CompareTag("LivingChild"))
         {

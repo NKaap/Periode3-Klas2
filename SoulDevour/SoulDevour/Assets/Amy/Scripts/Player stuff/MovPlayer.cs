@@ -363,6 +363,12 @@ public class MovPlayer : MonoBehaviour
             Debug.Log(items[0]);
             
         }
+
+        if (collision.transform.CompareTag("BulletChild"))
+        {
+            Debug.Log("Got hit by a child");
+            baseHealth -= 1;
+        }
     }
 
     private void OnDrawGizmos()

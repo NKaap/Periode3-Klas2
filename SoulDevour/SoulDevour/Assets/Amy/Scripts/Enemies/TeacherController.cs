@@ -35,8 +35,8 @@ public class TeacherController : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(player.transform.position, transform.position);
-        head.transform.LookAt(player.transform);
-        transform.LookAt(player.transform);
+        //head.transform.LookAt(player.transform);
+        //transform.LookAt(player.transform);
 
         if (distance >= 3)
         {

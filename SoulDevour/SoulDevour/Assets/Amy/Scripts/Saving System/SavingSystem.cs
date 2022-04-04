@@ -86,6 +86,7 @@ public class SavingSystem : MonoBehaviour
     {
         string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         Data loadedData = JsonUtility.FromJson<Data>(json);
+        Random.seed = loadedData.levelSeed;
         SceneManager.LoadScene(loadedData.activeSceneName);
 
     }
