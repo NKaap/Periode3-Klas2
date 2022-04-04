@@ -87,13 +87,17 @@ public class MenuScript : MonoBehaviour
     //Transition
 
 
-    public Animator transition;
+    public Animator left;
+    public Animator right;
+    public Animator text;
 
-    public float transitionTime = 1f;
+    public float transitionTime = 100f;
 
     IEnumerator LoadLevel(int levelIndex)
     {
-        transition.SetTrigger("Start");
+        left.SetTrigger("Aan");
+        right.SetTrigger("Aan");
+        text.SetTrigger("Aan");
 
         yield return new WaitForSeconds(transitionTime);
 
