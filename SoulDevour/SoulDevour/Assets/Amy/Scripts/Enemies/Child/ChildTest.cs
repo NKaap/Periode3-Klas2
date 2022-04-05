@@ -86,6 +86,8 @@ public class ChildTest : MonoBehaviour
 
     public void ChildSlapEvent()
     {
+        // eigenlijk iets in Gethealth aanpassen.
+
         player.GetComponent<MovPlayer>().baseHealth -= 1;
     }
 

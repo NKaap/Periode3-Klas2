@@ -47,15 +47,18 @@ public class MovPlayer : MonoBehaviour
     [Header("Base Speed, Jump and Health")]
     [Space(8)]
 
-    [SerializeField] private float speed = 5; // player speed
-
-    public float baseHealth = 4; // player health            HEALTH
-    [SerializeField] private Vector3 baseJumpHeight; // player jump
+    [SerializeField] public float damage = 1;
+    [SerializeField] public float speed = 5; // player speed
+    [SerializeField] public float baseHealth = 4; // player health            HEALTH
+    [SerializeField] public float baseJumpHeight = 2; // player jump
     public int maxJump = 2;
     public int timesJumped = 0;
+    
 
     [SerializeField] public float calculatedSpeed => GetSpeed(); // gebruik deze om speed aan te roepen.
     [SerializeField] public float calculatedHealth => GetHealth(); // gebruik deze om health mee aan te roepen.
+    [SerializeField] public float calculatedDamage => GetDamage();
+    [SerializeField] public float calculatedJumpHeight => GetJumpHeight();
 
     [Header("Child Kick Variables")]
     [Space(8)]
@@ -65,10 +68,12 @@ public class MovPlayer : MonoBehaviour
     [Header("Money UI")]
     [Space(8)]
     public Text moneyUI;
-    public int moneyPlacement;
+    public int money;
     public Text healthUI;
 
     public bool cantMove;
+
+    
 
     public void PlayerModel()
     {
@@ -132,24 +137,30 @@ public class MovPlayer : MonoBehaviour
         PlayerModel();
         Jump();
 
-        moneyUI.text = (moneyPlacement + "Soul");
-        if (moneyPlacement == 1)
+        moneyUI.text = (money + "Soul");
+        if (money == 1)
         {
-            moneyUI.text = (moneyPlacement + ("Soul"));
+            moneyUI.text = (money + ("Soul"));
         }
         else
         {
-            moneyUI.text = (moneyPlacement + ("Souls"));
+            moneyUI.text = (money + ("Souls"));
         }
 
-        healthUI.text = (baseHealth + "Life Energy");
+        healthUI.text = (calculatedHealth + "Life Energy");
 
 
-        if (baseHealth <= 0)
+        if (calculatedHealth <= 0)
         {
-            
             SceneManager.LoadScene("GameOver");
         }
+
+        //Debug.Log(skillManager.GetAllocatedPointsOf(0));
+        //Debug.Log(skillManager.GetAllocatedPointsOf(1));
+        //Debug.Log(skillManager.GetAllocatedPointsOf(2));
+        //Debug.Log(skillManager.GetAllocatedPointsOf(3));
+
+        Debug.Log(money + ".. Stonks");
       
     }
 
@@ -184,6 +195,7 @@ public class MovPlayer : MonoBehaviour
         }
         moveVector = new Vector3(direction.x, verticalVelosity, direction.z);
     }
+
     public void Jump()
     {
         if (Input.GetButtonDown("Jump") && timesJumped < maxJump)
@@ -191,7 +203,7 @@ public class MovPlayer : MonoBehaviour
 
             timesJumped++;
 
-            GetComponent<Rigidbody>().velocity = baseJumpHeight;
+            GetComponent<Rigidbody>().velocity = new Vector3 (0, calculatedJumpHeight,0);
 
         }
     }
@@ -205,11 +217,14 @@ public class MovPlayer : MonoBehaviour
     }
     #endregion
 
-    #region GetHealth and Speed
+    #region GetHealth GetSpeed GetDamage GetJumpHeight
 
     public float GetHealth() // hiervoor een functie zodat health ook echt aangepast word!
     {
         float output = baseHealth;
+
+        output += skillManager.GetAllocatedPointsOf(2); // health
+
 
         foreach (ItemBase.ItemType item in items)
         {
@@ -255,6 +270,9 @@ public class MovPlayer : MonoBehaviour
     public float GetSpeed() // deze word aangepast in de update met calculated speed!
     {
         float output = speed;
+
+        output += skillManager.GetAllocatedPointsOf(0); // 0 == speed
+
         foreach (ItemBase.ItemType item in items)
         {
             switch (item)
@@ -273,6 +291,26 @@ public class MovPlayer : MonoBehaviour
         }
         return output;
 
+    }
+
+    public float GetDamage()
+    {
+        float output = damage;
+
+        output += skillManager.GetAllocatedPointsOf(3); // damage
+
+        output += 1;
+
+        return output;
+    }
+
+    public float GetJumpHeight()
+    {
+        float output = baseJumpHeight;
+
+        output += skillManager.GetAllocatedPointsOf(1); // jump height
+
+        return output;
     }
 
     #endregion
@@ -307,6 +345,16 @@ public class MovPlayer : MonoBehaviour
             if (collider.transform.CompareTag("Child"))
             {
                 collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+                
+            }
+            if (collider.transform.CompareTag("LivingChild"))
+            {
+                collider.GetComponent<ChildTest>().health -= calculatedDamage;
+
+                if (collider.GetComponent<ChildTest>().health <= 0)
+                {
+                    money += 1;
+                }
             }
             // collider.GetComponent<ChildController>().health -= 10;
             Debug.Log("Yass");
@@ -324,6 +372,16 @@ public class MovPlayer : MonoBehaviour
             if (collider.transform.CompareTag("Child"))
             {
                 collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+              
+            }
+            if (collider.transform.CompareTag("LivingChild"))
+            {
+                collider.GetComponent<ChildTest>().health -= calculatedDamage;
+
+                if(collider.GetComponent<ChildTest>().health <= 0)
+                {
+                    money += 1;
+                }
             }
         }
     }

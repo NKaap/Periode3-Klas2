@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTypes: 0
-  skillManager: {fileID: 0}
+  skillManager: {fileID: 2104255327}
   playerAnimator: {fileID: 185700892}
   playerisMoving: 0
   walking: 0
@@ -624,9 +624,10 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveVector: {x: 0, y: 0, z: 0}
   items: 
+  damage: 1
   speed: 18.06
   baseHealth: 5.31
-  baseJumpHeight: {x: 0, y: 0, z: 0}
+  baseJumpHeight: 2
   maxJump: 2
   timesJumped: 0
   kickForce: 93.47
@@ -3959,7 +3960,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540736646}
-  m_LocalRotation: {x: 0.26255482, y: 3e-45, z: -1e-45, w: 0.96491706}
+  m_LocalRotation: {x: 0.26255482, y: -1e-45, z: -0, w: 0.96491706}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4769,7 +4770,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852610381}
-  m_LocalRotation: {x: 0.24500662, y: 0.00000001865099, z: -0.00000000471327, w: 0.9695214}
+  m_LocalRotation: {x: 0.24500664, y: -0.00000001865099, z: 0.0000000047132707, w: 0.9695214}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5148,7 +5149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972718420}
-  m_LocalRotation: {x: 0.28006276, y: 0.000000016517818, z: -0.0000000048188675, w: 0.95998174}
+  m_LocalRotation: {x: 0.28006276, y: -0.000000016517804, z: 0.0000000048188644, w: 0.95998174}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5269,7 +5270,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020408784}
-  m_LocalRotation: {x: 0.26255485, y: -0.0000000020847686, z: -5.6734273e-10, w: 0.9649171}
+  m_LocalRotation: {x: 0.26255485, y: 4.2607415e-10, z: 1.1601121e-10, w: 0.9649171}
   m_LocalPosition: {x: 0, y: 7.453, z: -9.800001}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
