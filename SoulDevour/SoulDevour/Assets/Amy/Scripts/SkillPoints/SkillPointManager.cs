@@ -18,11 +18,19 @@ public class SkillPointManager : MonoBehaviour
     private void Update()
     {
         Debug.Log(skillData.unusedSkillPoints);
+
+
+        //Debug.Log(GetAllocatedPointsOf(0).ToString() + "---");
+        //Debug.Log(GetAllocatedPointsOf(1).ToString() + "---");
+        //Debug.Log(GetAllocatedPointsOf(2).ToString() + "---");
+        //Debug.Log(GetAllocatedPointsOf(3).ToString() + "---");
     }
 
     private void Start()
     {
-        SetSkillData(MovPlayer.PlayerTypes.TeddyBear);
+        //SetSkillData(MovPlayer.PlayerTypes.TeddyBear);
+
+
     }
 
     public void SetSkillData(MovPlayer.PlayerTypes playerType)

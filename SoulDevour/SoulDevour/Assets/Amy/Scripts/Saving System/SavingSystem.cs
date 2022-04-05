@@ -33,6 +33,8 @@ public class SavingSystem : MonoBehaviour
 
     public Data gameSaving = new Data();
 
+   
+
     private void Start()
     {
 
@@ -48,7 +50,9 @@ public class SavingSystem : MonoBehaviour
         Random.InitState(loadedData.levelSeed);
         player.GetComponent<MovPlayer>().items = loadedData.itemsEquipped;
         player.GetComponent<MovPlayer>().playerTypes = loadedCharData.type;
-       // Debug.Log(loadedCharData.type);
+        // Debug.Log(loadedCharData.type);
+
+        player.GetComponent<MovPlayer>().SetSkillDataPlayer();
     }
 
     #region Buttons

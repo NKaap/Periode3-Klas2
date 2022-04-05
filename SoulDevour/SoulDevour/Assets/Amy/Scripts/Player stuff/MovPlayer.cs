@@ -73,7 +73,10 @@ public class MovPlayer : MonoBehaviour
 
     public bool cantMove;
 
-    
+
+    [Header("Items under Player prefab")]
+    [Space(8)]
+    public GameObject Crown, Halo, Horn, Glasses;
 
     public void PlayerModel()
     {
@@ -118,6 +121,20 @@ public class MovPlayer : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        skillManager = skillManager.GetComponent<SkillPointManager>();
+
+        Crown.SetActive(false);
+        Halo.SetActive(false);
+        Horn.SetActive(false); // moet nog
+        Glasses.SetActive(false); // moet nog
+    }
+
+    public void SetSkillDataPlayer()
+    {
+        skillManager.SetSkillData(playerTypes);
+    }
 
     private void FixedUpdate()
     {
@@ -155,10 +172,17 @@ public class MovPlayer : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
-        //Debug.Log(skillManager.GetAllocatedPointsOf(0));
-        //Debug.Log(skillManager.GetAllocatedPointsOf(1));
-        //Debug.Log(skillManager.GetAllocatedPointsOf(2));
-        //Debug.Log(skillManager.GetAllocatedPointsOf(3));
+
+        //Debug.Log(calculatedDamage + "damage");
+        //Debug.Log(calculatedHealth + "health");
+        //Debug.Log(calculatedJumpHeight + "jump");
+        //Debug.Log(calculatedSpeed + "speed");
+
+        
+        Debug.Log(skillManager.GetComponent<SkillPointManager>().GetAllocatedPointsOf(0) + "pp");
+        Debug.Log(skillManager.GetComponent<SkillPointManager>().GetAllocatedPointsOf(1) + "pp1");
+        Debug.Log(skillManager.GetComponent<SkillPointManager>().GetAllocatedPointsOf(2) + "pp2");
+        Debug.Log(skillManager.GetComponent<SkillPointManager>().GetAllocatedPointsOf(3) + "pp3");
 
         Debug.Log(money + ".. Stonks");
       
@@ -253,7 +277,11 @@ public class MovPlayer : MonoBehaviour
                     }
                 case ItemBase.ItemType.Ressurect: // werkt dit?
                     {
-                        if(output == 0)
+
+                       
+                        Halo.SetActive(true);
+                       
+                        if (output == 0)
                         {
                             Instantiate(gameObject, transform.position, transform.rotation);
                             output = 1;
@@ -299,6 +327,41 @@ public class MovPlayer : MonoBehaviour
 
         output += skillManager.GetAllocatedPointsOf(3); // damage
 
+        foreach (ItemBase.ItemType item in items)
+        {
+            switch (item)
+            {
+
+                case ItemBase.ItemType.PropjePapier: // base bullet
+                    {
+                        output += 1;
+                        break;
+                    }
+                case ItemBase.ItemType.Fireballs:
+                    {
+                        output += 2;
+                        break;
+                    }
+                case ItemBase.ItemType.Crown:
+                    {
+                        Crown.SetActive(true);
+               
+                        output += 2;
+                        break;
+                    }
+                case ItemBase.ItemType.Scissor:
+                    {
+                        output += 4;
+                        break;
+                    }
+                case ItemBase.ItemType.Tooth:
+                    {
+                        output += 3;
+                        break;
+                    }
+
+            }
+        }
         output += 1;
 
         return output;
@@ -307,6 +370,15 @@ public class MovPlayer : MonoBehaviour
     public float GetJumpHeight()
     {
         float output = baseJumpHeight;
+
+        //foreach (ItemBase.ItemType item in items)
+        //{
+        //    switch (item)
+        //    {
+
+        //    }
+        //}
+
 
         output += skillManager.GetAllocatedPointsOf(1); // jump height
 

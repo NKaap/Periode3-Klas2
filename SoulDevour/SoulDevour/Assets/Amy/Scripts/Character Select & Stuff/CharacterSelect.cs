@@ -12,6 +12,7 @@ public class CharacterSelect : MonoBehaviour
     public GameObject[] characterModels;
     public Transform[] uiCharacterInfo;
 
+    public MovPlayer movPlayer;
 
     [Header("Active Information")]
     [Space(8)]
@@ -25,11 +26,16 @@ public class CharacterSelect : MonoBehaviour
     public Transform playerPos;
     public SkillPointManager skillPointManager;
 
+    
     // Start is called before the first frame update
     void Start()
     {
-       
-        foreach(GameObject obj in characterModels)
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+        movPlayer = playerObj.GetComponent<MovPlayer>();
+
+        skillPointManager.SetSkillData(movPlayer.playerTypes);
+
+        foreach (GameObject obj in characterModels)
         {
             obj.SetActive(false);
         }
@@ -102,11 +108,13 @@ public class CharacterSelect : MonoBehaviour
         string jsonChar = JsonUtility.ToJson(gameSavingChar);
         File.WriteAllText(Application.dataPath + "/characterSaveFile.json", jsonChar);
 
-     //   string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
-     ////   Data loadedData = JsonUtility.FromJson<Data>(json);
-     //   json = JsonUtility.ToJson(new Data());
-     //   File.WriteAllText(Application.dataPath + "/saveFile.json", json);
-      
+       
+
+        //   string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
+        ////   Data loadedData = JsonUtility.FromJson<Data>(json);
+        //   json = JsonUtility.ToJson(new Data());
+        //   File.WriteAllText(Application.dataPath + "/saveFile.json", json);
+
 
         SceneManager.LoadScene(1); // 1 is de game denk ik ?
 

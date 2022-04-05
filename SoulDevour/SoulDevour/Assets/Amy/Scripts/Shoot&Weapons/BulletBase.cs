@@ -47,38 +47,7 @@ public class BulletBase : MonoBehaviour
     {
         float output = baseDamage;
 
-        foreach (ItemBase.ItemType item in source.items)
-        {
-            switch (item)
-            {
-                case ItemBase.ItemType.PropjePapier: // base bullet
-                    {
-                        output += 1;
-                        break;
-                    }
-                case ItemBase.ItemType.Fireballs:
-                    {
-                        output += 2;
-                        break;
-                    }
-                case ItemBase.ItemType.Crown:
-                    {
-                        output += 2;
-                        break;
-                    }
-                case ItemBase.ItemType.Scissor:
-                    {
-                        output += 4;
-                        break;
-                    }
-                case ItemBase.ItemType.Tooth:
-                    {
-                        output += 3;
-                        break;
-                    }
-
-            }
-        }
+       
 
         // edit output
         return output;
