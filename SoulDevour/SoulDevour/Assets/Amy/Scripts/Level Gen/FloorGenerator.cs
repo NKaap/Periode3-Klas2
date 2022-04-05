@@ -322,7 +322,7 @@ public class FloorGenerator : MonoBehaviour
                         int randomIndexCeiling = Random.Range(0, customCeiling[0].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 7f, position.y * roomDimension.y); 
                         instanceCeiling = Instantiate(customCeiling[0].objects[randomIndexCeiling], worldPos, new Quaternion(0, 0, 0, 0), parent.transform);
-                        instanceCeiling.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        instanceCeiling.transform.localScale = new Vector3(1, 1, 1);
 
                         //instanceCeiling.transform.parent = parent.transform;
                         // Floor
@@ -343,7 +343,7 @@ public class FloorGenerator : MonoBehaviour
                         int randomIndexCeiling = Random.Range(0, customCeiling[1].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 7f, position.y * roomDimension.y);
                         instanceCeiling = Instantiate(customCeiling[1].objects[randomIndexCeiling], worldPos, new Quaternion(0, 0, 0, 0), parent.transform);
-                        instanceCeiling.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        instanceCeiling.transform.localScale = new Vector3(1, 1, 1);
                         instanceCeiling.transform.parent = parent.transform;
                         // Floor
                         int randomIndex = Random.Range(0, customListFloor[1].objects.Length);
@@ -360,7 +360,7 @@ public class FloorGenerator : MonoBehaviour
                         int randomIndexCeiling = Random.Range(0, customCeiling[2].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 7f, position.y * roomDimension.y); 
                         instanceCeiling = Instantiate(customCeiling[2].objects[randomIndexCeiling], worldPos, new Quaternion(0, 0, 0, 0), parent.transform);
-                        instanceCeiling.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        instanceCeiling.transform.localScale = new Vector3(1, 1, 1);
 
                         instanceCeiling.transform.parent = parent.transform;
 
@@ -379,7 +379,7 @@ public class FloorGenerator : MonoBehaviour
                         int randomIndexCeiling = Random.Range(0, customCeiling[3].objects.Length);
                         worldPos = new Vector3(position.x * roomDimension.x, 7f, position.y * roomDimension.y);
                         instanceCeiling = Instantiate(customCeiling[3].objects[randomIndexCeiling], worldPos, new Quaternion(0, 0, 0, 0), parent.transform);
-                        instanceCeiling.transform.localScale = new Vector3(roomDimension.x, 1, roomDimension.y);
+                        instanceCeiling.transform.localScale = new Vector3(1, 1, 1);
                         instanceCeiling.transform.parent = parent.transform;
 
                         // Floor
