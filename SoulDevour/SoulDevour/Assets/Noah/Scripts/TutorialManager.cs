@@ -1,26 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
-    public GameObject[] popUps;
+    public string[] popUps;
     public int popUpIndex;
 
     public GameObject skipButton;
 
     public GameObject tutorialCamera;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public GameObject tekstShit;
 
+    [Header("Door Settings")]
+    public GameObject doorObject;
+    public float openSpeed;
+    public bool doorIsOpen;
+    private float angle;
+    public Vector3 direction;
+    public Animator doorAnim;
+
+    private void Awake()
+    {
+        this.gameObject.GetComponent<TextEffect>().inputText = popUps[0];
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < popUps.Length; i++)
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            this.gameObject.GetComponent<TextEffect>().inputText = popUps[popUpIndex + 1];
+
+        }
+        /*for (int i = 0; i < popUps.Length; i++)
         {
             if (i == popUpIndex)
             {
@@ -30,40 +46,55 @@ public class TutorialManager : MonoBehaviour
             {
                 popUps[i].SetActive(false);
             }
-        }
+        }*/
         if (popUpIndex == 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
+                ToggleDoor();
                 popUpIndex++;
                 tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().roomView;
+                //tutorialCamera.GetComponent<CameraController>().transitionSpeed = 5;
+            }
+        }
+        else if (popUpIndex == 1)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                ToggleDoor();
+                popUpIndex++;
+                tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().achievementView;
+            }
+        }
+        else if (popUpIndex == 2)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                popUpIndex++;
+                tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().whiteboardView;
             }
         }
         else if (popUpIndex == 3)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetMouseButtonDown(0))
             {
                 popUpIndex++;
+                tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().bearView;
             }
         }
         else if (popUpIndex == 4)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.tag == "Computer2")
-                    {
-                        popUpIndex++;
-                    }
-                }
+                popUpIndex++;
+                tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().roomView;
+
             }
         }
-        else if (popUpIndex == popUps.Length)
+
+        else if (popUpIndex + 1 == popUps.Length)
         {
-            skipButton.SetActive(false);
+            SkipTutorial();
         }
     }
     public void popUpPlusPlus()
@@ -74,7 +105,22 @@ public class TutorialManager : MonoBehaviour
     public void SkipTutorial()
     {
         popUpIndex = popUps.Length;
+        tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().roomView;
+        tutorialCamera.SetActive(false);
         skipButton.SetActive(false);
+        tekstShit.SetActive(false);
+        this.gameObject.SetActive(false);
+    }
+
+    public void ToggleDoor()
+    {
+        doorIsOpen = !doorIsOpen;
+        if (doorIsOpen == false) // Move rotation to closed
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,-100,0) , openSpeed);
+            doorAnim.Play("CloseDoor");
+        if (doorIsOpen == true) // Move rotation to open
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), openSpeed);
+            doorAnim.Play("OpenDoor");
     }
 
 }
