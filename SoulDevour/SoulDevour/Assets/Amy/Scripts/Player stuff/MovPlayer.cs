@@ -47,7 +47,7 @@ public class MovPlayer : MonoBehaviour
     [Header("Base Speed, Jump and Health")]
     [Space(8)]
 
-    [SerializeField] private float speed = 10; // player speed
+    [SerializeField] private float speed = 5; // player speed
 
     public float baseHealth = 4; // player health            HEALTH
     [SerializeField] private Vector3 baseJumpHeight; // player jump
@@ -116,14 +116,11 @@ public class MovPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //  even checken want je gebruikt de variable baseHealth;
-       
+        //  even checken want je gebruikt de variable baseHealth;     
         if (!cantMove)
         {
             Move(calculatedSpeed);
         }
-
-     
     }
 
     
@@ -307,8 +304,10 @@ public class MovPlayer : MonoBehaviour
         {
             // playerAnimator.SetBool("UpperCut", true);
             cantMove = true;
-            collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
-            collider.GetComponent<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+            if (collider.transform.CompareTag("Child"))
+            {
+                collider.GetComponentInChildren<Rigidbody>().AddExplosionForce(kickForce, transform.position, 10, 10, ForceMode.Impulse);
+            }
             // collider.GetComponent<ChildController>().health -= 10;
             Debug.Log("Yass");
 
