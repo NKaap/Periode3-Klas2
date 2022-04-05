@@ -25,15 +25,15 @@ public class Pause : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             if (GameIsPaused)
             {
-                Resumeui();
-                
+                Pauseui();
+                settings.SetActive(false);
+
 
             }
             else
             {
-
-                Pauseui();
-                settings.SetActive(false);
+                Resumeui();
+                
             }
 
         }
@@ -53,7 +53,7 @@ public class Pause : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
         GameIsPaused = true;
-
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
