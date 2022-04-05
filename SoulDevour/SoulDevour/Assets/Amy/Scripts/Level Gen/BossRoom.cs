@@ -14,6 +14,8 @@ public class BossRoom : MonoBehaviour
     public bool playerEnteredRoom = false;
     public float timeLeft = 2;
     public bool spawned = false;
+
+    public GameObject doorToNextLevel;
     // player enters room, locks, enemies are activated. 
 
     private void Start()
@@ -22,6 +24,7 @@ public class BossRoom : MonoBehaviour
         barThree.SetActive(false);
         barTwo.SetActive(false);
         barFour.SetActive(false);
+        doorToNextLevel.SetActive(false);
 
     }
 
@@ -30,9 +33,7 @@ public class BossRoom : MonoBehaviour
     {
         if (playerEnteredRoom)
         {
-            // IronBarsRoomLock();
-
-           
+            IronBarsRoomLock();        
         }
 
 
@@ -42,6 +43,7 @@ public class BossRoom : MonoBehaviour
             barThree.SetActive(false);
             barTwo.SetActive(false);
             barFour.SetActive(false);
+            doorToNextLevel.SetActive(true);
         }
     }
 
