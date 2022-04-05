@@ -8,6 +8,11 @@ public class EndBossController : MonoBehaviour
     Transform target;
     GameObject player;
 
+    SkillPointManager skillManager;
+    public GameObject skillObj;
+    bool skillpointAdded = false;
+
+
     [SerializeField]
     private float _moveSpeed = 5.0f;
 
@@ -27,8 +32,12 @@ public class EndBossController : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         target = player.transform;
+
         _controller = GetComponent<CharacterController>();
         ragdoll = ragdoll.GetComponent<Rigidbody>();
+
+        skillObj = GameObject.FindWithTag("SkillPointManager");
+        skillManager = skillObj.GetComponent<SkillPointManager>();
     }
 
     // Update is called once per frame
@@ -40,9 +49,16 @@ public class EndBossController : MonoBehaviour
         }
 
         TeacherDead();
+      
 
         if (!alive)
         {
+            if (!skillpointAdded)
+            {
+                skillManager.AddUnusedSkillPoint();
+                skillpointAdded = true;
+            }
+         
 
         }
     }
@@ -68,7 +84,7 @@ public class EndBossController : MonoBehaviour
         {
             //  animations.SetBool("Walk", false);
             _moveSpeed = 0;
-            Debug.Log("Pause.");
+            //Debug.Log("Pause.");
         }
 
         timeLeft -= Time.deltaTime;
@@ -86,7 +102,7 @@ public class EndBossController : MonoBehaviour
     {
         if (health <= 0)
         {
-            Debug.Log("Teacher died, it just doesnt show");
+         
             animations.SetBool("Walk", false);
             animations.SetBool("Dead", true);
             alive = false;
@@ -96,14 +112,15 @@ public class EndBossController : MonoBehaviour
     public void ThrowKid()
     {
         Rigidbody instantiatedProjectile = Instantiate(ragdoll, hand.transform.position, hand.transform.rotation) as Rigidbody;
-        Debug.Log(instantiatedProjectile);
+        //Debug.Log(instantiatedProjectile);
         instantiatedProjectile.GetComponent<Rigidbody>().AddForce(transform.up * 100);
 
     }
 
     public IEnumerator PickupKid()
     {
-        GameObject handObj =  Instantiate(ragdollModel, hand.transform.position, hand.transform.rotation, parent: hand.transform);
+        GameObject handObj =  Instantiate(ragdollModel, hand.transform.position, ragdollModel.transform.rotation, parent: hand.transform);
+        handObj.transform.position = hand.transform.position;
         yield return new WaitForSeconds(1f);
         Destroy(handObj);
     }

@@ -15,6 +15,11 @@ public class SkillPointManager : MonoBehaviour
 
     public Text speedText, jumpText, healthText, damageText;
 
+    private void Update()
+    {
+        Debug.Log(skillData.unusedSkillPoints);
+    }
+
     private void Start()
     {
         SetSkillData(MovPlayer.PlayerTypes.TeddyBear);
@@ -24,24 +29,24 @@ public class SkillPointManager : MonoBehaviour
     {
         string fileName = Application.dataPath + "/" + playerType.ToString() + ".txt";
 
-        Debug.Log("New Data: " + fileName);
+       // Debug.Log("New Data: " + fileName);
         
         if (File.Exists(fileName))
         {
-            Debug.Log("File Exists!");
+            //Debug.Log("File Exists!");
             
             string data = File.ReadAllText(fileName);
 
-            Debug.Log(data);
+            //Debug.Log(data);
 
             skillData = JsonUtility.FromJson<SkillData>(data);
             
-            Debug.Log(skillData.unusedSkillPoints);
+           // Debug.Log(skillData.unusedSkillPoints);
           
         }
         else
         {
-            Debug.Log("Creating new data");
+            //Debug.Log("Creating new data");
             skillData = new SkillData();
             string json = JsonUtility.ToJson(skillData);
             File.WriteAllText(fileName, json);
@@ -57,6 +62,7 @@ public class SkillPointManager : MonoBehaviour
 
     public void AddUnusedSkillPoint()
     {
+        // add that it only adds with the playertype that is active.
         skillData.unusedSkillPoints++;
     }
 
@@ -108,10 +114,10 @@ public class SkillPointManager : MonoBehaviour
         }
         string fileName = Application.dataPath + "/" + ((MovPlayer.PlayerTypes)activeIndex).ToString() + ".txt";
         string data = JsonUtility.ToJson(skillData);
-        Debug.Log("Spent: " + fileName);
+        //Debug.Log("Spent: " + fileName);
         File.WriteAllText(fileName,data);
 
-        Debug.Log("Spent a point");
+       // Debug.Log("Spent a point");
         RefreshSkillInfo();
     }
 
