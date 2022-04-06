@@ -22,7 +22,7 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.None;
+            
             if (GameIsPaused)
             {
                 Resumeui();
@@ -33,18 +33,18 @@ public class Pause : MonoBehaviour
             {
 
                 Pauseui();
-                settings.SetActive(false);
+                
             }
 
         }
     }
     public void Resumeui()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         GameIsPaused = false;
-        settings.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Pauseui()
