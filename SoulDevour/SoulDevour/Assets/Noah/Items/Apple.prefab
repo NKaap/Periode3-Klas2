@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 1621237841039340135}
   - component: {fileID: 2436465743514910146}
   - component: {fileID: 447237240856103176}
+  - component: {fileID: 4804649567457188202}
+  - component: {fileID: 5415479124560379846}
   m_Layer: 0
   m_Name: Apple
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4804649567457188202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104337259382859997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e79711478bb7f48b5b5982e458e978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemtype: 3
+--- !u!65 &5415479124560379846
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104337259382859997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15812099, y: 0.14494523, z: 0.166258}
+  m_Center: {x: -0.00054232776, y: 0.07247259, z: -0.0030306168}

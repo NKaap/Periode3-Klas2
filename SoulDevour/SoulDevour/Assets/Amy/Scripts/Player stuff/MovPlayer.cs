@@ -49,7 +49,7 @@ public class MovPlayer : MonoBehaviour
 
     [SerializeField] public float damage = 1;
     [SerializeField] public float speed = 5; // player speed
-    [SerializeField] public float baseHealth = 4; // player health            HEALTH
+    [SerializeField] public float baseHealth = 8; // player health            HEALTH
     [SerializeField] public float baseJumpHeight = 2; // player jump
     public int maxJump = 2;
     public int timesJumped = 0;
@@ -480,17 +480,20 @@ public class MovPlayer : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         timesJumped = 0;
-
-        if (collision.gameObject.TryGetComponent<ItemBase>(out ItemBase comp))
+        if (collision.transform.CompareTag("Item"))
         {
-            // copy item, do it in array, so it doesnt say "none"
-            if (!items.Contains(comp.itemtype))
-                items.Add(comp.itemtype);
+            if (collision.gameObject.TryGetComponent<ItemBase>(out ItemBase comp))
+            {
+                // copy item, do it in array, so it doesnt say "none"
+                if (!items.Contains(comp.itemtype))
+                    items.Add(comp.itemtype);
 
-            //items.Add(new ItemBase(comp));
-            collision.gameObject.SetActive(false);
-            Debug.Log(items[0]);
-            
+                //items.Add(new ItemBase(comp));
+                collision.gameObject.SetActive(false);
+                Debug.Log(items[0]);
+
+            }
+
         }
 
         if (collision.transform.CompareTag("BulletChild"))

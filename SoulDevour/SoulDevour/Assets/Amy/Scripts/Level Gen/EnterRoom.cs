@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnterRoom : MonoBehaviour
 {
 
-    public GameObject[] enemiesInRoom;
+    public GameObject enemyOne, enemyTwo, enemyThree;
     public GameObject barOne, barTwo, barThree, barFour;
   
     public float radius = 2;
 
     public bool allEnemiesDead;
     public bool playerEnteredRoom = false;
+    public bool playerCol = false;
     public float timeLeft = 2;
 
     // player enters room, locks, enemies are activated. 
@@ -22,24 +23,37 @@ public class EnterRoom : MonoBehaviour
         barThree.SetActive(false);
         barTwo.SetActive(false);
         barFour.SetActive(false);
+        enemyOne.SetActive(false);
+        enemyThree.SetActive(false);
+        enemyTwo.SetActive(false);
     }
 
 
     private void Update()
     {
-        if (playerEnteredRoom)
+        if (playerEnteredRoom & !playerCol)
         {
             IronBarsRoomLock();
-            
+            enemyOne.SetActive(true);
+            enemyThree.SetActive(true);
+            enemyTwo.SetActive(true);
+            playerCol = true;
         }
       
-  
+        if(enemyOne == null && enemyTwo == null && enemyThree == null)
+        {
+            allEnemiesDead = true;
+           
+        }
+
         if (allEnemiesDead)
         {
-            barOne.SetActive(false);
-            barThree.SetActive(false);
-            barTwo.SetActive(false);
-            barFour.SetActive(false);
+            Debug.Log("EnemiesGone");
+            Destroy(barOne);
+            Destroy(barTwo);
+            Destroy(barThree);
+            Destroy(barFour);
+          
         }
     }
 
@@ -90,12 +104,10 @@ public class EnterRoom : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             // nog een timer aan toevoegen
-            timeLeft -= Time.deltaTime;
-            if (timeLeft < 0)
-            {
-                playerEnteredRoom = true;
+            
+            playerEnteredRoom = true;
 
-            }
+            
         }
 
     }

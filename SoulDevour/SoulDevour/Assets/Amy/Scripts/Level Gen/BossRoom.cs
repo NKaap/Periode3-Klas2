@@ -5,12 +5,12 @@ using UnityEngine;
 public class BossRoom : MonoBehaviour
 {
 
-    public GameObject teacher;
+    public GameObject[] teachers;
     public GameObject barOne, barTwo, barThree, barFour;
     public Transform spawnpoint;
     public float radius = 2;
 
-    public bool allEnemiesDead;
+    public bool teacherDead = false;
     public bool playerEnteredRoom = false;
     public float timeLeft = 2;
     public bool spawned = false;
@@ -37,7 +37,7 @@ public class BossRoom : MonoBehaviour
         }
 
 
-        if (allEnemiesDead)
+        if (teacherDead)
         {
             barOne.SetActive(false);
             barThree.SetActive(false);
@@ -49,12 +49,13 @@ public class BossRoom : MonoBehaviour
 
     public void SpawnTeacher()
     {
-        GameObject spawnedTeacher = Instantiate(teacher, spawnpoint.position, spawnpoint.rotation);
+        GameObject spawnedTeacher = Instantiate(teachers[Random.Range(0, teachers.Length)], spawnpoint.position, spawnpoint.rotation);
         spawned = true;
 
         if(spawnedTeacher == null)
         {
             Debug.Log("Teacher Down!");
+            teacherDead = true;
         }
     }
 

@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 4651090633629309081}
   - component: {fileID: 8585028419409942332}
   - component: {fileID: 5818882257154270198}
+  - component: {fileID: 5030373399339714828}
+  - component: {fileID: 8765316717265457399}
   m_Layer: 0
   m_Name: UnicornHorn
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5030373399339714828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458414311354352163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e79711478bb7f48b5b5982e458e978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemtype: 19
+--- !u!65 &8765316717265457399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458414311354352163}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07625491, y: 0.4421572, z: 0.25705838}
+  m_Center: {x: 0.0005149953, y: 0.18912736, z: 0.09954751}

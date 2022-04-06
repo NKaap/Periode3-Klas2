@@ -16,7 +16,7 @@ public class EndBossController : MonoBehaviour
     [SerializeField]
     private float _moveSpeed = 5.0f;
 
-    public float health = 4;
+    public float health = 20;
 
     public Rigidbody ragdoll;
     public GameObject ragdollModel;

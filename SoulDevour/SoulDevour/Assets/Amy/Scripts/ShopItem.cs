@@ -15,16 +15,17 @@ public class ShopItem : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") && player.GetComponent<MovPlayer>().money >= 8)
         {
             player.GetComponent<MovPlayer>().money -= 8;
             Instantiate(item, transform.position, transform.rotation);
             Destroy(gameObject);
 
-            if (player.GetComponent<MovPlayer>().money <= 8)
-            {
-                Debug.Log("Not enough stonks to buy this item!");
-            }
+           
+        }
+        if(player.GetComponent<MovPlayer>().money <= 8)
+        {
+            Debug.Log("Not enough!");
         }
     }
 }

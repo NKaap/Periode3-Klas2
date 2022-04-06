@@ -108,7 +108,11 @@ public class CharacterSelect : MonoBehaviour
         string jsonChar = JsonUtility.ToJson(gameSavingChar);
         File.WriteAllText(Application.dataPath + "/characterSaveFile.json", jsonChar);
 
-       
+        Data gameSaving = new Data();
+        gameSaving.levelSeed = Time.time.GetHashCode();
+
+        string json = JsonUtility.ToJson(gameSaving);
+        File.WriteAllText(Application.dataPath + "/saveFile.json", json);
 
         //   string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         ////   Data loadedData = JsonUtility.FromJson<Data>(json);

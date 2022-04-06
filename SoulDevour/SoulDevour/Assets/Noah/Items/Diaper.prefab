@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 7965543484803876602}
   - component: {fileID: 6423417357680937311}
   - component: {fileID: 9133413586913623445}
+  - component: {fileID: 2749163638567617773}
+  - component: {fileID: 8872079705553477387}
   m_Layer: 0
   m_Name: Diaper
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2749163638567617773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332030841068575808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e79711478bb7f48b5b5982e458e978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemtype: 5
+--- !u!65 &8872079705553477387
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332030841068575808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65890354, y: 0.30686602, z: 0.46908092}
+  m_Center: {x: 0, y: 0.15117739, z: 0.052631237}

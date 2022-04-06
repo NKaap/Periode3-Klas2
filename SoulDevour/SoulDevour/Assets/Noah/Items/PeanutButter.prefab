@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 4339476564503147128}
   - component: {fileID: 835190565298027997}
   - component: {fileID: 3203121656806000919}
+  - component: {fileID: 1686984865389018148}
+  - component: {fileID: 5498462337780725753}
   m_Layer: 0
   m_Name: PeanutButter
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1686984865389018148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995601466468853954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e79711478bb7f48b5b5982e458e978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemtype: 14
+--- !u!65 &5498462337780725753
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995601466468853954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.253972, y: 0.30000007, z: 0.253972}
+  m_Center: {x: 0.000000014901161, y: 0.15000004, z: 0}

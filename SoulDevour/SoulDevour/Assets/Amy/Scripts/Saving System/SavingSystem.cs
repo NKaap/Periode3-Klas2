@@ -47,7 +47,9 @@ public class SavingSystem : MonoBehaviour
 
         Data loadedCharData = JsonUtility.FromJson<Data>(charjson);
 
+        
         Random.InitState(loadedData.levelSeed);
+
         player.GetComponent<MovPlayer>().items = loadedData.itemsEquipped;
         player.GetComponent<MovPlayer>().playerTypes = loadedCharData.type;
         // Debug.Log(loadedCharData.type);

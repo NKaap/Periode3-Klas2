@@ -57,7 +57,7 @@ public class FloorGenerator : MonoBehaviour
     /// </summary>
     void Start()
     {
-      //  Random.InitState(((int)Time.time));
+       
 
         DestroyFloor();
         GenerateFloor();
@@ -96,7 +96,9 @@ public class FloorGenerator : MonoBehaviour
         FloorLayout = new Dictionary<Vector2, Room>();
 
         //Sets the seed with a string (convert to hashcode to make it an int)
-       // Random.InitState(seed.Substring(0, 8).ToUpper().GetHashCode());
+
+        // Random.InitState(Time.time.GetHashCode());
+        // Random.InitState(seed.Substring(0,8).ToUpper().GetHashCode());       //   als je dit beide doet met de start, dan gaat het niet goed met Item room en Shop room
 
         //Make the first room, and recursively generate the other rooms using AddRoom
         FloorLayout.Add(Vector2.zero, new Room(Vector2.zero, false, false, false, false));
@@ -478,16 +480,6 @@ public class FloorGenerator : MonoBehaviour
 
 
     //}
-
-    public void IronBarsActive()
-    {
-
-    }
-    public void IronBarsDestroy()
-    {
-
-    }
-
 
 
     //A custom array for gameobjects that is visible in inspector

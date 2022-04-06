@@ -11,7 +11,7 @@ public class ChildTest : MonoBehaviour
     [SerializeField]
     private float _moveSpeed = 5.0f;
 
-    public float health = 4;
+    public float health = 10;
 
     public GameObject ragdoll;
     public GameObject head;
@@ -47,18 +47,19 @@ public class ChildTest : MonoBehaviour
             animations.SetBool("Walk", true);
         }
      
-        if(distance <= 3 || distance >= 10)
+        if(distance <= 3 || distance >= 20)
         {
             animations.SetBool("Walk", false);
            
             _moveSpeed = 0;
-            Debug.Log("Pause.");
+            Debug.Log("child paused.");
 
          
 
         }
 
      
+
 
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
@@ -87,7 +88,8 @@ public class ChildTest : MonoBehaviour
     public void ChildSlapEvent()
     {
         // eigenlijk iets in Gethealth aanpassen.
-
+        
+        // checksphere
         player.GetComponent<MovPlayer>().baseHealth -= 1;
     }
 
