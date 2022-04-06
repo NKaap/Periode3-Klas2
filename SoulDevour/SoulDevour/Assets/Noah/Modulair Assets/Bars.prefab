@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5620652390708780040}
   - component: {fileID: 8768308383308223405}
   - component: {fileID: 6794732602541107047}
+  - component: {fileID: -8595188936800123751}
   m_Layer: 0
   m_Name: Bars
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-8595188936800123751
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993156344142218930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2113299, y: 2.415443, z: 0.19999109}
+  m_Center: {x: 0, y: 1.2077215, z: 0.000000052154064}

@@ -15,6 +15,7 @@ public class CameraController: MonoBehaviour
     public Transform bearView;
     public Transform whiteboardView;
     public Transform roomView;
+    public Transform doorView;
 
     // Use this for initialization
     void Start()
