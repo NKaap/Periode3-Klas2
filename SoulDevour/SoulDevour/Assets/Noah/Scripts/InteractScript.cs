@@ -14,7 +14,6 @@ public class InteractScript : MonoBehaviour
 
     [Header("Canvas Settings")]
     public GameObject toSeeCanvas;
-    public GameObject controller;
 
     private void Awake()
     {

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4993156344142218930
+--- !u!1 &5941700215740174915
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5620652390708780040}
-  - component: {fileID: 8768308383308223405}
-  - component: {fileID: 6794732602541107047}
-  - component: {fileID: -8595188936800123751}
+  - component: {fileID: 6430850483148966137}
+  - component: {fileID: 7967188680063403868}
+  - component: {fileID: 5293370779082273686}
   m_Layer: 0
-  m_Name: Bars
+  m_Name: GroteWhiteBoard 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5620652390708780040
+--- !u!4 &6430850483148966137
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4993156344142218930}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 5941700215740174915}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:SoulDevour/SoulDevour/Assets/Amy/Models/Floors/Bars.prefab
-  m_LocalScale: {x: 1.5, y: 1.3, z: 1.3}
-=======
-  m_LocalScale: {x: 2, y: 1.8, z: 1.5}
->>>>>>> Noah-Art:SoulDevour/SoulDevour/Assets/Noah/Modulair Assets/Bars.prefab
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8768308383308223405
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!33 &7967188680063403868
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4993156344142218930}
-  m_Mesh: {fileID: 2534964839176971238, guid: 04c69f22702f546468fac0b75cf37f30, type: 3}
---- !u!23 &6794732602541107047
+  m_GameObject: {fileID: 5941700215740174915}
+  m_Mesh: {fileID: -1314969688995771586, guid: ee6fd361e85ddd44983462f8859401b1, type: 3}
+--- !u!23 &5293370779082273686
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4993156344142218930}
+  m_GameObject: {fileID: 5941700215740174915}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5f37c54d6fb4ba4792c3bfe7855af43, type: 2}
+  - {fileID: 2100000, guid: 266fc161a356dcb4aad4e466945bcacf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,16 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-8595188936800123751
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4993156344142218930}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2113299, y: 2.415443, z: 0.19999109}
-  m_Center: {x: 0, y: 1.2077215, z: 0.000000052154064}

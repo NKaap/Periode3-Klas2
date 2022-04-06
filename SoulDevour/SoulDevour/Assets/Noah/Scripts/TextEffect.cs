@@ -22,6 +22,11 @@ public class TextEffect : MonoBehaviour
 
 	}
 
+    private void OnEnable()
+    {
+		currentText = "";
+    }
+
     private void FixedUpdate()
     {
         if(isTextCompleted == true)
@@ -35,6 +40,13 @@ public class TextEffect : MonoBehaviour
             else
             {
 				return;
+            }
+        }
+		if(currentText == "")
+        {
+			if(whereTextInputs.text != currentText)
+            {
+				Start();
             }
         }
     }
@@ -52,6 +64,7 @@ public class TextEffect : MonoBehaviour
 	{
 		for (int i = 0; i < inputText.Length + 1; i++)
 		{
+			Debug.Log("Texting...");
 			currentText = inputText.Substring(0, i);
 			whereTextInputs.text = currentText;
 			yield return new WaitForSeconds(delay);

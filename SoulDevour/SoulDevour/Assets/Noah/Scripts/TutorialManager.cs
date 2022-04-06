@@ -5,31 +5,62 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
+    [Header("Text Settings")]
     public string[] popUps;
     public int popUpIndex;
 
+    [Header("UI settings")]
     public GameObject skipButton;
 
     public GameObject tutorialCamera;
 
     public GameObject tekstShit;
 
+    [Header("Camera Settings")]
+    public int cameraSpeedInRoom;
+
     [Header("Door Settings")]
     public GameObject doorObject;
-    public float openSpeed;
     public bool doorIsOpen;
-    private float angle;
-    public Vector3 direction;
     public Animator doorAnim;
+
+    [Header("Door Sounds")]
+    public AudioSource doorOpenSound;
+    public AudioSource doorCloseSound;
 
     private void Awake()
     {
         this.gameObject.GetComponent<TextEffect>().inputText = popUps[0];
     }
 
+    // OnEnable is Called when object is Enabled
+    public void OnEnable()
+    {
+        this.gameObject.GetComponent<TextEffect>().inputText = popUps[0];
+        tutorialCamera.SetActive(true);
+        tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().startingView;
+        tutorialCamera.GetComponent<CameraController>().transitionSpeed = 0.5f;
+        skipButton.SetActive(true);
+        tekstShit.SetActive(true);
+        popUpIndex = 0;
+    }
+
+    public void Start()
+    {
+        tutorialCamera.SetActive(true);
+        popUpIndex = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (popUpIndex >= popUps.Length)
+        {
+            Debug.Log("Out of Array");
+            return;
+        }
+
+
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -54,7 +85,6 @@ public class TutorialManager : MonoBehaviour
                 ToggleDoor();
                 popUpIndex++;
                 tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().roomView;
-                //tutorialCamera.GetComponent<CameraController>().transitionSpeed = 5;
             }
         }
         else if (popUpIndex == 1)
@@ -63,6 +93,7 @@ public class TutorialManager : MonoBehaviour
             {
                 ToggleDoor();
                 popUpIndex++;
+                tutorialCamera.GetComponent<CameraController>().transitionSpeed = cameraSpeedInRoom;
                 tutorialCamera.GetComponent<CameraController>().currentView = tutorialCamera.GetComponent<CameraController>().achievementView;
             }
         }
@@ -109,18 +140,25 @@ public class TutorialManager : MonoBehaviour
         tutorialCamera.SetActive(false);
         skipButton.SetActive(false);
         tekstShit.SetActive(false);
+        if (doorIsOpen == true)
+        {
+            doorAnim.Play("CloseDoor");
+        }
         this.gameObject.SetActive(false);
     }
-
     public void ToggleDoor()
     {
         doorIsOpen = !doorIsOpen;
-        if (doorIsOpen == false) // Move rotation to closed
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,-100,0) , openSpeed);
+        if (doorIsOpen == false)
+        {
             doorAnim.Play("CloseDoor");
-        if (doorIsOpen == true) // Move rotation to open
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), openSpeed);
+            doorCloseSound.Play();
+        }
+        if (doorIsOpen == true)
+        {
             doorAnim.Play("OpenDoor");
+            doorOpenSound.Play();
+        }
     }
 
 }
