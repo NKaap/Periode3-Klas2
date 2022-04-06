@@ -113,7 +113,7 @@ public class EndBossController : MonoBehaviour
     {
         Rigidbody instantiatedProjectile = Instantiate(ragdoll, hand.transform.position, hand.transform.rotation) as Rigidbody;
         //Debug.Log(instantiatedProjectile);
-        instantiatedProjectile.AddForce(transform.up * 100);
+        instantiatedProjectile.GetComponentInChildren<Rigidbody>().AddForce(transform.up * 100);
 
     }
 

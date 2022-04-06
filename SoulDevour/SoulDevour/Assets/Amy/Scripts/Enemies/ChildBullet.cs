@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class ChildBullet : MonoBehaviour
 {
-    
-    private bool shot;
-  
-
+    float timeLeft = 0.05f;
+    bool addforceyes = false;
+    public Rigidbody rb;
     // Update is called once per frame
     void Update()
     {
-        if(!shot)
+
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0 && !addforceyes)
         {
-            
-            shot = true;
+           // rb.AddExplosionForce(100, transform.position, 10, 10, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 10000);
+            addforceyes = true;
+            Debug.Log("Addforceee");
         }
-        this.GetComponentInChildren<Rigidbody>().AddForce(Vector3.forward * 20);
+
+       
     }
 }
