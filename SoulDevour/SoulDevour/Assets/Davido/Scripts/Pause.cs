@@ -25,15 +25,15 @@ public class Pause : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             if (GameIsPaused)
             {
-                Pauseui();
-                settings.SetActive(false);
-
+                Resumeui();
+                
 
             }
             else
             {
-                Resumeui();
-                
+
+                Pauseui();
+                settings.SetActive(false);
             }
 
         }
