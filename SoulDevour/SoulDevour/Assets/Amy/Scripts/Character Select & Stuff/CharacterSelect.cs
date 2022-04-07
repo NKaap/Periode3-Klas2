@@ -120,7 +120,7 @@ public class CharacterSelect : MonoBehaviour
         //   File.WriteAllText(Application.dataPath + "/saveFile.json", json);
 
 
-        SceneManager.LoadScene(2); // 1 is de game denk ik ?
+        SceneManager.LoadScene(1); // 1 is de game denk ik ?
 
     }
 
