@@ -1,15 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialRoomScript : MonoBehaviour
 {
     public GameObject[] popUps;
+    public string[] popUpsString;
     public int popUpIndex;
 
     public GameObject skipButton;
 
+    public GameObject textObject;
+
+    public Text popUpText;
+
+    [Header("Room Bool")]
+    public bool firstClass;
+    public bool fightClass;
+    public bool itemRoom;
+    public bool shopRoom;
+    public bool secondClass;
+    public bool bossRoom;
+
+    [Header("Child In scene Check")]
+    public int levendeKinder;
+    public bool isTeacherDood;
+
+    [Header("Item")]
+    public bool itemOpgepakt;
+
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        this.gameObject.GetComponent<TextEffect>().inputText = popUpsString[0];
+    }
     void Start()
     {
 
@@ -18,6 +45,11 @@ public class TutorialRoomScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (popUpText.text != popUpsString[popUpIndex])
+        {
+            this.gameObject.GetComponent<TextEffect>().inputText = popUpsString[popUpIndex];
+        }
+
         for (int i = 0; i < popUps.Length; i++)
         {
             if (i == popUpIndex)
@@ -33,49 +65,133 @@ public class TutorialRoomScript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.tag == "Computer1")
-                    {
-                        popUpIndex++;
-                    }
-                }
+                popUpIndex++;
             }
         }
         else if (popUpIndex == 1)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetMouseButtonDown(0))
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 2)
+        {
+            if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 3)
+        {
+            if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 4)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (firstClass == true)
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.tag == "Computer2")
-                    {
-                        popUpIndex++;
-                    }
-                }
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 5)
+        {
+            if (popUpsString[6] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 6)
+        {
+            if (fightClass == true)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 7)
+        {
+            if (levendeKinder == 0)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 8)
+        {
+            if (itemRoom == true)
+            {
+                popUpIndex++;
+            }
+        }
+        else if(popUpIndex == 9)
+        {
+            if(popUpsString[10] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 10)
+        {
+            if (itemOpgepakt == true)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 11)
+        {
+            if (shopRoom == true)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 12)
+        {
+            if (popUpsString[13] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 13)
+        {
+            if (popUpsString[14] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 14)
+        {
+            if (bossRoom == true)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 15)
+        {
+            if (popUpsString[15] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            {
+                popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 16)
+        {
+            if (isTeacherDood == true)
+            {
+                popUpIndex++;
             }
         }
         else if (popUpIndex == popUps.Length)
         {
-            skipButton.SetActive(false);
+            SkipTutorial();
         }
     }
 
     public void SkipTutorial()
     {
-        popUpIndex = popUps.Length;
-        skipButton.SetActive(false);
+        //popUpIndex = popUps.Length;
+        //skipButton.SetActive(false);
+        //textObject.SetActive(false);
+        SceneManager.LoadScene("Lobby1");
     }
 
 }
