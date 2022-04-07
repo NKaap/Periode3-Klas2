@@ -125,10 +125,12 @@ public class MovPlayer : MonoBehaviour
                     break;
                 }
         }
+
     }
 
     private void Start()
     {
+       // skillManager = GameObject.FindGameObjectWithTag("SkillPointManager");
         skillManager = skillManager.GetComponent<SkillPointManager>();
 
         Crown.SetActive(false);
@@ -156,6 +158,12 @@ public class MovPlayer : MonoBehaviour
     private void Update()
     {
 
+        Debug.Log(calculatedHealth);
+        if (baseHealth <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+
 
         KickChildren();
         PlayerModel();
@@ -171,13 +179,13 @@ public class MovPlayer : MonoBehaviour
             moneyUI.text = (money + ("Souls"));
         }
 
-       
 
 
-        if (calculatedHealth > numOfHearts)
-        {
-            baseHealth = numOfHearts;
-        }
+
+        //if (calculatedHealth > numOfHearts)
+        //{
+        //    baseHealth = numOfHearts;
+        //}
 
         for (int i = 0; i < hearts.Length; i++)
         {
@@ -200,18 +208,13 @@ public class MovPlayer : MonoBehaviour
         }
 
 
-        if (calculatedHealth <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
-
 
         //Debug.Log(calculatedDamage + "damage");
         //Debug.Log(calculatedHealth + "health");
         //Debug.Log(calculatedJumpHeight + "jump");
         //Debug.Log(calculatedSpeed + "speed");
 
-        
+
         Debug.Log(skillManager.GetComponent<SkillPointManager>().GetAllocatedPointsOf(0) + "pp");
         Debug.Log(skillManager.GetComponent<SkillPointManager>().GetAllocatedPointsOf(1) + "pp1");
         Debug.Log(skillManager.GetComponent<SkillPointManager>().GetAllocatedPointsOf(2) + "pp2");
@@ -392,6 +395,11 @@ public class MovPlayer : MonoBehaviour
                         break;
                     }
                 case ItemBase.ItemType.Tooth:
+                    {
+                        output += 3;
+                        break;
+                    }
+                case ItemBase.ItemType.Glasses:
                     {
                         output += 3;
                         break;

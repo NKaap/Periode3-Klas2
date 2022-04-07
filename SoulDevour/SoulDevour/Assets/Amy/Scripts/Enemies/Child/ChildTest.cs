@@ -64,8 +64,19 @@ public class ChildTest : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            animations.SetTrigger("Slap");
-            timeLeft = 2;
+          
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 4);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.transform.CompareTag("Player"))
+                {
+                    Debug.Log("Yass"); 
+                    animations.SetTrigger("Slap");
+                    timeLeft = 2;
+                    Debug.Log("Player in Range");
+                }
+            }
+
         }
 
 
@@ -88,9 +99,13 @@ public class ChildTest : MonoBehaviour
     public void ChildSlapEvent()
     {
         // eigenlijk iets in Gethealth aanpassen.
-        
+
         // checksphere
-        player.GetComponent<MovPlayer>().baseHealth -= 1;
+      
+       player.GetComponent<MovPlayer>().baseHealth -= 0.5f;
+       
+
+     
     }
 
 
