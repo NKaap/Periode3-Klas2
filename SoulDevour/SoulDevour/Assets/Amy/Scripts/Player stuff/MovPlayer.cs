@@ -69,10 +69,16 @@ public class MovPlayer : MonoBehaviour
     [Space(8)]
     public Text moneyUI;
     public int money;
-    public Text healthUI;
+
 
     public bool cantMove;
 
+    [Header("Heart stuff")]
+    public int numOfHearts;
+
+    public Image[] hearts;
+    public Sprite fullH;
+    public Sprite emptyH;
 
     [Header("Items under Player prefab")]
     [Space(8)]
@@ -150,6 +156,7 @@ public class MovPlayer : MonoBehaviour
     private void Update()
     {
 
+
         KickChildren();
         PlayerModel();
         Jump();
@@ -164,7 +171,33 @@ public class MovPlayer : MonoBehaviour
             moneyUI.text = (money + ("Souls"));
         }
 
-        healthUI.text = (calculatedHealth + "Life Energy");
+       
+
+
+        if (calculatedHealth > numOfHearts)
+        {
+            baseHealth = numOfHearts;
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < calculatedHealth)
+            {
+                hearts[i].sprite = fullH;
+            }
+            else
+            {
+                hearts[i].sprite = emptyH;
+            }
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
 
 
         if (calculatedHealth <= 0)
@@ -187,6 +220,10 @@ public class MovPlayer : MonoBehaviour
         Debug.Log(money + ".. Stonks");
       
     }
+
+
+
+
 
     #region Basic Player Functionality
 
@@ -511,4 +548,7 @@ public class MovPlayer : MonoBehaviour
     #endregion
 
     #endregion
+
+
+
 }
