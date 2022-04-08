@@ -17,7 +17,7 @@ public class ChildTest : MonoBehaviour
     public GameObject head;
     public Animator animations;
 
-    public float timeLeft = 4;
+    public float timeLeft = 2;
  
 
     // Use this for initialization
@@ -61,7 +61,7 @@ public class ChildTest : MonoBehaviour
                     {
                         Debug.Log("Yass");
                         animations.SetTrigger("Slap");
-                        timeLeft = 4;
+                        timeLeft = 2;
                     }
                 }
 
@@ -96,7 +96,7 @@ public class ChildTest : MonoBehaviour
 
         // checksphere
       
-       player.GetComponent<MovPlayer>().baseHealth -= 0.25f;
+       player.GetComponent<MovPlayer>().baseHealth -= 0.5f;
        
 
      

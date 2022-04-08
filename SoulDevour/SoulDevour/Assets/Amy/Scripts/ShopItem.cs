@@ -27,5 +27,9 @@ public class ShopItem : MonoBehaviour
         {
             Debug.Log("Not enough!");
         }
+
+
+     
+
     }
 }

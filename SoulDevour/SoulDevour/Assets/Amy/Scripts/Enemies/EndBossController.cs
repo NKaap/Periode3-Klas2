@@ -57,10 +57,10 @@ public class EndBossController : MonoBehaviour
             if (!skillpointAdded)
             {
                 skillManager.AddUnusedSkillPoint();
+               
                 skillpointAdded = true;
             }
          
-
         }
     }
 
@@ -82,10 +82,10 @@ public class EndBossController : MonoBehaviour
             //  animations.SetBool("Walk", true);
         }
 
-        if (distance <= 7 || distance >= 10)
+        if (distance <= 5 || distance >= 10)
         {
             //  animations.SetBool("Walk", false);
-            animations.SetBool("Walk", false) ;
+            animations.SetBool("Walk", true) ;
             _moveSpeed = 0;
             //Debug.Log("Pause.");
         }
@@ -108,6 +108,8 @@ public class EndBossController : MonoBehaviour
          
             animations.SetBool("Walk", false);
             animations.SetBool("Dead", true);
+
+            StartCoroutine(DeadYes());
             alive = false;
           
         }
@@ -119,6 +121,12 @@ public class EndBossController : MonoBehaviour
         //Debug.Log(instantiatedProjectile);
         instantiatedProjectile.GetComponentInChildren<Rigidbody>().AddForce(transform.up * 100);
 
+    }
+
+    IEnumerator DeadYes()
+    {
+        yield return new WaitForSeconds(2);
+        animations.SetBool("DeadYes", true);
     }
 
     public IEnumerator PickupKid()

@@ -50,7 +50,7 @@ public class MovPlayer : MonoBehaviour
     [SerializeField] public float damage = 1;
     [SerializeField] public float speed = 5; // player speed
     [SerializeField] public float baseHealth = 8; // player health            HEALTH
-    [SerializeField] public float baseJumpHeight = 2; // player jump
+    [SerializeField] public float baseJumpHeight = 5; // player jump
     public int maxJump = 2;
     public int timesJumped = 0;
     
@@ -168,6 +168,7 @@ public class MovPlayer : MonoBehaviour
         KickChildren();
         PlayerModel();
         Jump();
+       
 
         //moneyUI.text = (money + "Soul");
         //if (money == 1)
@@ -229,6 +230,9 @@ public class MovPlayer : MonoBehaviour
 
 
     #region Basic Player Functionality
+
+   
+
 
     #region Move % Rotation
 

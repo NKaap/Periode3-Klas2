@@ -45,6 +45,11 @@ public class BossRoom : MonoBehaviour
             barFour.SetActive(false);
             doorToNextLevel.SetActive(true);
         }
+
+        if (teacherDead)
+        {
+            doorToNextLevel.SetActive(true);
+        }
     }
 
     public void SpawnTeacher()
@@ -55,7 +60,8 @@ public class BossRoom : MonoBehaviour
         if(spawnedTeacher == null)
         {
             Debug.Log("Teacher Down!");
-            teacherDead = true;
+            teacherDead = true; 
+           
         }
     }
 

@@ -17,6 +17,8 @@ public class SkillPointManager : MonoBehaviour
 
     public Text skillPoints;
 
+    public GameObject player;
+
     private void Update()
     {
         Debug.Log(skillData.unusedSkillPoints);
@@ -88,9 +90,23 @@ public class SkillPointManager : MonoBehaviour
     {
         // add that it only adds with the playertype that is active.\
 
-        
+        skillData.unusedSkillPoints++;
 
-    skillData.unusedSkillPoints++;
+        //int activeIndex = 0;
+        //for (int i = 0; i < ModelParent.transform.childCount; i++)
+        //{
+        //    if (ModelParent.transform.GetChild(i).gameObject.activeInHierarchy)
+        //    {
+        //        activeIndex = i;
+        //        break;
+        //    }
+
+        //}
+        string fileName = Application.dataPath + "/" + player.GetComponent<MovPlayer>().playerTypes.ToString() + ".txt";
+        string data = JsonUtility.ToJson(skillData);
+        //Debug.Log("Spent: " + fileName);
+        File.WriteAllText(fileName, data);
+        
     }
 
     public bool CanSpendPointOn(SkillData.SkillTypes skillType)
