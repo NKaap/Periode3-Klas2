@@ -137,6 +137,20 @@ public class MovPlayer : MonoBehaviour
         Halo.SetActive(false);
         Horn.SetActive(false); // moet nog
         Glasses.SetActive(false); // moet nog
+
+
+
+        if (calculatedHealth > numOfHearts)
+        {
+            baseHealth = numOfHearts;
+        }
+
+       
+
+
+
+
+
     }
 
     public void SetSkillDataPlayer()
@@ -170,43 +184,38 @@ public class MovPlayer : MonoBehaviour
         Jump();
        
 
-        //moneyUI.text = (money + "Soul");
-        //if (money == 1)
-        //{
-        //    moneyUI.text = (money + ("Soul"));
-        //}
-        //else
-        //{
-        //    moneyUI.text = (money + ("Souls"));
-        //}
+        moneyUI.text = (money + "Soul");
+        if (money == 1)
+        {
+            moneyUI.text = (money + ("Soul"));
+        }
+        else
+        {
+            moneyUI.text = (money + ("Souls"));
+        }
 
 
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < calculatedHealth)
+            {
+                hearts[i].sprite = fullH;
+            }
+            else
+            {
+                hearts[i].sprite = emptyH;
+            }
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
 
 
-        //if (calculatedHealth > numOfHearts)
-        //{
-        //    baseHealth = numOfHearts;
-        //}
-
-        //for (int i = 0; i < hearts.Length; i++)
-        //{
-        //    if (i < calculatedHealth)
-        //    {
-        //        hearts[i].sprite = fullH;
-        //    }
-        //    else
-        //    {
-        //        hearts[i].sprite = emptyH;
-        //    }
-        //    if (i < numOfHearts)
-        //    {
-        //        hearts[i].enabled = true;
-        //    }
-        //    else
-        //    {
-        //        hearts[i].enabled = false;
-        //    }
-        //}
 
 
 
