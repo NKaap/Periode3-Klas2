@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4332518191423153166}
   - component: {fileID: 1630576097424402994}
   - component: {fileID: 2758253061998657985}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MuurMetRand_DeurGeel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuurMetRand2Mat (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
 --- !u!4 &2219297165324287346 stripped
@@ -225,6 +229,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9dea919a2c3a0ed44a2081507a1f936c, type: 3}
       propertyPath: m_Name
       value: GroteDeurPost
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9dea919a2c3a0ed44a2081507a1f936c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9dea919a2c3a0ed44a2081507a1f936c, type: 3}
       propertyPath: m_IsActive
@@ -320,6 +328,10 @@ PrefabInstance:
       value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 6498673355599162718, guid: 2f02d78ddc85ec447927c02a513ee66f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498673355599162718, guid: 2f02d78ddc85ec447927c02a513ee66f, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -397,6 +409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NogGrotereDeurpost
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 326c3da3595451046b7dbf2fe034b6ed, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 326c3da3595451046b7dbf2fe034b6ed, type: 3}
 --- !u!4 &3911632310612698356 stripped
@@ -466,6 +482,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
       propertyPath: m_Name
       value: MuurMetRand2Mat (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
@@ -537,6 +557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuurMetRand2Mat (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
 --- !u!4 &4438196421491299290 stripped
@@ -603,6 +627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
 --- !u!4 &5481839209761351070 stripped
@@ -668,6 +696,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
       propertyPath: m_Name
       value: Wall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
@@ -738,6 +770,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
       propertyPath: m_Name
       value: MuurMetRand2Mat (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
@@ -816,6 +852,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a3657a748b951f14497144932b6c0624, type: 3}
       propertyPath: m_Name
       value: DeurPostMetRand2Mat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3657a748b951f14497144932b6c0624, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a3657a748b951f14497144932b6c0624, type: 3}
       propertyPath: m_IsActive
@@ -905,6 +945,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
 --- !u!4 &6786733470687979181 stripped
@@ -974,6 +1018,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
       propertyPath: m_Name
       value: MuurMetRand2Mat (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
@@ -1045,6 +1093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
 --- !u!4 &7271228476393730055 stripped
@@ -1110,6 +1162,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
       propertyPath: m_Name
       value: Wall (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
@@ -1177,6 +1233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
 --- !u!4 &8555083519590116863 stripped
@@ -1242,6 +1302,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
       propertyPath: m_Name
       value: Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6c322b1211ef441b438c88ed163014, type: 3}
@@ -1312,6 +1376,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
       propertyPath: m_Name
       value: MuurMetRand2Mat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d742397ca50bbc94f91ee29d43c2778f, type: 3}
