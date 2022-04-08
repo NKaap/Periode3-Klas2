@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InteractScript : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class InteractScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Cursor.lockState = CursorLockMode.None;
         Debug.Log("entered Trigger");
         if(other.gameObject.tag == "Player")
         {
@@ -51,8 +53,13 @@ public class InteractScript : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        Cursor.lockState = CursorLockMode.Locked;
         playerInTrigger = false;
         toSeeCanvas.SetActive(false);
         viewCamera.SetActive(false);
+    }
+    public void Tutorial()
+    {
+        SceneManager.LoadScene(4);
     }
 }

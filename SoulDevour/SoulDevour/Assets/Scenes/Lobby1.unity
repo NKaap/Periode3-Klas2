@@ -723,7 +723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3.76}
+  m_AnchoredPosition: {x: 0, y: 2.635}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227517701
@@ -800,6 +800,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &227743990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 741497131, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+  m_PrefabInstance: {fileID: 741497126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f08f0bbc65aa494e9ec6a615a0e6918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &265467374 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4465251191733224019, guid: a90059eb29e081a48bfbc811560a8156, type: 3}
@@ -1762,11 +1773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1018412486585064886, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042849932
+      value: -0.0000000042849955
       objectReference: {fileID: 0}
     - target: {fileID: 1018412486585064886, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -5.193795e-10
+      value: 5.19393e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1018412486667521514, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: fullH
@@ -1790,11 +1801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1018412487506560174, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042698987
+      value: -0.0000000042698987
       objectReference: {fileID: 0}
     - target: {fileID: 1018412487506560174, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -5.212355e-10
+      value: 5.212355e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1018412487567918958, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3156,6 +3167,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 551371381, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 741497131, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
       propertyPath: mainCamera
       value: 
@@ -3168,6 +3183,34 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 361223997}
+    - target: {fileID: 1433852808, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433852808, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433852808, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 227743990}
+    - target: {fileID: 1433852808, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433852808, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433852808, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InteractScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433852808, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1743083106, guid: 8365ccbb2a12fd2499e2962083517c78, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6322,7 +6365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.64, y: 4}
+  m_AnchoredPosition: {x: -0.64, y: 2.875}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1612082721
