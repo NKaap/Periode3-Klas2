@@ -16,6 +16,14 @@ public class TutorialRoomScript : MonoBehaviour
 
     public Text popUpText;
 
+    public GameObject fightRoom;
+
+    public GameObject bossRoom2;
+
+
+    public bool isItemOpgapkt;
+    public bool shopItemOpgepakt;
+
     [Header("Room Bool")]
     public bool firstClass;
     public bool fightClass;
@@ -39,7 +47,7 @@ public class TutorialRoomScript : MonoBehaviour
     }
     void Start()
     {
-
+        Debug.Log(GameObject.FindGameObjectsWithTag("Player"));
     }
 
     // Update is called once per frame
@@ -98,7 +106,7 @@ public class TutorialRoomScript : MonoBehaviour
         }
         else if (popUpIndex == 5)
         {
-            if (popUpsString[6] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            if (popUpsString[6] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text || Input.GetMouseButtonDown(0))
             {
                 popUpIndex++;
             }
@@ -112,7 +120,7 @@ public class TutorialRoomScript : MonoBehaviour
         }
         else if (popUpIndex == 7)
         {
-            if (levendeKinder == 0)
+            if (fightRoom.GetComponent<EnterRoom>().allEnemiesDead == true)
             {
                 popUpIndex++;
             }
@@ -126,14 +134,14 @@ public class TutorialRoomScript : MonoBehaviour
         }
         else if(popUpIndex == 9)
         {
-            if(popUpsString[10] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            if(popUpsString[10] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text || Input.GetMouseButtonDown(0))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 10)
         {
-            if (itemOpgepakt == true)
+            if (isItemOpgapkt == true)
             {
                 popUpIndex++;
             }
@@ -147,14 +155,14 @@ public class TutorialRoomScript : MonoBehaviour
         }
         else if (popUpIndex == 12)
         {
-            if (popUpsString[13] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            if (popUpsString[13] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text || Input.GetMouseButtonDown(0))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 13)
         {
-            if (popUpsString[14] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            if (popUpsString[14] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text || Input.GetMouseButtonDown(0))
             {
                 popUpIndex++;
             }
@@ -168,16 +176,16 @@ public class TutorialRoomScript : MonoBehaviour
         }
         else if (popUpIndex == 15)
         {
-            if (popUpsString[15] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text)
+            if (popUpsString[15] == this.gameObject.GetComponent<TextEffect>().whereTextInputs.text || Input.GetMouseButtonDown(0))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 16)
         {
-            if (isTeacherDood == true)
+            if (bossRoom2.GetComponent<BossRoom>().teacherDead == true)
             {
-                popUpIndex++;
+                SkipTutorial();
             }
         }
         else if (popUpIndex == popUps.Length)
@@ -192,6 +200,18 @@ public class TutorialRoomScript : MonoBehaviour
         //skipButton.SetActive(false);
         //textObject.SetActive(false);
         SceneManager.LoadScene("Lobby1");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == ("Item"))
+        {
+            isItemOpgapkt = true;
+        }
+        if(collision.gameObject.tag == ("ShopItem"))
+        {
+            shopItemOpgepakt = true;
+        }
     }
 
 }
