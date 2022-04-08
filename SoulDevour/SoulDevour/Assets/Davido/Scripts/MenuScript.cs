@@ -28,7 +28,12 @@ public class MenuScript : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("lobby1");
+    }
+
+    public void Contin()
+    {
+        SceneManager.LoadScene(0);
     }
 
 

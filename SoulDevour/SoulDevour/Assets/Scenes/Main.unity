@@ -2501,7 +2501,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1574045337}
         m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: ClickButoon
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6133,7 +6133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1371149075605466883, guid: 6b66929e2f670ab458fde59afbc8bbfc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5500926265449953507, guid: 6b66929e2f670ab458fde59afbc8bbfc, type: 3}
       propertyPath: m_Pivot.x
