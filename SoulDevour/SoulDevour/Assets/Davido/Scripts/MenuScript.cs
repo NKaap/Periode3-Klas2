@@ -16,7 +16,7 @@ public class MenuScript : MonoBehaviour
     //change quality
     void Start()
     {
-        //dropdown.value = QualitySettings.GetQualityLevel();
+        dropdown.value = QualitySettings.GetQualityLevel();
     }
 
     
