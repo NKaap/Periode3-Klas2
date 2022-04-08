@@ -12,6 +12,8 @@ public class LobbyCameraSwitch : MonoBehaviour
     public Transform playerPos;
    
     public Canvas canvas;
+
+   
     
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,8 @@ public class LobbyCameraSwitch : MonoBehaviour
             playerCam.enabled = false;
             characterSelectCam.enabled = true;
            
+            Cursor.lockState = CursorLockMode.None;
+           
         }
         
     }
@@ -49,7 +53,8 @@ public class LobbyCameraSwitch : MonoBehaviour
         canvas.enabled = false;
         playerCam.enabled = true;
         characterSelectCam.enabled = false;
-      
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
 }
