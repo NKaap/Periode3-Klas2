@@ -15,9 +15,21 @@ public class SkillPointManager : MonoBehaviour
 
     public Text speedText, jumpText, healthText, damageText;
 
+    public Text skillPoints;
+
     private void Update()
     {
         Debug.Log(skillData.unusedSkillPoints);
+
+        skillPoints.text = (GetRemainingSkillPoints() + ("  Skillpoints"));
+        if (GetRemainingSkillPoints() == 1)
+        {
+            skillPoints.text = (GetRemainingSkillPoints() + ("  Skillpoint"));
+        }
+        else
+        {
+            skillPoints.text = (GetRemainingSkillPoints() + ("  Skillpoints"));
+        }
 
 
         //Debug.Log(GetAllocatedPointsOf(0).ToString() + "---");
@@ -29,9 +41,13 @@ public class SkillPointManager : MonoBehaviour
     private void Start()
     {
         //SetSkillData(MovPlayer.PlayerTypes.TeddyBear);
+      
+
 
 
     }
+
+   
 
     public void SetSkillData(MovPlayer.PlayerTypes playerType)
     {
@@ -70,8 +86,11 @@ public class SkillPointManager : MonoBehaviour
 
     public void AddUnusedSkillPoint()
     {
-        // add that it only adds with the playertype that is active.
-        skillData.unusedSkillPoints++;
+        // add that it only adds with the playertype that is active.\
+
+        
+
+    skillData.unusedSkillPoints++;
     }
 
     public bool CanSpendPointOn(SkillData.SkillTypes skillType)
