@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class EnterRoom : MonoBehaviour
 {
-
     public GameObject enemyOne, enemyTwo, enemyThree;
     public GameObject barOne, barTwo, barThree, barFour;
-  
     public float radius = 2;
-
     public bool allEnemiesDead;
     public bool playerEnteredRoom = false;
     public bool playerCol = false;
@@ -33,7 +30,7 @@ public class EnterRoom : MonoBehaviour
     {
         if (playerEnteredRoom & !playerCol)
         {
-            IronBarsRoomLock();
+            WaitForIronBars();
             enemyOne.SetActive(true);
             enemyThree.SetActive(true);
             enemyTwo.SetActive(true);
@@ -43,7 +40,6 @@ public class EnterRoom : MonoBehaviour
         if(enemyOne == null && enemyTwo == null && enemyThree == null)
         {
             allEnemiesDead = true;
-           
         }
 
         if (allEnemiesDead)
@@ -96,21 +92,18 @@ public class EnterRoom : MonoBehaviour
         }
     }
 
-
-
+    IEnumerator WaitForIronBars()
+    {
+        yield return new WaitForSeconds(1f);
+        IronBarsRoomLock();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Player"))
         {
-            // nog een timer aan toevoegen
-            
-            playerEnteredRoom = true;
-
-            
+            // nog een timer aan toevoegee
+            playerEnteredRoom = true; 
         }
-
     }
-
-
 }
