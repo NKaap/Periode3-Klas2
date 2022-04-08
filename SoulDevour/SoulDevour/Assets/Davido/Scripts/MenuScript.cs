@@ -24,7 +24,7 @@ public class MenuScript : MonoBehaviour
     //load MainMenu
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene(0);
     }
 
 
