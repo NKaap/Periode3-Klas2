@@ -12,7 +12,6 @@ public class EndBossController : MonoBehaviour
     public GameObject skillObj;
     bool skillpointAdded = false;
 
-
     [SerializeField]
     private float _moveSpeed = 5.0f;
 
@@ -38,6 +37,8 @@ public class EndBossController : MonoBehaviour
 
         skillObj = GameObject.FindWithTag("SkillPointManager");
         skillManager = skillObj.GetComponent<SkillPointManager>();
+
+   
     }
 
     // Update is called once per frame
@@ -71,6 +72,7 @@ public class EndBossController : MonoBehaviour
 
         if (distance >= 7)
         {
+            animations.SetBool("Walk", true);
             _moveSpeed = 3;
             Vector3 direction = target.position - transform.position;
             direction = direction.normalized;
@@ -83,6 +85,7 @@ public class EndBossController : MonoBehaviour
         if (distance <= 7 || distance >= 10)
         {
             //  animations.SetBool("Walk", false);
+            animations.SetBool("Walk", false) ;
             _moveSpeed = 0;
             //Debug.Log("Pause.");
         }
@@ -106,6 +109,7 @@ public class EndBossController : MonoBehaviour
             animations.SetBool("Walk", false);
             animations.SetBool("Dead", true);
             alive = false;
+          
         }
     }
 

@@ -28,9 +28,11 @@ public class EnterRoom : MonoBehaviour
 
     private void Update()
     {
+
+
         if (playerEnteredRoom & !playerCol)
         {
-            WaitForIronBars();
+            IronBarsRoomLock();
             enemyOne.SetActive(true);
             enemyThree.SetActive(true);
             enemyTwo.SetActive(true);
@@ -95,7 +97,8 @@ public class EnterRoom : MonoBehaviour
     IEnumerator WaitForIronBars()
     {
         yield return new WaitForSeconds(1f);
-        IronBarsRoomLock();
+        playerEnteredRoom = true;
+        // IronBarsRoomLock();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -103,7 +106,9 @@ public class EnterRoom : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             // nog een timer aan toevoegee
-            playerEnteredRoom = true; 
+            //  WaitForIronBars();
+            StartCoroutine(WaitForIronBars());
+              
         }
     }
 }

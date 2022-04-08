@@ -11,13 +11,13 @@ public class ChildTest : MonoBehaviour
     [SerializeField]
     private float _moveSpeed = 5.0f;
 
-    public float health = 10;
+    public float health = 4;
 
     public GameObject ragdoll;
     public GameObject head;
     public Animator animations;
 
-    public float timeLeft = 2;
+    public float timeLeft = 4;
  
 
     // Use this for initialization
@@ -47,38 +47,32 @@ public class ChildTest : MonoBehaviour
             animations.SetBool("Walk", true);
         }
      
-        if(distance <= 3 || distance >= 20)
+        if(distance <= 3 || distance >= 10)
         {
             animations.SetBool("Walk", false);
-           
+
+            timeLeft -= Time.deltaTime;
+            if (timeLeft < 0)
+            {
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 4);
+                foreach (Collider collider in colliders)
+                {
+                    if (collider.transform.CompareTag("Player"))
+                    {
+                        Debug.Log("Yass");
+                        animations.SetTrigger("Slap");
+                        timeLeft = 4;
+                    }
+                }
+
+            }
+
             _moveSpeed = 0;
             Debug.Log("child paused.");
 
          
 
         }
-
-     
-
-
-        timeLeft -= Time.deltaTime;
-        if (timeLeft < 0)
-        {
-          
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 4);
-            foreach (Collider collider in colliders)
-            {
-                if (collider.transform.CompareTag("Player"))
-                {
-                    Debug.Log("Yass"); 
-                    animations.SetTrigger("Slap");
-                    timeLeft = 2;
-                    Debug.Log("Player in Range");
-                }
-            }
-
-        }
-
 
         transform.position = new Vector3(transform.position.x, 1, transform.position.z);
         ChildDead();
@@ -102,7 +96,7 @@ public class ChildTest : MonoBehaviour
 
         // checksphere
       
-       player.GetComponent<MovPlayer>().baseHealth -= 0.5f;
+       player.GetComponent<MovPlayer>().baseHealth -= 0.25f;
        
 
      

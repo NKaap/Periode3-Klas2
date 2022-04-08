@@ -355,6 +355,11 @@ public class MovPlayer : MonoBehaviour
                         output += 5f;
                         break;
                     }
+                case ItemBase.ItemType.PeanutButter:
+                    {
+                        output += 10;
+                        break;
+                    }
             }
         }
         return output;
@@ -473,6 +478,13 @@ public class MovPlayer : MonoBehaviour
                     money += 1;
                 }
             }
+            if (collider.transform.CompareTag("EndBoss"))
+            {
+                collider.GetComponent<EndBossController>().health -= calculatedDamage;
+
+
+
+            }
             // collider.GetComponent<ChildController>().health -= 10;
             Debug.Log("Yass");
 
@@ -499,6 +511,13 @@ public class MovPlayer : MonoBehaviour
                 {
                     money += 1;
                 }
+            }
+            if (collider.transform.CompareTag("EndBoss"))
+            {
+                collider.GetComponent<EndBossController>().health -= calculatedDamage;
+
+             
+
             }
         }
     }
