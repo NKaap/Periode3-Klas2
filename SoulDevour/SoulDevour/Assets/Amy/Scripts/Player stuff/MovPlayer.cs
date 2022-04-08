@@ -28,9 +28,9 @@ public class MovPlayer : MonoBehaviour
     public Transform cam;
 
     public GameObject playerObject;
-    public SkinnedMeshRenderer gameObjectMesh;
+   // public SkinnedMeshRenderer gameObjectMesh;
     public GameObject secondObj;
-    public Material gameObjectMaterial;
+ //   public Material gameObjectMaterial;
    
     public Material[] playerMaterials;
     [Header("Moving and Rotation")]
@@ -169,15 +169,15 @@ public class MovPlayer : MonoBehaviour
         PlayerModel();
         Jump();
 
-        moneyUI.text = (money + "Soul");
-        if (money == 1)
-        {
-            moneyUI.text = (money + ("Soul"));
-        }
-        else
-        {
-            moneyUI.text = (money + ("Souls"));
-        }
+        //moneyUI.text = (money + "Soul");
+        //if (money == 1)
+        //{
+        //    moneyUI.text = (money + ("Soul"));
+        //}
+        //else
+        //{
+        //    moneyUI.text = (money + ("Souls"));
+        //}
 
 
 
