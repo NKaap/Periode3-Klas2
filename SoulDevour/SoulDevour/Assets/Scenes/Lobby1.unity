@@ -154,7 +154,7 @@ Transform:
   m_LocalScale: {x: 1.4000002, y: 1.5, z: 3.1200001}
   m_Children: []
   m_Father: {fileID: 2053425760}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &44360542
 BoxCollider:
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInTrigger: 0
   interactableView: {fileID: 1341115962}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1659187618}
   viewCamera: {fileID: 361223994}
   toSeeCanvas: {fileID: 1579756303}
 --- !u!4 &57533744
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInTrigger: 0
   interactableView: {fileID: 1543091155}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1659187618}
   viewCamera: {fileID: 361223994}
   toSeeCanvas: {fileID: 227517699}
 --- !u!4 &76051579
@@ -506,6 +506,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130344434}
   m_CullTransparentMesh: 1
+--- !u!1 &163281837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163281838}
+  m_Layer: 0
+  m_Name: Player Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &163281838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163281837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.46, y: 0.776, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2053425760}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &206633593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1733,7 +1763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 996128054554432691, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.4367037
+      value: 2.36
       objectReference: {fileID: 0}
     - target: {fileID: 996128054554432691, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1741,7 +1771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 996128054554432691, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.8352938
+      value: -3.37
       objectReference: {fileID: 0}
     - target: {fileID: 996128054554432691, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1769,6 +1799,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 996128054554432691, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018412486126655542, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1018412486126655542, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
@@ -1834,6 +1868,10 @@ PrefabInstance:
     - target: {fileID: 1018412487586728067, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018412487586728067, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
@@ -2585,7 +2623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5219446115090064995, guid: b8b1c0503f2c5cf40be12ab5b5fb21d4, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5219446115090064995, guid: b8b1c0503f2c5cf40be12ab5b5fb21d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4558,7 +4596,7 @@ BoxCollider:
   m_GameObject: {fileID: 1141269814}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -6341,7 +6379,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2053425760}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1499308758
 PrefabInstance:
@@ -6626,7 +6664,7 @@ RectTransform:
   - {fileID: 2013955669}
   - {fileID: 105315819}
   m_Father: {fileID: 2053425760}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6958,6 +6996,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1659187618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1018412487586728066, guid: 1ebdc7989ec55ed45baa2e30f8f51491, type: 3}
+  m_PrefabInstance: {fileID: 432412238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1672955575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8269,7 +8312,7 @@ Transform:
   - {fileID: 388997163}
   - {fileID: 1274185467}
   m_Father: {fileID: 2053425760}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2053425759
 GameObject:
@@ -8301,6 +8344,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 163281838}
   - {fileID: 2050932668}
   - {fileID: 44360541}
   - {fileID: 924701647}
@@ -8323,7 +8367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInTrigger: 0
   interactableView: {fileID: 1495716589}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1659187618}
   viewCamera: {fileID: 361223994}
   toSeeCanvas: {fileID: 1560875087}
 --- !u!65 &2053425762
@@ -8361,11 +8405,11 @@ MonoBehaviour:
   - {fileID: 1274185468}
   uiCharacterInfo: []
   movPlayer: {fileID: 432412239}
-  activeCharacter: {fileID: 0}
+  activeCharacter: {fileID: 733489743}
   activeInfo: {fileID: 0}
   index: 0
   playerObj: {fileID: 432412240}
-  playerPos: {fileID: 0}
+  playerPos: {fileID: 163281838}
   skillPointManager: {fileID: 1471564407}
 --- !u!1 &2069246825
 GameObject:

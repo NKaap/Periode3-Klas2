@@ -187,25 +187,25 @@ public class MovPlayer : MonoBehaviour
         //    baseHealth = numOfHearts;
         //}
 
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < calculatedHealth)
-            {
-                hearts[i].sprite = fullH;
-            }
-            else
-            {
-                hearts[i].sprite = emptyH;
-            }
-            if (i < numOfHearts)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
-        }
+        //for (int i = 0; i < hearts.Length; i++)
+        //{
+        //    if (i < calculatedHealth)
+        //    {
+        //        hearts[i].sprite = fullH;
+        //    }
+        //    else
+        //    {
+        //        hearts[i].sprite = emptyH;
+        //    }
+        //    if (i < numOfHearts)
+        //    {
+        //        hearts[i].enabled = true;
+        //    }
+        //    else
+        //    {
+        //        hearts[i].enabled = false;
+        //    }
+        //}
 
 
 
